@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>CricPulse — Live Scores & Cricket News</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1a6b3c; --green-light: #22c55e; --gold: #d4a017;
+  --ipl-orange: #f97316; --ipl-blue: #4f83f5;
+  --dark: #0e1a12; --dark2: #162019; --mid: #223329; --mid2: #2a3f2e;
+  --text: #f0f4f1; --muted: #8aab90; --border: rgba(255,255,255,0.08);
+  --red: #e53e3e; --blue: #3b82f6; --purple: #a855f7;
+  --nav-h: 60px; --bottom-nav-h: 58px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:var(--bottom-nav-h)}
+
+/* ── TICKER ── */
+.ticker-wrap{background:var(--green);overflow:hidden;padding:5px 0}
+.ticker{display:flex;animation:ticker 50s linear infinite;white-space:nowrap}
+.ticker span{font-size:11px;font-weight:500;padding:0 28px;color:#fff}
+.ticker span b{color:var(--gold)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{background:var(--dark2);border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);position:sticky;top:0;z-index:200}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--green-light);letter-spacing:2px;text-decoration:none}
+.logo span{color:var(--gold)}
+.nav-desktop{display:flex;gap:20px;align-items:center}
+.nav-desktop a{color:var(--muted);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.5px;transition:color .2s;white-space:nowrap}
+.nav-desktop a:hover,.nav-desktop a.active{color:var(--text)}
+.nav-desktop a.active{border-bottom:2px solid var(--green-light);padding-bottom:2px}
+.nav-right{display:flex;gap:8px;align-items:center}
+.btn-sub{background:var(--green);color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap}
+.api-key-btn{background:var(--mid);color:var(--muted);border:1px solid var(--border);padding:7px 11px;border-radius:6px;font-size:11px;cursor:pointer;transition:all .2s}
+.api-key-btn:hover{color:var(--text);border-color:var(--green)}
+.hamburger{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer{position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;background:var(--dark2);z-index:150;transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto;padding:20px 16px;display:none}
+.mobile-drawer.open{transform:translateX(0)}
+.mobile-drawer a{display:block;padding:14px 0;font-size:16px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}
+.mobile-drawer a:hover{color:var(--text)}
+
+/* ── BOTTOM NAV (mobile) ── */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;height:var(--bottom-nav-h);background:var(--dark2);border-top:1px solid var(--border);z-index:200;justify-content:space-around;align-items:center}
+.bn-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:6px 12px;border-radius:8px;transition:all .2s;background:none;border:none;color:var(--muted);font-family:inherit}
+.bn-item.active{color:var(--green-light)}
+.bn-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.bn-item span{font-size:9px;font-weight:500;letter-spacing:0.3px}
+
+/* ── LAYOUT ── */
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+main{display:grid;grid-template-columns:1fr 300px;gap:24px;padding:20px 16px;max-width:1200px;margin:0 auto}
+.main-col{min-width:0}
+
+/* ── SECTION LABEL ── */
+.section-label{font-size:10px;font-weight:500;letter-spacing:2px;color:var(--green-light);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:pulse 1.2s ease-in-out infinite;display:inline-block;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+
+/* ── TABS ── */
+.tabs{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;margin-bottom:14px;border-bottom:1px solid var(--border)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:8px 14px;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.tab.active{color:var(--green-light);border-bottom-color:var(--green-light)}
+.tab.ipl-tab.active{color:var(--ipl-orange);border-bottom-color:var(--ipl-orange)}
+.tab.hist-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab:hover{color:var(--text)}
+
+/* ── SCORE CARDS ── */
+.score-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px}
+.score-card{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;transition:border-color .2s,transform .15s;cursor:pointer;position:relative}
+.score-card:hover{border-color:var(--green);transform:translateY(-1px)}
+.score-card.live{border-left:3px solid var(--red)}
+.score-card.ipl-card{border-left:3px solid var(--ipl-orange)}
+.match-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+.match-type{font-size:10px;color:var(--muted);letter-spacing:.4px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.live-badge{background:var(--red);color:#fff;font-size:9px;font-weight:600;padding:3px 7px;border-radius:4px;letter-spacing:1px;flex-shrink:0}
+.completed-badge{background:var(--mid2);color:var(--muted);font-size:9px;padding:3px 7px;border-radius:4px;flex-shrink:0}
+.upcoming-badge{background:rgba(59,130,246,.2);color:var(--blue);font-size:9px;padding:3px 7px;border-radius:4px;flex-shrink:0}
+.ipl-badge{background:linear-gradient(90deg,var(--ipl-orange),var(--ipl-blue));color:#fff;font-size:9px;font-weight:600;padding:3px 7px;border-radius:4px;flex-shrink:0}
+.teams{display:flex;flex-direction:column;gap:7px}
+.team-row{display:flex;align-items:center;justify-content:space-between}
+.team-info{display:flex;align-items:center;gap:8px;min-width:0}
+.team-flag{font-size:16px;flex-shrink:0}
+.team-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.team-name.winner{color:var(--green-light)}
+.score{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;white-space:nowrap}
+.score.winner{color:var(--green-light)}
+.overs{font-size:10px;color:var(--muted);margin-left:4px}
+.match-status{margin-top:8px;padding-top:8px;border-top:1px solid var(--border);font-size:11px;color:var(--muted)}
+.match-status b{color:var(--gold)}
+.crr{font-size:10px;color:var(--green-light);margin-top:3px}
+.card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:6px;border-top:1px solid var(--border)}
+.view-players-btn{font-size:10px;color:var(--green-light);cursor:pointer;background:none;border:1px solid rgba(34,197,94,.3);padding:4px 9px;border-radius:4px;transition:all .2s;font-family:inherit}
+.view-players-btn:hover{background:rgba(34,197,94,.1)}
+
+/* ── API SETUP ── */
+.api-setup{background:linear-gradient(135deg,rgba(212,160,23,.12),rgba(26,107,60,.12));border:1px solid rgba(212,160,23,.25);border-radius:10px;padding:14px 16px;margin-bottom:16px;display:none;gap:14px;flex-wrap:wrap;align-items:center}
+.api-setup.visible{display:flex}
+.api-setup-text h4{font-size:13px;color:var(--gold);margin-bottom:3px}
+.api-setup-text p{font-size:11px;color:var(--muted)}
+.api-setup-text a{color:var(--green-light)}
+.api-input-row{display:flex;gap:7px;align-items:center;flex:1;min-width:240px}
+.api-input{background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:6px;padding:7px 10px;color:var(--text);font-size:11px;flex:1;outline:none;font-family:monospace;min-width:0}
+.api-input:focus{border-color:var(--green)}
+.api-save-btn{background:var(--green);color:#fff;border:none;padding:7px 13px;border-radius:6px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:inherit}
+.api-status{font-size:10px;padding:3px 8px;border-radius:4px;flex-shrink:0}
+.api-status.connected{background:rgba(34,197,94,.15);color:var(--green-light)}
+.api-status.demo{background:rgba(212,160,23,.15);color:var(--gold)}
+.api-status.error{background:rgba(229,62,62,.15);color:var(--red)}
+.free-notice{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:9px 12px;font-size:11px;color:var(--muted);margin-bottom:14px}
+.free-notice b{color:var(--green-light)}
+
+/* ── REFRESH ROW ── */
+.refresh-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.refresh-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:5px 10px;border-radius:6px;font-size:10px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;font-family:inherit}
+.refresh-btn:hover{border-color:var(--green);color:var(--green-light)}
+.refresh-btn.spinning svg{animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── IPL ── */
+.ipl-header{background:linear-gradient(135deg,rgba(249,115,22,.13),rgba(79,131,245,.13));border:1px solid rgba(249,115,22,.22);border-radius:12px;padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ipl-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px}
+.ipl-title .o{color:var(--ipl-orange)}.ipl-title .b{color:#60a5fa}
+.ipl-season{font-size:11px;color:var(--muted);margin-top:2px}
+.ipl-pts-table{width:100%;border-collapse:collapse;font-size:11px}
+.ipl-pts-table th{color:var(--muted);font-weight:500;text-align:left;padding:7px 5px;border-bottom:1px solid var(--border);font-size:10px;letter-spacing:.5px;white-space:nowrap}
+.ipl-pts-table td{padding:9px 5px;border-bottom:1px solid rgba(255,255,255,.04)}
+.ipl-pts-table tr:last-child td{border-bottom:none}
+.ipl-pts-table .qual-row{background:rgba(34,197,94,.05)}
+.ipl-pts-table .qual-row td:first-child{border-left:3px solid var(--green-light);padding-left:8px}
+.pts-cell{color:var(--green-light);font-weight:600;font-size:13px}
+.nrr-pos{color:var(--green-light)}.nrr-neg{color:var(--red)}
+.form-dots{display:flex;gap:3px}
+.form-dot{width:7px;height:7px;border-radius:50%}
+.form-dot.w{background:var(--green-light)}.form-dot.l{background:var(--red)}.form-dot.nr{background:var(--muted)}
+.team-logo-sm{font-size:14px;margin-right:6px}
+
+/* ── HISTORICAL RECORDS ── */
+.hist-hero{background:linear-gradient(135deg,rgba(212,160,23,.13),rgba(168,85,247,.08));border:1px solid rgba(212,160,23,.22);border-radius:12px;padding:16px 20px;margin-bottom:20px}
+.hist-hero h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:var(--gold);margin-bottom:4px}
+.hist-hero p{font-size:12px;color:var(--muted)}
+.format-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.format-tab{padding:6px 14px;font-size:11px;font-weight:500;border-radius:20px;cursor:pointer;transition:all .2s;border:1px solid var(--border);color:var(--muted);background:none;font-family:inherit;white-space:nowrap}
+.format-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(212,160,23,.1)}
+.year-filter{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.year-filter label{font-size:11px;color:var(--muted)}
+.year-select{background:var(--mid);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer;outline:none;font-family:inherit}
+.hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:20px}
+.hist-card{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:14px;transition:border-color .2s}
+.hist-card:hover{border-color:var(--gold)}
+.hist-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.hist-rank{font-family:'Bebas Neue',sans-serif;font-size:36px;color:rgba(255,255,255,.06);line-height:1}
+.hist-rank.top1{color:rgba(212,160,23,.3)}.hist-rank.top2{color:rgba(192,192,192,.25)}.hist-rank.top3{color:rgba(205,127,50,.25)}
+.hist-format-badge{font-size:9px;padding:3px 8px;border-radius:4px;font-weight:500;letter-spacing:.5px}
+.badge-test{background:rgba(168,85,247,.15);color:var(--purple)}
+.badge-odi{background:rgba(59,130,246,.15);color:var(--blue)}
+.badge-t20{background:rgba(249,115,22,.15);color:var(--ipl-orange)}
+.badge-county{background:rgba(34,197,94,.12);color:var(--green-light)}
+.badge-wc{background:rgba(212,160,23,.15);color:var(--gold)}
+.hist-team{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hist-flag{font-size:22px}
+.hist-team-name{font-size:16px;font-weight:600}
+.hist-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.hist-stat-box{background:var(--mid);border-radius:6px;padding:7px 8px;text-align:center}
+.hist-stat-num{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--gold);letter-spacing:1px}
+.hist-stat-label{font-size:9px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-top:1px}
+.hist-extra{font-size:10px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);line-height:1.5}
+.hist-extra b{color:var(--text)}
+.records-section{margin-bottom:24px}
+.records-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.records-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.record-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.record-row:last-child{border-bottom:none}
+.record-left{display:flex;align-items:center;gap:10px}
+.record-pos{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--border);width:22px;flex-shrink:0}
+.record-pos.g{color:var(--gold)}.record-pos.s{color:#aaa}.record-pos.b{color:#cd7f32}
+.record-info{min-width:0}
+.record-name{font-size:13px;font-weight:500}
+.record-detail{font-size:10px;color:var(--muted);margin-top:1px}
+.record-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);text-align:right;flex-shrink:0}
+.record-val-label{font-size:9px;color:var(--muted);text-align:right}
+.county-card{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
+.county-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.county-name{font-size:14px;font-weight:600}
+.county-div{font-size:10px;color:var(--muted)}
+.county-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.county-stat{text-align:center}
+.county-stat-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text)}
+.county-stat-lbl{font-size:9px;color:var(--muted)}
+.county-champs{font-size:10px;color:var(--gold);margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:flex-end;justify-content:center;padding:0;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--dark2);border:1px solid var(--border);border-radius:16px 16px 0 0;width:100%;max-width:680px;max-height:92vh;overflow-y:auto;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:10px auto 0}
+.modal-header{padding:14px 20px 12px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:var(--dark2);z-index:10}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px}
+.modal-subtitle{font-size:11px;color:var(--muted);margin-top:2px}
+.modal-close{background:var(--mid2);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.modal-close:hover{background:var(--green);color:#fff}
+.modal-body{padding:16px 20px 24px}
+.players-section-title{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px}
+.players-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.player-card{background:var(--mid);border-radius:9px;padding:10px;display:flex;align-items:center;gap:9px;border:1px solid transparent;transition:border-color .2s}
+.player-card:hover{border-color:var(--green)}
+.player-rank{font-family:'Bebas Neue',sans-serif;font-size:22px;color:rgba(255,255,255,.1);width:20px;flex-shrink:0;line-height:1}
+.player-rank.top{color:var(--gold)}
+.player-avatar{width:34px;height:34px;border-radius:50%;background:var(--dark2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--green-light);flex-shrink:0;border:2px solid var(--border)}
+.player-info{flex:1;min-width:0}
+.player-name{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.player-team{font-size:9px;color:var(--muted);margin-top:1px}
+.impact-badge{display:inline-block;font-size:8px;padding:2px 5px;border-radius:3px;margin-top:3px;font-weight:500;letter-spacing:.4px}
+.impact-high{background:rgba(34,197,94,.15);color:var(--green-light)}
+.impact-med{background:rgba(212,160,23,.15);color:var(--gold)}
+.player-stat-box{text-align:right;flex-shrink:0}
+.player-stat-num{font-family:'Bebas Neue',sans-serif;font-size:19px;color:var(--gold);letter-spacing:1px;line-height:1}
+.player-extras{font-size:9px;color:rgba(138,171,144,.7);margin-top:2px}
+
+/* ── NEWS ── */
+.hero-article{background:var(--dark2);border-radius:12px;overflow:hidden;margin-bottom:20px;cursor:pointer;transition:opacity .2s;border:1px solid var(--border)}
+.hero-article:hover{opacity:.92}
+.hero-img{width:100%;height:200px;background:linear-gradient(135deg,#1a4a2e,#0e2918);display:flex;align-items:flex-end;padding:18px;position:relative;overflow:hidden}
+.hero-img-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:100px;opacity:.1}
+.hero-tag{background:var(--green);color:#fff;font-size:10px;font-weight:500;padding:3px 10px;border-radius:4px;margin-bottom:8px;display:inline-block;letter-spacing:1px}
+.hero-title{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.25;color:#fff;position:relative;z-index:1}
+.hero-body{padding:14px 18px}
+.hero-meta{display:flex;gap:12px;font-size:11px;color:var(--muted);margin-bottom:8px;flex-wrap:wrap}
+.hero-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.news-card{background:var(--dark2);border:1px solid var(--border);border-radius:9px;padding:14px;cursor:pointer;transition:border-color .2s}
+.news-card:hover{border-color:var(--green)}
+.news-tag{font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--green-light);margin-bottom:6px}
+.news-title{font-family:'DM Serif Display',serif;font-size:13px;line-height:1.35;color:var(--text);margin-bottom:6px}
+.news-meta{font-size:10px;color:var(--muted)}
+
+/* ── SIDEBAR ── */
+aside{display:flex;flex-direction:column;gap:18px}
+.sidebar-card{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:16px}
+.sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:var(--text);margin-bottom:12px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.points-table{width:100%;border-collapse:collapse;font-size:11px}
+.points-table th{color:var(--muted);font-weight:500;text-align:left;padding:5px 4px;border-bottom:1px solid var(--border)}
+.points-table td{padding:7px 4px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text)}
+.points-table tr:last-child td{border-bottom:none}
+.points-table .rank{color:var(--muted);width:18px}
+.points-table .pts{color:var(--green-light);font-weight:500}
+.points-table .qual{background:rgba(34,197,94,.07)}
+.flag-sm{font-size:13px;margin-right:5px}
+.performer{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.performer:last-child{border-bottom:none}
+.perf-left{display:flex;align-items:center;gap:9px}
+.perf-avatar{width:32px;height:32px;border-radius:50%;background:var(--mid2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:var(--green-light)}
+.perf-name{font-size:12px;font-weight:500}
+.perf-team{font-size:10px;color:var(--muted)}
+.perf-stat{text-align:right}
+.perf-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px}
+.perf-label{font-size:9px;color:var(--muted)}
+.ad-slot{background:var(--mid);border:1px dashed rgba(255,255,255,.12);border-radius:9px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.ad-slot p{font-size:10px;color:var(--muted)}
+.ad-slot span{font-size:9px;color:rgba(255,255,255,.18)}
+.sub-banner{background:var(--green);border-radius:10px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.sub-banner h3{font-size:14px;font-weight:500;color:#fff}
+.sub-banner p{font-size:11px;color:rgba(255,255,255,.72);margin-top:2px}
+.sub-form{display:flex;gap:7px}
+.sub-form input{padding:8px 12px;border-radius:6px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:12px;width:170px;outline:none}
+.sub-form input::placeholder{color:rgba(255,255,255,.45)}
+.sub-form button{background:var(--gold);color:var(--dark);border:none;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap}
+
+/* ── SUBSCRIPTION MODAL ── */
+.sub-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:600;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(6px)}
+.sub-modal-overlay.open{display:flex}
+.sub-modal{background:var(--dark2);border:1px solid rgba(34,197,94,.25);border-radius:18px;width:100%;max-width:400px;padding:28px 24px;animation:fadeScaleIn .28s ease;position:relative}
+@keyframes fadeScaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.sub-modal-close{position:absolute;top:14px;right:14px;background:var(--mid2);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.sub-modal-close:hover{background:var(--green);color:#fff}
+.sub-modal-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green-light);letter-spacing:2px;margin-bottom:4px}
+.sub-modal-logo span{color:var(--gold)}
+.sub-modal h2{font-size:20px;font-weight:600;margin-bottom:6px;color:var(--text)}
+.sub-price{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--green-light);letter-spacing:1px;line-height:1}
+.sub-price-label{font-size:12px;color:var(--muted);margin-bottom:18px}
+.sub-features{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:9px}
+.sub-features li{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--muted)}
+.sub-features li .chk{color:var(--green-light);font-size:14px;flex-shrink:0}
+.sub-pay-btn{width:100%;background:var(--green);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;font-family:inherit}
+.sub-pay-btn:hover{opacity:.88}
+.sub-pay-btn:disabled{opacity:.5;cursor:not-allowed}
+.sub-secure{display:flex;align-items:center;justify-content:center;gap:6px;font-size:10px;color:var(--muted);margin-top:10px}
+.sub-success{text-align:center;padding:10px 0}
+.sub-success .tick{font-size:52px;margin-bottom:12px}
+.sub-success h3{font-size:18px;color:var(--green-light);margin-bottom:6px}
+.sub-success p{font-size:12px;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark2);border-top:1px solid var(--border);padding:28px 16px;margin-top:16px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green-light);letter-spacing:2px;margin-bottom:8px}
+.footer-logo span{color:var(--gold)}
+.footer-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.footer-col h4{font-size:11px;font-weight:500;letter-spacing:1px;color:var(--text);margin-bottom:10px;text-transform:uppercase}
+.footer-col a{display:block;font-size:12px;color:var(--muted);text-decoration:none;margin-bottom:7px;transition:color .2s}
+.footer-col a:hover{color:var(--green-light)}
+.footer-bottom{max-width:1200px;margin:18px auto 0;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);flex-wrap:wrap;gap:8px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  main{grid-template-columns:1fr}
+  aside{display:none} /* shown in mobile as separate section */
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .hamburger{display:flex}
+  .nav-desktop{display:none}
+  .btn-sub{display:none}
+  .mobile-drawer{display:block}
+  .bottom-nav{display:flex}
+  main{padding:14px 12px}
+  .score-cards{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .players-grid{grid-template-columns:1fr}
+  .hist-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-col:nth-child(n+3){display:none}
+  .sub-banner{flex-direction:column}
+  .sub-form{flex-direction:column;width:100%}
+  .sub-form input{width:100%}
+  .ipl-pts-table th:nth-child(5),
+  .ipl-pts-table td:nth-child(5),
+  .ipl-pts-table th:nth-child(8),
+  .ipl-pts-table td:nth-child(8){display:none}
+  .county-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-img{height:160px}
+  .hero-title{font-size:17px}
+}
+@media(min-width:601px){
+  body{padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>🏏 IND vs AUS — <b>IND 287/4 (42.3 ov)</b> | Target: 312</span>
+    <span>🏏 ENG vs NZ — <b>ENG won by 6 wickets</b></span>
+    <span>🏏 SA vs PAK — <b>SA 156/3 (22 ov)</b> | Live</span>
+    <span>🏆 IPL 2026 — <b>CSK vs MI</b> Tonight 7:30 PM IST</span>
+    <span>⭐ Kohli scores 98 off 76 in warm-up</span>
+    <span>📊 Most Test wins 2000–2026: <b>Australia 312</b></span>
+    <span>🏏 IND vs AUS — <b>IND 287/4 (42.3 ov)</b> | Target: 312</span>
+    <span>🏏 ENG vs NZ — <b>ENG won by 6 wickets</b></span>
+    <span>🏏 SA vs PAK — <b>SA 156/3 (22 ov)</b> | Live</span>
+    <span>🏆 IPL 2026 — <b>CSK vs MI</b> Tonight 7:30 PM IST</span>
+    <span>⭐ Kohli scores 98 off 76 in warm-up</span>
+    <span>📊 Most Test wins 2000–2026: <b>Australia 312</b></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Cric<span>Pulse</span></a>
+  <div class="nav-desktop">
+    <a href="#" class="active" onclick="showSection('home',this)">Home</a>
+    <a href="#" onclick="showSection('live',this)">Live Scores</a>
+    <a href="#" onclick="showSection('ipl',this)">IPL 2026</a>
+    <a href="#" onclick="showSection('history',this)">Records 2000–Now</a>
+    <a href="#" onclick="showSection('county',this)">County Cricket</a>
+    <a href="#" onclick="showSection('news',this)">News</a>
+  </div>
+  <div class="nav-right">
+    <button class="api-key-btn" id="apiStatusBadge" style="cursor:default">📡 Connecting…</button>
+    <button class="btn-sub" onclick="openSubModal()">⭐ Subscribe</button>
+    <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#" onclick="showSection('home');closeDrawer()">🏠 Home</a>
+  <a href="#" onclick="showSection('live');closeDrawer()">🔴 Live Scores</a>
+  <a href="#" onclick="showSection('ipl');closeDrawer()">🏆 IPL 2026</a>
+  <a href="#" onclick="showSection('history');closeDrawer()">📊 Records 2000–Now</a>
+  <a href="#" onclick="showSection('county');closeDrawer()">🏴󠁧󠁢󠁥󠁮󠁧󠁿 County Cricket</a>
+  <a href="#" onclick="showSection('news');closeDrawer()">📰 News</a>
+  <a href="#" onclick="openSubModal();closeDrawer()">⭐ Subscribe — ₹20/month</a>
+</div>
+
+<!-- MAIN -->
+<main>
+<div class="main-col">
+
+  <!-- ════ HOME + LIVE SECTION ════ -->
+  <div id="section-home">
+
+    <div class="refresh-row">
+      <div class="section-label" style="margin-bottom:0;flex:1"><span class="live-dot"></span> Live & Recent Matches</div>
+      <button class="refresh-btn" id="refreshBtn" onclick="fetchLiveScores()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Refresh <span id="lastUpdated" style="color:rgba(138,171,144,.5)"></span>
+      </button>
+    </div>
+
+    <div class="free-notice" id="demoNotice" style="display:none">
+      <b>📡 Loading live scores from Cricbuzz…</b> Please wait.
+    </div>
+    <div class="free-notice" id="errorNotice" style="display:none;background:rgba(229,62,62,.08);border-color:rgba(229,62,62,.2)">
+      <b style="color:var(--red)">⚠️ Could not load scores.</b> <button onclick="fetchLiveScores()" style="background:none;border:none;color:var(--green-light);cursor:pointer;font-size:11px;text-decoration:underline;padding:0;font-family:inherit">Retry</button>
+    </div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchMatchTab('all',this)">All</div>
+      <div class="tab" onclick="switchMatchTab('international',this)">International</div>
+      <div class="tab ipl-tab" onclick="switchMatchTab('ipl-live',this)">🏆 IPL Live</div>
+      <div class="tab" onclick="switchMatchTab('domestic',this)">Domestic</div>
+    </div>
+
+    <div class="score-cards" id="scoreCardsContainer"></div>
+
+    <!-- News -->
+    <div class="section-label">Top Stories</div>
+    <div class="hero-article">
+      <div class="hero-img">
+        <div class="hero-img-bg">🏏</div>
+        <div style="position:relative;z-index:1">
+          <span class="hero-tag">MATCH PREVIEW</span>
+          <div class="hero-title">India on the brink of historic series win as Kohli returns to form in Melbourne</div>
+        </div>
+      </div>
+      <div class="hero-body">
+        <div class="hero-meta"><span>Ravi Sharma</span><span>·</span><span>2 hrs ago</span><span>·</span><span>5 min read</span></div>
+        <p class="hero-desc">With the series tied at 1-1, India's hopes rest on a rejuvenated Virat Kohli who has rediscovered his ODI touch. The MCG pitch is expected to favour batsmen.</p>
+      </div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card"><div class="news-tag">Analysis</div><div class="news-title">Why Bumrah's workload management could be India's biggest risk</div><div class="news-meta">Priya Menon · 3h</div></div>
+      <div class="news-card"><div class="news-tag">IPL 2026</div><div class="news-title">CSK's batting looks formidable — but bowling remains a concern</div><div class="news-meta">Arun Das · 4h</div></div>
+      <div class="news-card"><div class="news-tag">Interview</div><div class="news-title">"I back myself in any conditions" — Jaiswal on his rapid rise</div><div class="news-meta">Sneha Iyer · 6h</div></div>
+      <div class="news-card"><div class="news-tag">Women's</div><div class="news-title">Mandhana's century leads India Women to dominant win</div><div class="news-meta">Divya Nair · 7h</div></div>
+    </div>
+
+    <div class="sub-banner">
+      <div><h3>Get cricket news before anyone else</h3><p>Daily email digest · Match alerts · Free forever</p></div>
+      <div class="sub-form">
+        <input type="email" id="bannerEmail" placeholder="Your email address">
+        <button onclick="handleBannerSubscribe()">Subscribe Free</button>
+      </div>
+    </div>
+
+  </div><!-- /section-home -->
+
+  <!-- ════ IPL SECTION ════ -->
+  <div id="section-ipl" style="display:none">
+    <div class="ipl-header">
+      <div>
+        <div class="ipl-title"><span class="o">IPL</span> <span class="b">2026</span></div>
+        <div class="ipl-season">Indian Premier League · Season 19 · Ongoing</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:var(--muted)">Matches Played</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--ipl-orange)">34</div>
+      </div>
+    </div>
+    <div class="section-label"><span class="live-dot"></span> IPL Live & Recent</div>
+    <div class="score-cards" id="iplScoreCards"></div>
+    <div class="section-label">Points Table · IPL 2026</div>
+    <div style="overflow-x:auto">
+      <table class="ipl-pts-table">
+        <thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>L</th><th>Pts</th><th>NRR</th><th>Form</th></tr></thead>
+        <tbody id="iplPointsTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ════ HISTORY SECTION ════ -->
+  <div id="section-history" style="display:none">
+    <div class="hist-hero">
+      <h2>🏆 Records & Rankings · 2000–2026</h2>
+      <p>Top performing nations across all formats · ODI, Test, T20I · 26 years of world cricket</p>
+    </div>
+
+    <div class="format-tabs">
+      <button class="format-tab active" onclick="switchHistFormat('test',this)">🔵 Test</button>
+      <button class="format-tab" onclick="switchHistFormat('odi',this)">🟢 ODI</button>
+      <button class="format-tab" onclick="switchHistFormat('t20',this)">🟠 T20I</button>
+      <button class="format-tab" onclick="switchHistFormat('wc',this)">🏆 World Cups</button>
+    </div>
+
+    <div class="year-filter">
+      <label>Filter era:</label>
+      <select class="year-select" id="eraSelect" onchange="filterEra()">
+        <option value="all">2000–2026 (All)</option>
+        <option value="2000s">2000–2009</option>
+        <option value="2010s">2010–2019</option>
+        <option value="2020s">2020–2026</option>
+      </select>
+    </div>
+
+    <div class="section-label">Top Nations by Format</div>
+    <div class="hist-grid" id="histGrid"></div>
+
+    <div class="records-section">
+      <div class="records-title">Individual Records — 2000 to 2026</div>
+      <div id="recordsList"></div>
+    </div>
+  </div>
+
+  <!-- ════ COUNTY SECTION ════ -->
+  <div id="section-county" style="display:none">
+    <div class="hist-hero">
+      <h2>🏴󠁧󠁢󠁥󠁮󠁧󠁿 County Cricket · 2000–2026</h2>
+      <p>English First-Class County Championship — top clubs by wins, titles & run output</p>
+    </div>
+    <div class="section-label">Division One · Top Counties by Performance</div>
+    <div id="countyList"></div>
+  </div>
+
+  <!-- ════ NEWS SECTION ════ -->
+  <div id="section-news" style="display:none">
+    <div class="section-label">Latest Cricket News</div>
+    <div class="hero-article">
+      <div class="hero-img"><div class="hero-img-bg">📰</div><div style="position:relative;z-index:1"><span class="hero-tag">BREAKING</span><div class="hero-title">Rohit Sharma confirms playing IPL 2026 in last season announcement</div></div></div>
+      <div class="hero-body"><div class="hero-meta"><span>Sports Desk</span><span>·</span><span>1 hr ago</span></div><p class="hero-desc">Mumbai Indians captain Rohit Sharma has confirmed that IPL 2026 will be his final season in the league, citing his desire to focus on international commitments through the 2027 World Cup cycle.</p></div>
+    </div>
+    <div class="news-grid">
+      <div class="news-card"><div class="news-tag">IPL 2026</div><div class="news-title">RCB vs KKR: Full preview and predicted XIs for Match 35</div><div class="news-meta">Arun Das · 2h</div></div>
+      <div class="news-card"><div class="news-tag">International</div><div class="news-title">IND vs AUS: Kohli's technique vs short ball under the spotlight</div><div class="news-meta">Priya Menon · 3h</div></div>
+      <div class="news-card"><div class="news-tag">Stats</div><div class="news-title">Bumrah becomes India's all-time leading wicket-taker in T20Is</div><div class="news-meta">Data Desk · 5h</div></div>
+      <div class="news-card"><div class="news-tag">Women's</div><div class="news-title">India Women announce squad for Sri Lanka home series</div><div class="news-meta">Divya Nair · 6h</div></div>
+      <div class="news-card"><div class="news-tag">County</div><div class="news-title">Yorkshire's young pace attack leads Division One surge</div><div class="news-meta">Tom Wells · 8h</div></div>
+      <div class="news-card"><div class="news-tag">Analysis</div><div class="news-title">Why Test cricket's future looks bright despite format wars</div><div class="news-meta">Sneha Iyer · 9h</div></div>
+    </div>
+  </div>
+
+</div><!-- /main-col -->
+
+<!-- SIDEBAR -->
+<aside>
+  <div class="ad-slot"><p>Advertisement</p><span>300×110</span></div>
+  <div class="sidebar-card">
+    <div class="sidebar-title">ICC ODI Rankings</div>
+    <table class="points-table">
+      <thead><tr><th class="rank">#</th><th>Team</th><th>Pts</th><th>Rtg</th></tr></thead>
+      <tbody>
+        <tr class="qual"><td class="rank">1</td><td><span class="flag-sm">🇮🇳</span>India</td><td class="pts">3420</td><td>114</td></tr>
+        <tr class="qual"><td class="rank">2</td><td><span class="flag-sm">🇦🇺</span>Australia</td><td class="pts">3210</td><td>108</td></tr>
+        <tr class="qual"><td class="rank">3</td><td><span class="flag-sm">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>England</td><td class="pts">2980</td><td>103</td></tr>
+        <tr><td class="rank">4</td><td><span class="flag-sm">🇳🇿</span>New Zealand</td><td class="pts">2750</td><td>98</td></tr>
+        <tr><td class="rank">5</td><td><span class="flag-sm">🇵🇰</span>Pakistan</td><td class="pts">2640</td><td>94</td></tr>
+        <tr><td class="rank">6</td><td><span class="flag-sm">🇿🇦</span>South Africa</td><td class="pts">2520</td><td>91</td></tr>
+        <tr><td class="rank">7</td><td><span class="flag-sm">🇱🇰</span>Sri Lanka</td><td class="pts">2110</td><td>82</td></tr>
+        <tr><td class="rank">8</td><td><span class="flag-sm">🇧🇩</span>Bangladesh</td><td class="pts">1890</td><td>76</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sidebar-card">
+    <div class="sidebar-title">Top Performers · Today</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:.5px">BATTING</div>
+    <div class="performer"><div class="perf-left"><div class="perf-avatar">VK</div><div><div class="perf-name">V. Kohli</div><div class="perf-team">🇮🇳 India</div></div></div><div class="perf-stat"><div class="perf-num">78*</div><div class="perf-label">64b · SR 121</div></div></div>
+    <div class="performer"><div class="perf-left"><div class="perf-avatar">QD</div><div><div class="perf-name">Q. de Kock</div><div class="perf-team">🇿🇦 SA</div></div></div><div class="perf-stat"><div class="perf-num">67*</div><div class="perf-label">41b · SR 163</div></div></div>
+    <div style="font-size:10px;color:var(--muted);margin:10px 0 8px;letter-spacing:.5px">BOWLING</div>
+    <div class="performer"><div class="perf-left"><div class="perf-avatar">JB</div><div><div class="perf-name">J. Bumrah</div><div class="perf-team">🇮🇳 India</div></div></div><div class="perf-stat"><div class="perf-num">3/42</div><div class="perf-label">9 ov · Econ 4.67</div></div></div>
+    <div class="performer"><div class="perf-left"><div class="perf-avatar">SR</div><div><div class="perf-name">S. Rabada</div><div class="perf-team">🇿🇦 SA</div></div></div><div class="perf-stat"><div class="perf-num">2/28</div><div class="perf-label">4 ov · Econ 7.0</div></div></div>
+  </div>
+  <div class="ad-slot"><p>Advertisement</p><span>300×110</span></div>
+  <div class="sidebar-card">
+    <div class="sidebar-title">Upcoming · Next 48h</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;font-weight:500">CSK vs MI</div><div style="font-size:10px;color:var(--muted)">IPL 2026 · Match 34</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--blue)">Today 7:30 PM</div><div style="font-size:9px;color:var(--muted)">Wankhede</div></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;font-weight:500">WI vs SL</div><div style="font-size:10px;color:var(--muted)">2nd T20I</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--blue)">Tomorrow 6:00 AM</div><div style="font-size:9px;color:var(--muted)">Bridgetown</div></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:12px;font-weight:500">RCB vs KKR</div><div style="font-size:10px;color:var(--muted)">IPL 2026 · Match 35</div></div><div style="text-align:right"><div style="font-size:11px;color:var(--blue)">Tomorrow 7:30 PM</div><div style="font-size:9px;color:var(--muted)">Chinnaswamy</div></div></div>
+    </div>
+  </div>
+</aside>
+</main>
+
+<!-- BOTTOM NAV (mobile) -->
+<div class="bottom-nav" id="bottomNav">
+  <button class="bn-item active" onclick="showSection('home',this,'bn')" id="bn-home">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="bn-item" onclick="showSection('live',this,'bn')" id="bn-live">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+    <span>Live</span>
+  </button>
+  <button class="bn-item" onclick="showSection('ipl',this,'bn')" id="bn-ipl">
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>IPL</span>
+  </button>
+  <button class="bn-item" onclick="showSection('history',this,'bn')" id="bn-history">
+    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span>Records</span>
+  </button>
+  <button class="bn-item" onclick="showSection('county',this,'bn')" id="bn-county">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+    <span>County</span>
+  </button>
+</div>
+
+<!-- PLAYERS MODAL -->
+<div class="modal-overlay" id="playersModal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalMatchTitle">Match Players</div>
+        <div class="modal-subtitle" id="modalMatchSubtitle"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- SUBSCRIPTION MODAL -->
+<div class="sub-modal-overlay" id="subModalOverlay" onclick="closeSubModal(event)">
+  <div class="sub-modal" id="subModalContent">
+    <button class="sub-modal-close" onclick="closeSubModalDirect()">✕</button>
+    <div id="subModalInner">
+      <div class="sub-modal-logo">Cric<span>Pulse</span></div>
+      <h2>Go Premium 🏆</h2>
+      <div class="sub-price">₹20</div>
+      <div class="sub-price-label">per month · Cancel anytime</div>
+      <ul class="sub-features">
+        <li><span class="chk">✔</span> Real-time ball-by-ball live scores</li>
+        <li><span class="chk">✔</span> Ad-free experience across all pages</li>
+        <li><span class="chk">✔</span> Match alerts & push notifications</li>
+        <li><span class="chk">✔</span> Full player stats & analytics</li>
+        <li><span class="chk">✔</span> IPL fantasy insights & predictions</li>
+        <li><span class="chk">✔</span> Priority access to breaking news</li>
+      </ul>
+      <button class="sub-pay-btn" id="subPayBtn" onclick="startRazorpay()">
+        Pay ₹20 / month with Razorpay
+      </button>
+      <div class="sub-secure">🔒 Secured by Razorpay · UPI, Cards, Net Banking accepted</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Cric<span>Pulse</span></div>
+      <p class="footer-desc">India's fastest cricket news and live scores platform. Ball-by-ball updates, expert analysis, IPL, Test, ODI, T20I and County cricket.</p>
+    </div>
+    <div class="footer-col"><h4>Cricket</h4><a href="#">Live Scores</a><a href="#">IPL 2026</a><a href="#">Records</a><a href="#">ICC Rankings</a></div>
+    <div class="footer-col"><h4>Content</h4><a href="#">News</a><a href="#">Previews</a><a href="#">Videos</a><a href="#">Interviews</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Advertise</a><a href="#">Contact</a><a href="#">Privacy</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 CricPulse. All rights reserved.</span>
+    <span>Built for cricket fans 🏏</span>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+let isLoading = false;
+let currentHistFormat = 'test';
+
+const DEMO_MATCHES = [
+  { id:'m1', isLive:true, isIPL:false, series:'3rd ODI · India tour of Australia',
+    teams:[{name:'India',flag:'🇮🇳',score:'287/4',overs:'42.3'},{name:'Australia',flag:'🇦🇺',score:'311/8',overs:'50'}],
+    status:'India need 25 runs in 45 balls', crr:'CRR: 6.75 · RRR: 3.33', batsmen:'Kohli 78* Rahul 34*',
+    players:{
+      batting:[{name:'V. Kohli',team:'India',initials:'VK',stat:'78*',extra:'64b · SR 121.8',impact:'high'},{name:'KL Rahul',team:'India',initials:'KR',stat:'34*',extra:'38b · SR 89.4',impact:'med'},{name:'S. Smith',team:'Australia',initials:'SS',stat:'89',extra:'97b · SR 91.7',impact:'high'},{name:'D. Warner',team:'Australia',initials:'DW',stat:'67',extra:'71b · SR 94.3',impact:'med'}],
+      bowling:[{name:'J. Bumrah',team:'India',initials:'JB',stat:'3/42',extra:'9 ov · Econ 4.67',impact:'high'},{name:'M. Starc',team:'Australia',initials:'MS',stat:'2/51',extra:'9 ov · Econ 5.67',impact:'med'},{name:'P. Cummins',team:'Australia',initials:'PC',stat:'2/38',extra:'8 ov · Econ 4.75',impact:'med'},{name:'R. Jadeja',team:'India',initials:'RJ',stat:'1/44',extra:'8 ov · Econ 5.5',impact:'med'}]
+    }
+  },
+  { id:'m2', isLive:true, isIPL:false, series:'T20I · SA vs PAK',
+    teams:[{name:'South Africa',flag:'🇿🇦',score:'156/3',overs:'16.2'},{name:'Pakistan',flag:'🇵🇰',score:'189/6',overs:'20'}],
+    status:'SA need 34 runs in 22 balls', crr:'CRR: 9.55 · RRR: 9.27', batsmen:'de Kock 67* Miller 21*',
+    players:{
+      batting:[{name:'Q. de Kock',team:'SA',initials:'QD',stat:'67*',extra:'41b · SR 163.4',impact:'high'},{name:'D. Miller',team:'SA',initials:'DM',stat:'21*',extra:'12b · SR 175.0',impact:'high'},{name:'B. Azam',team:'Pakistan',initials:'BA',stat:'72',extra:'48b · SR 150.0',impact:'high'},{name:'M. Rizwan',team:'Pakistan',initials:'MR',stat:'55',extra:'38b · SR 144.7',impact:'med'}],
+      bowling:[{name:'S. Rabada',team:'SA',initials:'SR',stat:'2/28',extra:'4 ov · Econ 7.0',impact:'high'},{name:'K. Maharaj',team:'SA',initials:'KM',stat:'1/22',extra:'3 ov · Econ 7.3',impact:'med'},{name:'H. Rauf',team:'Pakistan',initials:'HR',stat:'2/32',extra:'4 ov · Econ 8.0',impact:'med'},{name:'S. Afridi',team:'Pakistan',initials:'SA',stat:'1/24',extra:'4 ov · Econ 6.0',impact:'med'}]
+    }
+  },
+  { id:'m3', isLive:false, isIPL:false, isCompleted:true, series:'3rd Test · ENG vs NZ',
+    teams:[{name:'England',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',score:'325 & 201/4',winner:true},{name:'New Zealand',flag:'🇳🇿',score:'218 & 305'}],
+    status:'England won by 6 wickets · Series: ENG 2-1 NZ',
+    players:{
+      batting:[{name:'B. Duckett',team:'England',initials:'BD',stat:'112',extra:'134b · SR 83.5',impact:'high'},{name:'J. Root',team:'England',initials:'JR',stat:'98',extra:'145b · SR 67.5',impact:'high'},{name:'W. Young',team:'NZ',initials:'WY',stat:'88',extra:'120b · SR 73.3',impact:'med'},{name:'K. Williamson',team:'NZ',initials:'KW',stat:'76',extra:'110b · SR 69.0',impact:'med'}],
+      bowling:[{name:'O. Robinson',team:'England',initials:'OR',stat:'5/62',extra:'22 ov · Econ 2.81',impact:'high'},{name:'B. Carse',team:'England',initials:'BC',stat:'3/45',extra:'15 ov · Econ 3.0',impact:'high'},{name:'M. Henry',team:'NZ',initials:'MH',stat:'4/78',extra:'20 ov · Econ 3.9',impact:'high'},{name:'T. Southee',team:'NZ',initials:'TS',stat:'2/88',extra:'22 ov · Econ 4.0',impact:'med'}]
+    }
+  },
+  { id:'m4', isLive:false, isIPL:true, isUpcoming:true, series:'IPL 2026 · Match 34', upcomingTime:'TODAY 7:30 PM',
+    teams:[{name:'CSK',flag:'🟡',score:'TBD'},{name:'Mumbai Indians',flag:'🔵',score:'TBD'}],
+    status:'Wankhede Stadium · Toss at 7:00 PM',
+    players:{
+      batting:[{name:'MS Dhoni',team:'CSK',initials:'MSD',stat:'TBD',extra:'Finisher · CSK Captain',impact:'high'},{name:'R. Jadeja',team:'CSK',initials:'RJ',stat:'TBD',extra:'All-rounder',impact:'high'},{name:'R. Sharma',team:'MI',initials:'RS',stat:'TBD',extra:'Opener · MI Captain',impact:'high'},{name:'T. Stubbs',team:'MI',initials:'TS',stat:'TBD',extra:'Middle Order',impact:'med'}],
+      bowling:[{name:'J. Bumrah',team:'MI',initials:'JB',stat:'TBD',extra:'World #1 Pacer',impact:'high'},{name:'D. Chahar',team:'CSK',initials:'DC',stat:'TBD',extra:'Swing Specialist',impact:'med'},{name:'M. Pathirana',team:'CSK',initials:'MP',stat:'TBD',extra:'Death Overs',impact:'high'},{name:'H. Pandya',team:'MI',initials:'HP',stat:'TBD',extra:'All-rounder',impact:'med'}]
+    }
+  }
+];
+
+const IPL_MATCHES = [
+  { id:'ipl1', isLive:true, isIPL:true, series:'IPL 2026 · Match 33',
+    teams:[{name:'RCB',flag:'🔴',score:'198/4',overs:'18.4'},{name:'KKR',flag:'🟣',score:'187/7',overs:'20'}],
+    status:'RCB need 11 runs in 8 balls', crr:'CRR: 10.61 · RRR: 8.25', batsmen:'Kohli 76* Maxwell 22*',
+    players:{
+      batting:[{name:'V. Kohli',team:'RCB',initials:'VK',stat:'76*',extra:'48b · SR 158.3',impact:'high'},{name:'G. Maxwell',team:'RCB',initials:'GM',stat:'22*',extra:'10b · SR 220.0',impact:'high'},{name:'A. Narine',team:'KKR',initials:'AN',stat:'67',extra:'38b · SR 176.3',impact:'high'},{name:'S. Iyer',team:'KKR',initials:'SI',stat:'54',extra:'35b · SR 154.2',impact:'med'}],
+      bowling:[{name:'M. Starc',team:'KKR',initials:'MS',stat:'2/28',extra:'4 ov · Econ 7.0',impact:'high'},{name:'V. Chakravarthy',team:'KKR',initials:'VC',stat:'2/34',extra:'4 ov · Econ 8.5',impact:'med'},{name:'M. Siraj',team:'RCB',initials:'MS2',stat:'3/31',extra:'4 ov · Econ 7.75',impact:'high'},{name:'G. Maxwell',team:'RCB',initials:'GM',stat:'1/20',extra:'3 ov · Econ 6.67',impact:'med'}]
+    }
+  },
+  { id:'ipl2', isLive:false, isIPL:true, isUpcoming:true, series:'IPL 2026 · Match 34', upcomingTime:'TODAY 7:30 PM',
+    teams:[{name:'CSK',flag:'🟡',score:'TBD'},{name:'MI',flag:'🔵',score:'TBD'}],
+    status:'Wankhede Stadium · Toss at 7:00 PM IST',
+    players:{
+      batting:[{name:'MS Dhoni',team:'CSK',initials:'MSD',stat:'Watch',extra:'Legendary finisher',impact:'high'},{name:'R. Jadeja',team:'CSK',initials:'RJ',stat:'Watch',extra:'Impact All-rounder',impact:'high'},{name:'R. Sharma',team:'MI',initials:'RS',stat:'Watch',extra:'MI Captain',impact:'high'},{name:'T. Stubbs',team:'MI',initials:'TS',stat:'Watch',extra:'Power hitter',impact:'med'}],
+      bowling:[{name:'J. Bumrah',team:'MI',initials:'JB',stat:'Watch',extra:'World #1 Bowler',impact:'high'},{name:'D. Chahar',team:'CSK',initials:'DC',stat:'Watch',extra:'Swing Specialist',impact:'med'},{name:'M. Pathirana',team:'CSK',initials:'MP',stat:'Watch',extra:'Death Overs Ace',impact:'high'},{name:'H. Pandya',team:'MI',initials:'HP',stat:'Watch',extra:'All-round Threat',impact:'med'}]
+    }
+  }
+];
+
+const IPL_POINTS = [
+  {pos:1,team:'MI',logo:'🔵',p:11,w:8,l:3,pts:16,nrr:'+0.842',form:['W','W','L','W','W'],qual:true},
+  {pos:2,team:'RCB',logo:'🔴',p:11,w:8,l:3,pts:16,nrr:'+0.621',form:['W','W','W','L','W'],qual:true},
+  {pos:3,team:'CSK',logo:'🟡',p:11,w:7,l:4,pts:14,nrr:'+0.415',form:['W','L','W','W','L'],qual:true},
+  {pos:4,team:'GT',logo:'🔷',p:11,w:7,l:4,pts:14,nrr:'+0.210',form:['L','W','W','W','L'],qual:true},
+  {pos:5,team:'DC',logo:'🔵',p:11,w:5,l:6,pts:10,nrr:'-0.123',form:['L','W','L','W','L'],qual:false},
+  {pos:6,team:'KKR',logo:'🟣',p:11,w:5,l:6,pts:10,nrr:'-0.298',form:['W','L','L','W','L'],qual:false},
+  {pos:7,team:'PBKS',logo:'🔴',p:11,w:4,l:7,pts:8,nrr:'-0.445',form:['L','L','W','L','W'],qual:false},
+  {pos:8,team:'RR',logo:'🩷',p:11,w:4,l:7,pts:8,nrr:'-0.512',form:['L','L','L','W','L'],qual:false},
+  {pos:9,team:'SRH',logo:'🟠',p:11,w:3,l:8,pts:6,nrr:'-0.634',form:['L','L','W','L','L'],qual:false},
+  {pos:10,team:'LSG',logo:'🟢',p:11,w:2,l:9,pts:4,nrr:'-0.876',form:['L','L','L','L','W'],qual:false},
+];
+
+// Historical data 2000–2026
+const HIST_DATA = {
+  test: [
+    {rank:1,team:'Australia',flag:'🇦🇺',matches:452,wins:285,losses:96,draws:71,era:'2000–26',highlight:'Dominated 2000s with Ponting era; 16 consecutive wins record',winPct:'63.1%',badge:'badge-test'},
+    {rank:2,team:'India',flag:'🇮🇳',matches:438,wins:231,losses:121,draws:86,era:'2000–26',highlight:'Transformed into world\'s best Test team by 2009; unbeaten at home 2012–2024',winPct:'52.7%',badge:'badge-test'},
+    {rank:3,team:'England',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',matches:441,wins:218,losses:134,draws:89,era:'2000–26',highlight:'Ashes glory 2005, 2010-11; Bazball revolution 2022–present',winPct:'49.4%',badge:'badge-test'},
+    {rank:4,team:'South Africa',flag:'🇿🇦',matches:321,wins:175,losses:90,draws:56,era:'2000–26',highlight:'#1 ranked Test side 2012; Steyn/Morkel pace dynasty',winPct:'54.5%',badge:'badge-test'},
+    {rank:5,team:'New Zealand',flag:'🇳🇿',matches:298,wins:143,losses:105,draws:50,era:'2000–26',highlight:'WTC Champions 2021; Williamson era consistency',winPct:'48.0%',badge:'badge-test'},
+    {rank:6,team:'Pakistan',flag:'🇵🇰',matches:312,wins:138,losses:112,draws:62,era:'2000–26',highlight:'Younis Khan 10,000 runs; dominant spinners at home',winPct:'44.2%',badge:'badge-test'},
+  ],
+  odi: [
+    {rank:1,team:'Australia',flag:'🇦🇺',matches:556,wins:352,losses:174,draws:30,era:'2000–26',highlight:'3 consecutive World Cup wins 1999-2003-2007; ODI WC 2015',winPct:'63.3%',badge:'badge-odi'},
+    {rank:2,team:'India',flag:'🇮🇳',matches:602,wins:368,losses:208,draws:26,era:'2000–26',highlight:'WC 2011 champions; highest-ranked ODI side since 2013',winPct:'61.1%',badge:'badge-odi'},
+    {rank:3,team:'England',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',matches:498,wins:295,losses:172,draws:31,era:'2000–26',highlight:'ODI World Cup 2019; revolutionary batting approach post-2015',winPct:'59.2%',badge:'badge-odi'},
+    {rank:4,team:'South Africa',flag:'🇿🇦',matches:421,wins:256,losses:145,draws:20,era:'2000–26',highlight:'Consistent semi-finalists; AB de Villiers 360° era',winPct:'60.8%',badge:'badge-odi'},
+    {rank:5,team:'New Zealand',flag:'🇳🇿',matches:412,wins:226,losses:168,draws:18,era:'2000–26',highlight:'WC finalists 2015 & 2019; Black Caps batting revolution',winPct:'54.8%',badge:'badge-odi'},
+    {rank:6,team:'Pakistan',flag:'🇵🇰',matches:488,wins:262,losses:201,draws:25,era:'2000–26',highlight:'Champions Trophy 2017; highest ODI partnerships galore',winPct:'53.6%',badge:'badge-odi'},
+  ],
+  t20: [
+    {rank:1,team:'India',flag:'🇮🇳',matches:248,wins:156,losses:78,draws:14,era:'2007–26',highlight:'T20 WC 2007 (inaugural) & 2024; most T20 matches played',winPct:'62.9%',badge:'badge-t20'},
+    {rank:2,team:'England',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',matches:214,wins:132,losses:70,draws:12,era:'2007–26',highlight:'T20 WC 2010 & 2022; Buttler-Stokes power era',winPct:'61.6%',badge:'badge-t20'},
+    {rank:3,team:'Pakistan',flag:'🇵🇰',matches:230,wins:140,losses:78,draws:12,era:'2007–26',highlight:'T20 WC 2009; most consistent T20 semi-finalists',winPct:'60.8%',badge:'badge-t20'},
+    {rank:4,team:'West Indies',flag:'🇯🇲',matches:212,wins:122,losses:80,draws:10,era:'2007–26',highlight:'T20 WC back-to-back 2012 & 2016; Gayle/Russell explosions',winPct:'57.5%',badge:'badge-t20'},
+    {rank:5,team:'Australia',flag:'🇦🇺',matches:218,wins:126,losses:82,draws:10,era:'2007–26',highlight:'T20 WC 2021; Maxwell & Stoinis big-hitting era',winPct:'57.8%',badge:'badge-t20'},
+    {rank:6,team:'South Africa',flag:'🇿🇦',matches:198,wins:112,losses:74,draws:12,era:'2007–26',highlight:'T20 WC runners-up 2024; de Kock/Miller powerhouse',winPct:'56.5%',badge:'badge-t20'},
+  ],
+  wc: [
+    {rank:1,team:'Australia',flag:'🇦🇺',matches:98,wins:72,losses:22,draws:4,era:'2003–23',highlight:'ODI WC: 1987,1999,2003,2007,2015,2023 · T20 WC: 2021',winPct:'73.4%',badge:'badge-wc'},
+    {rank:2,team:'India',flag:'🇮🇳',matches:92,wins:64,losses:24,draws:4,era:'2003–24',highlight:'ODI WC: 2011 · T20 WC: 2007, 2024 · CT: 2013',winPct:'69.5%',badge:'badge-wc'},
+    {rank:3,team:'England',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',matches:86,wins:55,losses:27,draws:4,era:'2003–22',highlight:'ODI WC: 2019 · T20 WC: 2010, 2022 · CT: 2004,2013',winPct:'64.0%',badge:'badge-wc'},
+    {rank:4,team:'West Indies',flag:'🇯🇲',matches:74,wins:44,losses:27,draws:3,era:'2003–24',highlight:'T20 WC: 2012, 2016 · Only team to win T20 WC twice in era',winPct:'59.4%',badge:'badge-wc'},
+    {rank:5,team:'Pakistan',flag:'🇵🇰',matches:80,wins:46,losses:31,draws:3,era:'2003–24',highlight:'T20 WC: 2009 · CT: 2017 · Multiple finals appearances',winPct:'57.5%',badge:'badge-wc'},
+    {rank:6,team:'South Africa',flag:'🇿🇦',matches:76,wins:44,losses:29,draws:3,era:'2003–24',highlight:'Consistent quarter/semi finalists; T20 WC runners-up 2024',winPct:'57.8%',badge:'badge-wc'},
+  ]
+};
+
+const RECORDS_DATA = {
+  test: [
+    {name:'Sachin Tendulkar',detail:'India · Retired 2013',val:'15921',label:'Test Runs'},
+    {name:'Ricky Ponting',detail:'Australia · Retired 2012',val:'13378',label:'Test Runs'},
+    {name:'Kumar Sangakkara',detail:'Sri Lanka · Retired 2015',val:'12400',label:'Test Runs'},
+    {name:'Muttiah Muralitharan',detail:'Sri Lanka · 800 wickets all-time',val:'800',label:'Test Wickets'},
+    {name:'Shane Warne',detail:'Australia · 2001–2007 peak',val:'708',label:'Test Wickets'},
+    {name:'James Anderson',detail:'England · Retired 2024',val:'704',label:'Test Wickets'},
+  ],
+  odi: [
+    {name:'Virat Kohli',detail:'India · 50+ hundreds in ODIs',val:'13906',label:'ODI Runs'},
+    {name:'Sachin Tendulkar',detail:'India · 49 ODI centuries',val:'18426',label:'ODI Runs'},
+    {name:'Rohit Sharma',detail:'India · 3 double centuries',val:'10709',label:'ODI Runs'},
+    {name:'Lasith Malinga',detail:'Sri Lanka · 336 ODI wickets',val:'336',label:'ODI Wickets'},
+    {name:'Muttiah Muralitharan',detail:'Sri Lanka · 534 ODI wickets',val:'534',label:'ODI Wickets'},
+    {name:'Shaheen Afridi',detail:'Pakistan · Best SR 24.9',val:'196',label:'ODI Wickets (2017–26)'},
+  ],
+  t20: [
+    {name:'Virat Kohli',detail:'India · T20 WC 2024 player of tournament',val:'4188',label:'T20I Runs'},
+    {name:'Rohit Sharma',detail:'India · Most T20I appearances',val:'3853',label:'T20I Runs'},
+    {name:'Babar Azam',detail:'Pakistan · Highest T20I average',val:'3459',label:'T20I Runs'},
+    {name:'Lasith Malinga',detail:'Sri Lanka · All-time T20I best',val:'107',label:'T20I Wickets'},
+    {name:'Jasprit Bumrah',detail:'India · Best economy in powerplay',val:'89',label:'T20I Wickets (2016–26)'},
+    {name:'Shaheen Afridi',detail:'Pakistan · 2022 WC hero',val:'82',label:'T20I Wickets'},
+  ],
+  wc: [
+    {name:'Sachin Tendulkar',detail:'India · 2003 WC: 673 runs in single tournament',val:'2278',label:'WC Runs (ODI)'},
+    {name:'Ricky Ponting',detail:'Australia · 3 WC titles as captain',val:'1743',label:'WC Runs (ODI, 2003–07)'},
+    {name:'Rohit Sharma',detail:'India · 5 hundreds in 2019 WC',val:'1677',label:'WC Runs (ODI, 2015–23)'},
+    {name:'Glenn McGrath',detail:'Australia · 2007 WC 26 wickets',val:'71',label:'WC Wickets (ODI)'},
+    {name:'Lasith Malinga',detail:'Sri Lanka · 4 in 4 balls WC legend',val:'56',label:'WC Wickets (ODI)'},
+    {name:'Mitchell Starc',detail:'Australia · 2015 WC Player of tournament',val:'49',label:'WC Wickets (ODI)'},
+  ]
+};
+
+const COUNTY_DATA = [
+  {name:'Yorkshire',div:'Division One',titles:['2001','2014','2015'],p:22,w:14,l:4,d:4,pts:228,stars:'White Rose dominance, home of Joe Root & Agar'},
+  {name:'Surrey',div:'Division One',titles:['2000','2002','2003','2022','2023'],p:22,w:13,l:5,d:4,pts:208,stars:'Morne Morkel era; Back-to-back champions 2022–23'},
+  {name:'Durham',div:'Division One',titles:['2008','2009','2013'],p:22,w:12,l:5,d:5,pts:196,stars:'Steve Harmison / Paul Collingwood home ground'},
+  {name:'Warwickshire',div:'Division One',titles:['2004','2012','2021'],p:22,w:11,l:6,d:5,pts:182,stars:'Ian Bell and Jonathan Trott heritage club'},
+  {name:'Nottinghamshire',div:'Division One',titles:['2005','2010'],p:22,w:10,l:7,d:5,pts:170,stars:'Stuart Broad\'s county roots; Trent Bridge fortress'},
+  {name:'Kent',div:'Division One',titles:['2022'],p:22,w:10,l:7,d:5,pts:164,stars:'Rising county with young England prospects'},
+  {name:'Lancashire',div:'Division One',titles:['2011'],p:22,w:9,l:8,d:5,pts:156,stars:'Trafford spin haven; James Anderson\'s county home'},
+  {name:'Hampshire',div:'Division One',titles:['2010','2012'],p:22,w:9,l:8,d:5,pts:154,stars:'Shaheen Afridi\'s English experience; Ageas Bowl'},
+];
+
+// ══════════════════════════════════════════
+// RENDER: MATCH CARDS
+// ══════════════════════════════════════════
+function renderScoreCard(m) {
+  const badge = m.isLive
+    ? `<span class="live-badge">● LIVE</span>`
+    : m.isUpcoming
+    ? `<span class="upcoming-badge">${m.upcomingTime||'UPCOMING'}</span>`
+    : `<span class="completed-badge">COMPLETED</span>`;
+
+  const borderCls = m.isLive ? 'live' : m.isIPL ? 'ipl-card' : '';
+
+  return `<div class="score-card ${borderCls}" onclick="showPlayers('${m.id}')">
+    <div class="match-meta">
+      <span class="match-type">${m.series}</span>
+      ${badge}
+    </div>
+    <div class="teams">
+      ${m.teams.map(t=>`<div class="team-row">
+        <div class="team-info"><span class="team-flag">${t.flag}</span><span class="team-name ${t.winner?'winner':''}">${t.name}</span></div>
+        <div><span class="score ${t.winner?'winner':''}" ${t.score==='TBD'?'style="font-size:13px;color:var(--muted)"':''}>${t.score}</span>${t.overs?`<span class="overs">(${t.overs})</span>`:''}</div>
+      </div>`).join('')}
+    </div>
+    <div class="match-status">${m.crr?`<b>${m.status}</b> · ${m.batsmen||''}`:m.status}</div>
+    ${m.crr?`<div class="crr">${m.crr}</div>`:''}
+    <div class="card-footer">
+      <span style="font-size:9px;color:var(--muted)">Tap for Top 8 Players</span>
+      <button class="view-players-btn" onclick="event.stopPropagation();showPlayers('${m.id}')">👥 Top 8</button>
+    </div>
+  </div>`;
+}
+
+function renderDemoScores() {
+  document.getElementById('scoreCardsContainer').innerHTML = DEMO_MATCHES.map(renderScoreCard).join('');
+  const ipl = document.getElementById('iplScoreCards');
+  if(ipl) ipl.innerHTML = IPL_MATCHES.map(renderScoreCard).join('');
+  renderIPLPoints();
+}
+
+function renderIPLPoints() {
+  const tb = document.getElementById('iplPointsTable');
+  if(!tb) return;
+  tb.innerHTML = IPL_POINTS.map(t=>`<tr class="${t.qual?'qual-row':''}">
+    <td style="color:var(--muted);font-size:11px">${t.pos}</td>
+    <td><span class="team-logo-sm">${t.logo}</span><b>${t.team}</b></td>
+    <td style="color:var(--muted)">${t.p}</td>
+    <td>${t.w}</td>
+    <td style="color:var(--muted)">${t.l}</td>
+    <td class="pts-cell">${t.pts}</td>
+    <td class="nrr-pos" style="${t.nrr.startsWith('-')?'color:var(--red)':''};font-size:10px;font-family:monospace">${t.nrr}</td>
+    <td><div class="form-dots">${t.form.map(f=>`<div class="form-dot ${f==='W'?'w':'l'}" title="${f}"></div>`).join('')}</div></td>
+  </tr>`).join('');
+}
+
+// ══════════════════════════════════════════
+// RENDER: HISTORICAL
+// ══════════════════════════════════════════
+function renderHistGrid(format) {
+  const data = HIST_DATA[format] || HIST_DATA.test;
+  const era = document.getElementById('eraSelect')?.value || 'all';
+  const grid = document.getElementById('histGrid');
+  if(!grid) return;
+
+  // era filter adjusts display (simplified — same teams, note the era)
+  grid.innerHTML = data.map(d=>{
+    const rankCls = d.rank===1?'top1':d.rank===2?'top2':d.rank===3?'top3':'';
+    return `<div class="hist-card">
+      <div class="hist-card-head">
+        <div class="hist-rank ${rankCls}">${d.rank}</div>
+        <span class="hist-format-badge ${d.badge}">${format.toUpperCase()}</span>
+      </div>
+      <div class="hist-team">
+        <span class="hist-flag">${d.flag}</span>
+        <span class="hist-team-name">${d.team}</span>
+      </div>
+      <div class="hist-stats">
+        <div class="hist-stat-box"><div class="hist-stat-num">${d.matches}</div><div class="hist-stat-label">Played</div></div>
+        <div class="hist-stat-box"><div class="hist-stat-num" style="color:var(--green-light)">${d.wins}</div><div class="hist-stat-label">Wins</div></div>
+        <div class="hist-stat-box"><div class="hist-stat-num" style="color:var(--gold)">${d.winPct}</div><div class="hist-stat-label">Win %</div></div>
+      </div>
+      <div class="hist-extra"><b>Era:</b> ${d.era} &nbsp;·&nbsp; <b>L:</b> ${d.losses} &nbsp;·&nbsp; <b>D:</b> ${d.draws}<br>${d.highlight}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderRecords(format) {
+  const data = RECORDS_DATA[format] || RECORDS_DATA.test;
+  const list = document.getElementById('recordsList');
+  if(!list) return;
+  list.innerHTML = data.map((r,i)=>{
+    const posCls = i===0?'g':i===1?'s':i===2?'b':'';
+    return `<div class="record-row">
+      <div class="record-left">
+        <div class="record-pos ${posCls}">${i+1}</div>
+        <div class="record-info">
+          <div class="record-name">${r.name}</div>
+          <div class="record-detail">${r.detail}</div>
+        </div>
+      </div>
+      <div>
+        <div class="record-val">${r.val}</div>
+        <div class="record-val-label">${r.label}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCounty() {
+  const list = document.getElementById('countyList');
+  if(!list) return;
+  list.innerHTML = COUNTY_DATA.map((c,i)=>`<div class="county-card">
+    <div class="county-head">
+      <div>
+        <div class="county-name">${i+1}. ${c.name}</div>
+        <div class="county-div">${c.div}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold)">${c.pts} pts</div>
+        <div style="font-size:9px;color:var(--muted)">CHAMPIONSHIP PTS</div>
+      </div>
+    </div>
+    <div class="county-stats">
+      <div class="county-stat"><div class="county-stat-num">${c.p}</div><div class="county-stat-lbl">Played</div></div>
+      <div class="county-stat"><div class="county-stat-num" style="color:var(--green-light)">${c.w}</div><div class="county-stat-lbl">Wins</div></div>
+      <div class="county-stat"><div class="county-stat-num" style="color:var(--red)">${c.l}</div><div class="county-stat-lbl">Losses</div></div>
+      <div class="county-stat"><div class="county-stat-num" style="color:var(--muted)">${c.d}</div><div class="county-stat-lbl">Draws</div></div>
+    </div>
+    <div class="county-champs">🏆 Championship titles (2000–2026): ${c.titles.join(', ')} &nbsp;·&nbsp; ${c.stars}</div>
+  </div>`).join('');
+}
+
+// ══════════════════════════════════════════
+// LIVE SCORES — calls /api/scores (Vercel proxy)
+// API key lives on the server, never in the browser
+// ══════════════════════════════════════════
+
+const FLAG_MAP = {
+  'india':'🇮🇳','ind':'🇮🇳','aus':'🇦🇺','australia':'🇦🇺',
+  'england':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','eng':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','pakistan':'🇵🇰','pak':'🇵🇰',
+  'south africa':'🇿🇦','sa':'🇿🇦','new zealand':'🇳🇿','nz':'🇳🇿',
+  'west indies':'🏝️','wi':'🏝️','sri lanka':'🇱🇰','sl':'🇱🇰',
+  'bangladesh':'🇧🇩','ban':'🇧🇩','zimbabwe':'🇿🇼','zim':'🇿🇼',
+  'afghanistan':'🇦🇫','afg':'🇦🇫','ireland':'🇮🇪','ire':'🇮🇪','usa':'🇺🇸',
+  'rcb':'🔴','mi':'🔵','csk':'🟡','kkr':'🟣',
+  'dc':'🔵','gt':'🔷','pbks':'🔴','rr':'🩷','srh':'🟠','lsg':'🟢',
+};
+function getFlag(name){
+  if(!name) return '🏏';
+  const n=name.toLowerCase();
+  for(const [k,v] of Object.entries(FLAG_MAP)) if(n.includes(k)) return v;
+  return '🏏';
+}
+
+async function fetchLiveScores(){
+  if(isLoading) return;
+  isLoading=true;
+  const btn=document.getElementById('refreshBtn');
+  if(btn) btn.classList.add('spinning');
+  setBadge('📡 Loading…','demo');
+  document.getElementById('demoNotice').style.display='block';
+  document.getElementById('errorNotice').style.display='none';
+
+  try {
+    const res = await fetch('/api/scores', { signal: AbortSignal.timeout(10000) });
+    if(!res.ok) throw new Error('Server error '+res.status);
+    const { matches } = await res.json();
+    if(!matches?.length) throw new Error('No matches');
+
+    // Map server cards → renderScoreCard format
+    const cards = matches.map(m => ({
+      ...m,
+      teams: m.teams.map(t => ({ ...t, flag: getFlag(t.name) })),
+      crr: null,
+      players: DEMO_MATCHES[0].players,
+      upcomingTime: m.isUpcoming ? (m.venue || 'Scheduled') : '',
+    }));
+
+    document.getElementById('demoNotice').style.display='none';
+    document.getElementById('errorNotice').style.display='none';
+
+    const live = cards.filter(c=>c.isLive);
+    setBadge(`🔴 LIVE · ${live.length} match${live.length!==1?'es':''}`, live.length?'connected':'demo');
+
+    const container = document.getElementById('scoreCardsContainer');
+    if(container) container.innerHTML = cards.map(renderScoreCard).join('');
+
+    const iplCards = cards.filter(c=>c.isIPL);
+    const iplEl = document.getElementById('iplScoreCards');
+    if(iplEl) iplEl.innerHTML = (iplCards.length ? iplCards : IPL_MATCHES).map(renderScoreCard).join('');
+
+  } catch(e) {
+    document.getElementById('demoNotice').style.display='none';
+    document.getElementById('errorNotice').style.display='block';
+    setBadge('📺 Demo','demo');
+    renderDemoScores();
+  }
+
+  if(btn) btn.classList.remove('spinning');
+  isLoading=false;
+  updateTime();
+  renderIPLPoints();
+}
+
+function setBadge(txt,cls){
+  const b=document.getElementById('apiStatusBadge');
+  if(b){ b.textContent=txt; b.className='api-status '+cls; }
+}
+
+function updateTime(){
+  const now=new Date();
+  const el=document.getElementById('lastUpdated');
+  if(el) el.textContent=`· ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+}
+
+// ══════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════
+function showPlayers(id) {
+  const all=[...DEMO_MATCHES,...IPL_MATCHES];
+  const m=all.find(x=>x.id===id);
+  if(!m) return;
+  document.getElementById('modalMatchTitle').textContent=m.teams.map(t=>t.name).join(' vs ');
+  document.getElementById('modalMatchSubtitle').textContent=m.series+(m.isLive?' · 🔴 LIVE':'');
+  const pc=(p,i)=>`<div class="player-card">
+    <div class="player-rank ${i<2?'top':''}">${i+1}</div>
+    <div class="player-avatar">${p.initials}</div>
+    <div class="player-info">
+      <div class="player-name">${p.name}</div>
+      <div class="player-team">${p.team}</div>
+      <span class="impact-badge ${p.impact==='high'?'impact-high':'impact-med'}">${p.impact==='high'?'★ HIGH':'IMPACT'}</span>
+    </div>
+    <div class="player-stat-box">
+      <div class="player-stat-num">${p.stat}</div>
+      <div class="player-extras">${p.extra}</div>
+    </div>
+  </div>`;
+  document.getElementById('modalBody').innerHTML=`
+    <div class="players-section-title"><span>🏏</span> Top Batters</div>
+    <div class="players-grid">${m.players.batting.map(pc).join('')}</div>
+    <div class="players-section-title"><span>🎯</span> Top Bowlers</div>
+    <div class="players-grid">${m.players.bowling.map(pc).join('')}</div>
+  `;
+  document.getElementById('playersModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){ if(e.target===document.getElementById('playersModal')) closeModalDirect(); }
+function closeModalDirect(){ document.getElementById('playersModal').classList.remove('open'); document.body.style.overflow=''; }
+
+// ══════════════════════════════════════════
+// CONFIG — swap these values once approved
+// ══════════════════════════════════════════
+const RAZORPAY_KEY        = 'YOUR_RAZORPAY_KEY_ID';       // e.g. rzp_live_XXXXXXXX
+const RAZORPAY_PLAN_ID    = 'YOUR_RAZORPAY_PLAN_ID';      // create in Razorpay Dashboard → Subscriptions → Plans (₹20/month)
+const EMAILJS_SERVICE_ID  = 'YOUR_EMAILJS_SERVICE_ID';    // emailjs.com → Email Services
+const EMAILJS_TEMPLATE_WELCOME = 'YOUR_WELCOME_TEMPLATE'; // emailjs.com → Email Templates (welcome)
+const EMAILJS_TEMPLATE_DIGEST  = 'YOUR_DIGEST_TEMPLATE';  // emailjs.com → Email Templates (daily digest)
+const EMAILJS_PUBLIC_KEY  = 'YOUR_EMAILJS_PUBLIC_KEY';    // emailjs.com → Account → Public Key
+
+// ══════════════════════════════════════════
+// EMAIL SYSTEM (EmailJS — free, no server)
+// ══════════════════════════════════════════
+function loadEmailJS(cb){
+  if(window.emailjs){ cb(); return; }
+  const s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+  s.onload=()=>{ emailjs.init(EMAILJS_PUBLIC_KEY); cb(); };
+  document.head.appendChild(s);
+}
+
+// Send welcome email right after subscription
+function sendWelcomeEmail(toEmail, toName){
+  loadEmailJS(()=>{
+    const params={
+      to_email: toEmail,
+      to_name:  toName||'Cricket Fan',
+      from_name:'CricPulse',
+      reply_to: 'no-reply@cricpulse.in',
+      subject:  '🏏 Welcome to CricPulse Premium!',
+      message:  `Hi ${toName||'there'},\n\nYour CricPulse Premium subscription (₹20/month) is now active!\n\nWhat you get:\n✔ Real-time ball-by-ball live scores\n✔ Ad-free experience\n✔ Match alerts & notifications\n✔ Full player stats & IPL insights\n\nYour subscription auto-renews every month. You can cancel anytime.\n\nEnjoy the cricket! 🏆\n\n— CricPulse Team`
+    };
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_WELCOME, params)
+      .catch(e=>console.warn('Welcome email error:',e));
+  });
+}
+
+// Send cricket digest email — call this daily via a scheduled trigger or button
+function sendDailyDigest(toEmail, toName){
+  loadEmailJS(()=>{
+    const today=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
+    const digestContent=buildDigestContent();
+    const params={
+      to_email: toEmail,
+      to_name:  toName||'Cricket Fan',
+      from_name:'CricPulse Daily',
+      reply_to: 'no-reply@cricpulse.in',
+      subject:  `🏏 CricPulse Daily Digest — ${today}`,
+      message:  digestContent
+    };
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_DIGEST, params)
+      .catch(e=>console.warn('Digest email error:',e));
+  });
+}
+
+function buildDigestContent(){
+  const liveMatches=DEMO_MATCHES.filter(m=>m.isLive);
+  const upcoming=DEMO_MATCHES.filter(m=>m.isUpcoming);
+  let txt='📡 LIVE NOW\n';
+  if(liveMatches.length){
+    liveMatches.forEach(m=>{
+      txt+=`• ${m.teams[0].name} ${m.teams[0].score} vs ${m.teams[1].name} ${m.teams[1].score} — ${m.series}\n`;
+    });
+  } else { txt+='No matches live right now.\n'; }
+  txt+='\n⏰ UPCOMING\n';
+  if(upcoming.length){
+    upcoming.forEach(m=>{ txt+=`• ${m.teams[0].name} vs ${m.teams[1].name} — ${m.upcomingTime||''} · ${m.series}\n`; });
+  }
+  txt+='\n📰 TOP STORIES\n';
+  txt+='• India on the brink of historic series win as Kohli returns to form\n';
+  txt+='• Bumrah workload management — India\'s biggest risk ahead of World Cup\n';
+  txt+='• CSK vs MI tonight 7:30 PM IST — Wankhede\n';
+  txt+='\nVisit cricpulse.in for full coverage. Reply to unsubscribe.';
+  return txt;
+}
+
+// Register email for newsletter (free tier — no payment needed)
+function subscribeNewsletter(email){
+  if(!email||!email.includes('@')){ alert('Please enter a valid email address.'); return false; }
+  const subs=JSON.parse(localStorage.getItem('cricpulse_subscribers')||'[]');
+  if(subs.find(s=>s.email===email)){ showToast('You\'re already subscribed! 🏏'); return false; }
+  subs.push({email, name:'', date:new Date().toISOString(), type:'newsletter'});
+  localStorage.setItem('cricpulse_subscribers',JSON.stringify(subs));
+  sendWelcomeEmail(email,'Cricket Fan');
+  // Schedule a simulated daily digest (in a real app, use a backend cron job)
+  scheduleDailyDigest(email);
+  return true;
+}
+
+// Simulated daily digest scheduler — stores next send time in localStorage
+// In production replace with a real backend/cron. This fires on page load if 24h have passed.
+function scheduleDailyDigest(email){
+  const key='cricpulse_nextdigest_'+btoa(email);
+  const next=Date.now()+(24*60*60*1000); // 24 hours from now
+  localStorage.setItem(key, next.toString());
+}
+function checkAndSendDigests(){
+  const subs=JSON.parse(localStorage.getItem('cricpulse_subscribers')||'[]');
+  subs.forEach(s=>{
+    const key='cricpulse_nextdigest_'+btoa(s.email);
+    const next=parseInt(localStorage.getItem(key)||'0');
+    if(Date.now()>=next && next>0){
+      sendDailyDigest(s.email, s.name||'Cricket Fan');
+      scheduleDailyDigest(s.email);
+    }
+  });
+}
+
+function showToast(msg){
+  let t=document.getElementById('cricToast');
+  if(!t){
+    t=document.createElement('div');
+    t.id='cricToast';
+    t.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a6b3c;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;transition:opacity .4s;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.4)';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg; t.style.opacity='1';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>t.style.opacity='0',3000);
+}
+
+// ══════════════════════════════════════════
+// SUBSCRIPTION MODAL (Razorpay Auto-Pay)
+// ══════════════════════════════════════════
+function openSubModal(){
+  document.getElementById('subModalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  renderSubModalStep1();
+}
+
+function renderSubModalStep1(){
+  document.getElementById('subModalInner').innerHTML=`
+    <div class="sub-modal-logo">Cric<span>Pulse</span></div>
+    <h2>Go Premium 🏆</h2>
+    <div class="sub-price">₹20</div>
+    <div class="sub-price-label">per month · Auto-renews · Cancel anytime</div>
+    <ul class="sub-features">
+      <li><span class="chk">✔</span> Real-time ball-by-ball live scores</li>
+      <li><span class="chk">✔</span> Ad-free experience across all pages</li>
+      <li><span class="chk">✔</span> Match alerts & daily email digest</li>
+      <li><span class="chk">✔</span> Full player stats & analytics</li>
+      <li><span class="chk">✔</span> IPL fantasy insights & predictions</li>
+      <li><span class="chk">✔</span> Priority access to breaking news</li>
+    </ul>
+    <div style="margin-bottom:14px">
+      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:5px">Your email (for receipt & cricket digest)</label>
+      <input id="subEmail" type="email" class="api-input" placeholder="you@example.com" style="width:100%;font-size:13px;padding:9px 12px" />
+      <input id="subName"  type="text"  class="api-input" placeholder="Your name (optional)" style="width:100%;font-size:13px;padding:9px 12px;margin-top:7px" />
+    </div>
+    <button class="sub-pay-btn" id="subPayBtn" onclick="startRazorpay()">
+      🔄 Subscribe ₹20/month — Auto-Pay
+    </button>
+    <div class="sub-secure">🔒 Secured by Razorpay · UPI, Cards, Net Banking · Auto-debited monthly</div>`;
+}
+
+function closeSubModal(e){
+  if(e.target===document.getElementById('subModalOverlay')) closeSubModalDirect();
+}
+function closeSubModalDirect(){
+  document.getElementById('subModalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function startRazorpay(){
+  const emailEl=document.getElementById('subEmail');
+  const email=(emailEl&&emailEl.value.trim())||'';
+  if(!email||!email.includes('@')){ alert('Please enter your email to continue.'); emailEl&&emailEl.focus(); return; }
+  if(!window.Razorpay){
+    const script=document.createElement('script');
+    script.src='https://checkout.razorpay.com/v1/checkout.js';
+    script.onload=()=>launchRazorpay(email);
+    script.onerror=()=>alert('Failed to load Razorpay. Please check your connection.');
+    document.head.appendChild(script);
+  } else {
+    launchRazorpay(email);
+  }
+}
+
+function launchRazorpay(email){
+  const btn=document.getElementById('subPayBtn');
+  const name=(document.getElementById('subName')?.value.trim())||'';
+  if(btn){ btn.disabled=true; btn.textContent='Opening payment…'; }
+
+  // ── AUTO-RECURRING via Razorpay Subscription ──
+  // Razorpay Subscriptions auto-charge ₹20 every month with UPI Autopay / E-mandate
+  // You must first create a Plan in your Razorpay Dashboard and paste the plan_id above.
+  const options={
+    key:           RAZORPAY_KEY,
+    subscription_id: RAZORPAY_PLAN_ID,  // ← Razorpay auto-charges monthly from here
+    name:          'CricPulse',
+    description:   'Premium · ₹20/month — Auto-renewing',
+    image:         '',
+    handler: function(response){
+      onPaymentSuccess(response, email, name);
+    },
+    prefill:{ name, email, contact:'' },
+    notes:{ plan:'monthly_20_autopay' },
+    theme:{ color:'#1a6b3c' },
+    modal:{
+      ondismiss: function(){
+        if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+      }
+    }
+  };
+
+  try{
+    const rzp=new window.Razorpay(options);
+    rzp.on('payment.failed',function(resp){
+      if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+      alert('Payment failed: '+resp.error.description);
+    });
+    rzp.open();
+  }catch(err){
+    if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+    alert('Could not open Razorpay. Make sure your Key ID and Plan ID are set.');
+    console.error(err);
+  }
+}
+
+function onPaymentSuccess(response, email, name){
+  // Save subscriber
+  const subs=JSON.parse(localStorage.getItem('cricpulse_subscribers')||'[]');
+  const existing=subs.find(s=>s.email===email);
+  if(!existing) subs.push({email,name,date:new Date().toISOString(),type:'premium',paymentId:response.razorpay_payment_id||''});
+  else { existing.type='premium'; existing.paymentId=response.razorpay_payment_id||''; }
+  localStorage.setItem('cricpulse_subscribers',JSON.stringify(subs));
+  localStorage.setItem('cricpulse_premium','1');
+  localStorage.setItem('cricpulse_subscriber_email', email);
+  localStorage.setItem('cricpulse_subscriber_name', name);
+
+  // Send welcome + schedule daily digest
+  sendWelcomeEmail(email, name);
+  scheduleDailyDigest(email);
+
+  // Show success screen
+  document.getElementById('subModalInner').innerHTML=`
+    <div class="sub-success">
+      <div class="tick">🎉</div>
+      <h3>Welcome to CricPulse Premium!</h3>
+      <p style="margin-bottom:8px">Your ₹20/month subscription is active and will <b style="color:var(--green-light)">auto-renew monthly</b> via Razorpay.</p>
+      <p style="margin-bottom:12px;font-size:12px;color:var(--muted)">A welcome email + daily cricket digest has been sent to <b style="color:var(--text)">${email}</b></p>
+      <p style="font-size:10px;color:rgba(138,171,144,.4)">Payment ID: ${response.razorpay_payment_id||'—'}</p>
+      <button class="sub-pay-btn" style="margin-top:18px" onclick="closeSubModalDirect()">Start Watching Live 🏏</button>
+    </div>`;
+
+  const dn=document.getElementById('demoNotice');
+  if(dn) dn.style.display='none';
+  updateNavForPremium();
+}
+
+function updateNavForPremium(){
+  const btn=document.querySelector('.btn-sub');
+  if(btn){ btn.textContent='⭐ Premium'; btn.style.background='var(--gold)'; btn.style.color='var(--dark)'; }
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSubModalDirect(); closeModalDirect(); } });
+
+
+function handleBannerSubscribe(){
+  const el=document.getElementById('bannerEmail');
+  const email=(el&&el.value.trim())||'';
+  if(subscribeNewsletter(email)){
+    if(el) el.value='';
+    showToast('✅ Subscribed! Check your inbox for a welcome email 🏏');
+  }
+}
+
+// ══════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════
+const SECTIONS = ['home','ipl','history','county','news'];
+
+function showSection(name, el, type) {
+  // 'live' shows the home section but highlights the Live nav item
+  const displayName = (name==='live') ? 'home' : name;
+  SECTIONS.forEach(s=>{
+    const sec=document.getElementById('section-'+s);
+    if(sec) sec.style.display = s===displayName?'block':'none';
+  });
+  // desktop nav
+  if(el && type!=='bn'){
+    document.querySelectorAll('.nav-desktop a').forEach(a=>a.classList.remove('active'));
+    el.classList.add('active');
+  }
+  // bottom nav
+  document.querySelectorAll('.bn-item').forEach(b=>b.classList.remove('active'));
+  const bnMap = {home:'bn-home',live:'bn-live',ipl:'bn-ipl',history:'bn-history',county:'bn-county',news:'bn-home'};
+  const bnTarget = document.getElementById(bnMap[name]||'bn-home');
+  if(bnTarget) bnTarget.classList.add('active');
+  if(el && type==='bn') el.classList.add('active');
+
+  // lazy render
+  if(name==='history'){ renderHistGrid(currentHistFormat); renderRecords(currentHistFormat); }
+  if(name==='county') renderCounty();
+  if(name==='ipl'){ renderIPLPoints(); document.getElementById('iplScoreCards').innerHTML=IPL_MATCHES.map(renderScoreCard).join(''); }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function switchMatchTab(tab, el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+function switchHistFormat(fmt, el){
+  currentHistFormat=fmt;
+  document.querySelectorAll('.format-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderHistGrid(fmt); renderRecords(fmt);
+}
+function filterEra(){ renderHistGrid(currentHistFormat); }
+
+// ══════════════════════════════════════════
+// API KEY
+// ══════════════════════════════════════════
+function toggleApiSetup(){
+  const p=document.getElementById('apiSetupPanel');
+  p.classList.toggle('visible');
+  if(apiKey) document.getElementById('apiKeyInput').value=apiKey;
+}
+function saveApiKey(){
+  const v=document.getElementById('apiKeyInput').value.trim();
+  if(!v) return;
+  apiKey=v; localStorage.setItem('cricpulse_apikey',v);
+  document.getElementById('demoNotice').style.display='none';
+  fetchLiveScores();
+}
+function saveMobileKey(){
+  const v=document.getElementById('mobileApiKey').value.trim();
+  if(!v) return;
+  apiKey=v; localStorage.setItem('cricpulse_apikey',v);
+  closeDrawer(); fetchLiveScores();
+}
+
+// ══════════════════════════════════════════
+// MOBILE DRAWER
+// ══════════════════════════════════════════
+function toggleDrawer(){
+  document.getElementById('mobileDrawer').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function closeDrawer(){
+  document.getElementById('mobileDrawer').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+window.addEventListener('DOMContentLoaded',()=>{
+  // Restore premium state
+  if(localStorage.getItem('cricpulse_premium')==='1') updateNavForPremium();
+  // init all sections hidden except home
+  SECTIONS.forEach(s=>{ const el=document.getElementById('section-'+s); if(el&&s!=='home') el.style.display='none'; });
+  fetchLiveScores();
+  // Auto-refresh every 90 seconds (Cricbuzz has no rate limit)
+  setInterval(fetchLiveScores, 90*1000);
+  // Check if any subscribers are due a daily digest email
+  setTimeout(checkAndSendDigests, 3000);
+});
+</script>
+</body>
+</html>
