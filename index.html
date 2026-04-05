@@ -3,9 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>CricPulse — Live Scores & Cricket News</title>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8597732524159886"
-     crossorigin="anonymous"></script>
+<title>CricPulse – Live Cricket Scores, IPL 2026 & Fantasy Battle India</title>
+<meta name="description" content="Get live cricket scores ball by ball, IPL 2026 updates, fantasy battle, player stats and latest cricket news. Free for Indian fans. Join CricPulse now." />
+<meta name="keywords" content="live cricket score today, IPL 2026 live, cricket fantasy team India, aaj ka cricket match, India vs Australia live, cricket news India, IPL points table 2026" />
+<meta property="og:title" content="CricPulse – Live Cricket Scores & IPL 2026" />
+<meta property="og:description" content="Ball-by-ball live scores, IPL 2026, fantasy battle and cricket news for Indian fans." />
+<meta property="og:url" content="https://cricpulse-omega.vercel.app" />
+<meta property="og:type" content="website" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://cricpulse-omega.vercel.app" />
+<meta name="google-site-verification" content="ccb82b0467590eb8" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8597732524159886" crossorigin="anonymous"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -299,211 +307,13 @@ aside{display:flex;flex-direction:column;gap:18px}
 .sub-pay-btn:hover{opacity:.88}
 .sub-pay-btn:disabled{opacity:.5;cursor:not-allowed}
 .sub-secure{display:flex;align-items:center;justify-content:center;gap:6px;font-size:10px;color:var(--muted);margin-top:10px}
-/* ── Premium Feature Cards ── */
-.sub-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
-.sub-feat-card{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:10px;padding:10px 8px;text-align:center}
-.sub-feat-card .feat-icon{font-size:20px;margin-bottom:4px}
-.sub-feat-card .feat-title{font-size:11px;font-weight:600;color:var(--green-light);margin-bottom:2px}
-.sub-feat-card .feat-desc{font-size:10px;color:var(--muted);line-height:1.3}
-.sub-badge{display:inline-block;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:8px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
-.sub-timer{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:8px;text-align:center;margin-bottom:14px;font-size:11px;color:#f87171}
-.sub-timer span{font-weight:700;font-family:'Bebas Neue',sans-serif;font-size:16px;color:#ef4444}
-/* ── Premium Unlocked UI ── */
-.premium-badge{position:fixed;top:60px;right:12px;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border-radius:20px;padding:6px 14px;font-size:11px;font-weight:700;z-index:500;display:none;box-shadow:0 4px 12px rgba(240,180,0,0.4);animation:pulse-gold 2s infinite}
-@keyframes pulse-gold{0%,100%{box-shadow:0 4px 12px rgba(240,180,0,0.4)}50%{box-shadow:0 4px 20px rgba(240,180,0,0.7)}}
-/* ── Premium Exclusive Sections ── */
-.premium-section{display:none;background:linear-gradient(135deg,rgba(34,197,94,0.05),rgba(240,180,0,0.03));border:1px solid rgba(34,197,94,0.2);border-radius:14px;padding:16px;margin:12px 0}
-.premium-section.unlocked{display:block;animation:fadeScaleIn .4s ease}
-.premium-section-title{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-/* Win Predictor */
-.predictor-teams{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.predictor-team{text-align:center;font-size:13px;font-weight:600}
-.predictor-bar{height:10px;background:var(--mid2);border-radius:5px;overflow:hidden;margin-bottom:6px;position:relative}
-.predictor-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green-light));border-radius:5px;transition:width 1s ease}
-.predictor-pct{font-size:11px;color:var(--muted);text-align:center}
-/* Fantasy Tips */
-.fantasy-card{background:var(--mid2);border-radius:10px;padding:12px;margin-bottom:8px}
-.fantasy-card-title{font-size:11px;color:var(--gold);font-weight:700;margin-bottom:6px}
-.fantasy-player{display:flex;align-items:center;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--border)}
-.fantasy-player:last-child{border-bottom:none}
-.fantasy-points{color:var(--green-light);font-weight:700}
-/* Cricket IQ Quiz */
-.quiz-card{background:var(--mid2);border-radius:12px;padding:16px}
-.quiz-question{font-size:14px;font-weight:600;margin-bottom:12px;line-height:1.4}
-.quiz-options{display:flex;flex-direction:column;gap:8px}
-.quiz-opt{background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:13px;cursor:pointer;transition:all .2s;text-align:left}
-.quiz-opt:hover{border-color:var(--green);color:var(--green-light)}
-.quiz-opt.correct{background:rgba(34,197,94,0.15);border-color:var(--green);color:var(--green-light)}
-.quiz-opt.wrong{background:rgba(239,68,68,0.1);border-color:#ef4444;color:#f87171}
-.quiz-streak{font-size:12px;color:var(--gold);margin-bottom:8px}
-/* Live Commentary */
-.commentary-feed{max-height:180px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
-.commentary-item{font-size:12px;color:var(--muted);padding:6px 10px;background:var(--mid2);border-radius:8px;border-left:3px solid var(--border)}
-.commentary-item.six{border-left-color:#f59e0b;color:var(--text)}
-.commentary-item.wicket{border-left-color:#ef4444;color:#f87171}
-.commentary-item.four{border-left-color:var(--green);color:var(--green-light)}
 .sub-success{text-align:center;padding:10px 0}
 .sub-success .tick{font-size:52px;margin-bottom:12px}
 .sub-success h3{font-size:18px;color:var(--green-light);margin-bottom:6px}
 .sub-success p{font-size:12px;color:var(--muted)}
 
-/* ── FAVOURITE TEAM ── */
-.fav-team-bar{background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.fav-team-bar .label{font-size:10px;color:var(--muted);letter-spacing:.5px}
-.fav-team-select{background:var(--mid);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer;outline:none;font-family:inherit}
-.fav-team-badge{background:linear-gradient(90deg,var(--green),var(--green-light));color:#fff;font-size:10px;font-weight:600;padding:3px 9px;border-radius:10px;display:none}
-
-/* ── SHARE BUTTON ── */
-.share-btn{background:none;border:1px solid rgba(79,131,245,.35);color:var(--blue);font-size:9px;padding:4px 9px;border-radius:4px;cursor:pointer;transition:all .2s;font-family:inherit}
-.share-btn:hover{background:rgba(79,131,245,.1)}
-
-/* ── LIVE POLL ── */
-.poll-card{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:18px}
-.poll-title{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
-.poll-q{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px;line-height:1.35}
-.poll-opts{display:flex;flex-direction:column;gap:8px}
-.poll-opt{background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:space-between;font-size:13px}
-.poll-opt:hover:not(.voted){border-color:var(--green);color:var(--green-light)}
-.poll-opt.voted{cursor:default}
-.poll-bar-wrap{height:4px;background:var(--dark);border-radius:2px;margin-top:6px;overflow:hidden}
-.poll-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--green),var(--green-light));transition:width .7s ease}
-.poll-pct{font-size:10px;color:var(--green-light);font-weight:600}
-.poll-total{font-size:10px;color:var(--muted);margin-top:6px;text-align:right}
-
-/* ── NOTIFICATIONS TOGGLE ── */
-.notif-bar{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(26,107,60,.08));border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.notif-bar .notif-text{font-size:12px;color:var(--text)}
-.notif-bar .notif-sub{font-size:10px;color:var(--muted);margin-top:1px}
-.toggle-sw{position:relative;width:38px;height:22px;flex-shrink:0}
-.toggle-sw input{opacity:0;width:0;height:0}
-.toggle-slider{position:absolute;cursor:pointer;inset:0;background:var(--mid2);border-radius:22px;transition:.3s}
-.toggle-slider::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
-.toggle-sw input:checked+.toggle-slider{background:var(--green)}
-.toggle-sw input:checked+.toggle-slider::before{transform:translateX(16px)}
-
-/* ── SCORE PREDICTOR GAME ── */
-.predictor-game{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:18px}
-.predictor-game-title{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--purple);text-transform:uppercase;margin-bottom:10px}
-.predictor-game-q{font-size:13px;color:var(--text);margin-bottom:10px;line-height:1.4}
-.predictor-slider{width:100%;accent-color:var(--green-light);margin:8px 0}
-.predictor-guess{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green-light);text-align:center;letter-spacing:1px;margin-bottom:8px}
-.predictor-submit{background:var(--green);color:#fff;border:none;padding:8px 18px;border-radius:8px;font-size:12px;cursor:pointer;font-family:inherit;font-weight:600;width:100%;margin-top:4px}
-.predictor-result{font-size:13px;color:var(--gold);text-align:center;margin-top:8px;display:none}
-
-/* ── STREAK LEADERBOARD ── */
-.streak-board{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-top:4px}
-.streak-board-title{font-size:11px;font-weight:700;color:var(--ipl-orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
-.streak-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px}
-.streak-row:last-child{border-bottom:none}
-.streak-row .medal{font-size:14px;width:20px}
-.streak-row .streak-name{flex:1;color:var(--muted)}
-.streak-row .streak-val{font-family:'Bebas Neue',sans-serif;font-size:17px;color:var(--gold)}
-
-/* ── STREAK TRACKER ── */
-.streak-tracker{background:linear-gradient(135deg,rgba(212,160,23,.12),rgba(249,115,22,.08));border:1px solid rgba(212,160,23,.28);border-radius:12px;padding:14px 16px;margin-bottom:14px}
-.streak-tracker-title{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.streak-flames{font-size:28px;text-align:center;margin-bottom:4px;animation:flame-pulse 1.5s ease-in-out infinite}
-@keyframes flame-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
-.streak-count{font-family:'Bebas Neue',sans-serif;font-size:42px;color:var(--gold);text-align:center;line-height:1}
-.streak-label{font-size:11px;color:var(--muted);text-align:center;margin-bottom:10px}
-.streak-days{display:flex;gap:5px;justify-content:center;margin-bottom:10px}
-.streak-day{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--muted)}
-.streak-day.done{background:var(--gold);border-color:var(--gold);color:#000}
-.streak-day.today{border-color:var(--ipl-orange);color:var(--ipl-orange)}
-.streak-cta{width:100%;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#000;border:none;padding:9px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
-.streak-cta:hover{opacity:.85}
-/* ── SPIN WHEEL ── */
-.spin-section{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px;text-align:center}
-.spin-title{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--purple);text-transform:uppercase;margin-bottom:10px}
-.spin-wheel-wrap{position:relative;display:inline-block;margin-bottom:10px}
-.spin-wheel{width:180px;height:180px;border-radius:50%;border:4px solid var(--border);overflow:hidden;transition:transform 3s cubic-bezier(.17,.67,.12,.99);display:block}
-.spin-pointer{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:20px;z-index:2;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
-.spin-btn{background:linear-gradient(135deg,var(--purple),#7c3aed);color:#fff;border:none;padding:10px 24px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;margin-bottom:8px}
-.spin-btn:hover{opacity:.88}
-.spin-result{min-height:36px;font-size:13px;font-weight:600;color:var(--gold);padding:8px;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:8px;display:none}
-/* ── HOT TAKES ── */
-.hot-takes{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:14px}
-.hot-takes-title{font-size:10px;font-weight:600;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.hot-take-card{background:var(--mid);border-radius:10px;padding:12px;margin-bottom:8px}
-.hot-take-q{font-size:13px;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.4}
-.hot-take-btns{display:flex;gap:7px;flex-wrap:wrap}
-.hot-take-btn{flex:1;min-width:100px;padding:8px 10px;border-radius:8px;border:1.5px solid var(--border);background:var(--dark2);color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit;text-align:center}
-.hot-take-btn:hover{border-color:var(--red);color:var(--red)}
-.hot-take-btn.voted-fire{background:rgba(229,62,62,.15);border-color:var(--red);color:var(--red)}
-.hot-take-btn.voted-ice{background:rgba(59,130,246,.15);border-color:var(--blue);color:var(--blue)}
-.hot-take-bar{height:6px;border-radius:3px;overflow:hidden;background:var(--dark);margin-top:8px;display:none}
-.hot-take-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--red),var(--ipl-orange));transition:width .5s ease}
-.hot-take-result{font-size:10px;color:var(--muted);margin-top:4px;display:none}
-/* ── SHARE SCORE BTN ── */
-.share-score-btn{font-size:10px;color:var(--muted);cursor:pointer;background:none;border:1px solid var(--border);padding:4px 9px;border-radius:4px;transition:all .2s;font-family:inherit}
-.share-score-btn:hover{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.4);color:#25d366}
-/* ── WHATSAPP ALERT ── */
-.wa-cta{background:linear-gradient(135deg,rgba(37,211,102,.12),rgba(26,107,60,.08));border:1px solid rgba(37,211,102,.3);border-radius:10px;padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color .2s}
-.wa-cta:hover{border-color:rgba(37,211,102,.6)}
-.wa-icon{font-size:26px;flex-shrink:0}
-.wa-text .wa-head{font-size:13px;font-weight:600;color:#25d366}
-.wa-text .wa-sub{font-size:10px;color:var(--muted);margin-top:2px}
-.wa-arrow{font-size:16px;color:var(--muted);margin-left:auto}
-
-/* ── DARK MODE TOGGLE ── */
-.theme-btn{background:var(--mid);border:1px solid var(--border);color:var(--muted);padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer;transition:all .2s;font-family:inherit;display:flex;align-items:center;gap:5px}
-.theme-btn:hover{border-color:var(--green);color:var(--text)}
-body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--text:#1a2e20;--muted:#5a7a62;--border:rgba(0,0,0,0.1)}
-
-/* ── FANTASY BATTLE ── */
-.fb-card{background:var(--dark2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:14px}
-.fb-card-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--ipl-orange);margin-bottom:12px}
-.fb-label{font-size:10px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:5px}
-.fb-input{background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;width:100%;outline:none;font-family:inherit;transition:border-color .2s}
-.fb-input:focus{border-color:var(--ipl-orange)}
-.fb-select{background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;width:100%;outline:none;font-family:inherit;cursor:pointer}
-.fb-field-group{margin-bottom:13px}
-.fb-btn-primary{width:100%;background:linear-gradient(135deg,var(--ipl-orange),#e85d04);color:#fff;border:none;padding:13px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:.5px;transition:opacity .2s;font-family:inherit;margin-top:4px}
-.fb-btn-primary:hover{opacity:.88}
-.fb-btn-secondary{width:100%;background:var(--mid2);color:var(--text);border:1px solid var(--border);padding:10px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
-.fb-btn-secondary:hover{border-color:var(--ipl-orange);color:var(--ipl-orange)}
-.fb-xi-counter{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.fb-xi-slot{background:var(--mid);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center;font-size:11px;color:var(--muted);transition:all .3s}
-.fb-xi-slot.done{background:rgba(34,197,94,.12);border-color:var(--green-light);color:var(--green-light)}
-.fb-xi-slot.over{background:rgba(239,68,68,.1);border-color:#ef4444;color:#f87171}
-.fb-role-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin:12px 0 8px;padding-left:2px}
-.fb-player-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:4px}
-.fb-player-btn{background:var(--mid);border:1.5px solid var(--border);border-radius:9px;padding:9px 10px;cursor:pointer;transition:all .2s;text-align:left;position:relative;width:100%}
-.fb-player-btn:hover{border-color:var(--ipl-orange)}
-.fb-player-btn.selected{background:rgba(249,115,22,.12);border-color:var(--ipl-orange)}
-.fb-player-btn.selected::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--ipl-orange);font-size:12px;font-weight:700}
-.fb-player-btn.disabled{opacity:.35;cursor:not-allowed}
-.fb-pname{font-size:12px;font-weight:600;color:var(--text)}
-.fb-pteam{font-size:9px;color:var(--muted);margin-top:2px}
-.fb-prating{font-size:9px;padding:2px 6px;border-radius:4px;margin-top:4px;display:inline-block;font-weight:600}
-.fb-prating.hot{background:rgba(249,115,22,.15);color:var(--ipl-orange)}
-.fb-prating.good{background:rgba(34,197,94,.12);color:var(--green-light)}
-.fb-prating.avg{background:rgba(255,255,255,.06);color:var(--muted)}
-.fb-room-info{background:var(--mid);border-radius:10px;padding:12px;margin-bottom:12px}
-.fb-room-info-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.fb-room-info-row:last-child{border-bottom:none}
-.fb-code-box{background:linear-gradient(135deg,rgba(249,115,22,.12),rgba(168,85,247,.1));border:1px solid rgba(249,115,22,.3);border-radius:10px;padding:14px;text-align:center;margin-bottom:14px;cursor:pointer;transition:border-color .2s}
-.fb-code-box:hover{border-color:rgba(249,115,22,.7)}
-.fb-code-box .code-label{font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:4px}
-.fb-code-box .code-val{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:8px;color:var(--ipl-orange)}
-.fb-code-box .code-copy{font-size:10px;color:var(--muted);margin-top:2px}
-.fb-player-lobby{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--mid);border-radius:9px;margin-bottom:7px;border:1px solid var(--border)}
-.fb-player-lobby .plname{font-size:13px;font-weight:600}
-.fb-player-lobby .plstatus{font-size:10px;margin-top:2px}
-.fb-score-row{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.fb-score-row:last-child{border-bottom:none}
-.fb-score-pos{font-family:'Bebas Neue',sans-serif;font-size:24px;color:rgba(255,255,255,.1);width:24px;flex-shrink:0}
-.fb-score-pos.g{color:var(--gold)}.fb-score-pos.s{color:#aaa}.fb-score-pos.b{color:#cd7f32}
-.fb-score-pts{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--ipl-orange);flex-shrink:0}
-.fb-open-room{display:flex;align-items:center;justify-content:space-between;background:var(--mid);border-radius:9px;padding:10px 12px;margin-bottom:8px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s}
-.fb-open-room:hover{border-color:var(--ipl-orange)}
-.fb-my-battle{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;transition:border-color .2s}
-.fb-my-battle:hover{border-color:var(--ipl-orange)}
-.fb-my-battle-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
-.fb-my-battle-status{font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600}
-.fb-status-waiting{background:rgba(212,160,23,.15);color:var(--gold)}
-.fb-status-live{background:rgba(229,62,62,.15);color:var(--red)}
-.fb-status-done{background:rgba(34,197,94,.12);color:var(--green-light)}
+/* ── FOOTER ── */
+footer{background:var(--dark2);border-top:1px solid var(--border);padding:28px 16px;margin-top:16px}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
 .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green-light);letter-spacing:2px;margin-bottom:8px}
 .footer-logo span{color:var(--gold)}
@@ -574,14 +384,12 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
   <div class="nav-desktop">
     <a href="#" class="active" onclick="showSection('home',this)">Home</a>
     <a href="#" onclick="showSection('live',this)">Live Scores</a>
-    <a href="#" onclick="showSection('fantasy-battle',this)" style="color:var(--ipl-orange)">⚔️ Fantasy Battle</a>
     <a href="#" onclick="showSection('ipl',this)">IPL 2026</a>
     <a href="#" onclick="showSection('history',this)">Records 2000–Now</a>
     <a href="#" onclick="showSection('county',this)">County Cricket</a>
     <a href="#" onclick="showSection('news',this)">News</a>
   </div>
   <div class="nav-right">
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle light/dark mode">🌙 Dark</button>
     <button class="api-key-btn" id="apiStatusBadge" style="cursor:default">📡 Connecting…</button>
     <button class="btn-sub" onclick="openSubModal()">⭐ Subscribe</button>
     <button class="hamburger" id="hamburger" onclick="toggleDrawer()">
@@ -594,12 +402,11 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
 <div class="mobile-drawer" id="mobileDrawer">
   <a href="#" onclick="showSection('home');closeDrawer()">🏠 Home</a>
   <a href="#" onclick="showSection('live');closeDrawer()">🔴 Live Scores</a>
-  <a href="#" onclick="showSection('fantasy-battle');closeDrawer()" style="color:var(--ipl-orange)">⚔️ Fantasy Battle</a>
   <a href="#" onclick="showSection('ipl');closeDrawer()">🏆 IPL 2026</a>
   <a href="#" onclick="showSection('history');closeDrawer()">📊 Records 2000–Now</a>
   <a href="#" onclick="showSection('county');closeDrawer()">🏴󠁧󠁢󠁥󠁮󠁧󠁿 County Cricket</a>
   <a href="#" onclick="showSection('news');closeDrawer()">📰 News</a>
-  <a href="#" onclick="openSubModal();closeDrawer()">⭐ Subscribe — ₹49/month</a>
+  <a href="#" onclick="openSubModal();closeDrawer()">⭐ Subscribe — ₹20/month</a>
 </div>
 
 <!-- MAIN -->
@@ -632,88 +439,6 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
       <div class="tab" onclick="switchMatchTab('domestic',this)">Domestic</div>
     </div>
 
-    <!-- Favourite Team Tracker -->
-    <div class="fav-team-bar">
-      <div>
-        <div class="label">⭐ YOUR FAVOURITE TEAM</div>
-        <span class="fav-team-badge" id="favBadge">Following</span>
-      </div>
-      <select class="fav-team-select" id="favTeamSelect" onchange="saveFavTeam(this.value)">
-        <option value="">— Choose your team —</option>
-        <option value="🇮🇳 India">🇮🇳 India</option>
-        <option value="🇦🇺 Australia">🇦🇺 Australia</option>
-        <option value="🏴󠁧󠁢󠁥󠁮󠁧󠁿 England">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</option>
-        <option value="🇵🇰 Pakistan">🇵🇰 Pakistan</option>
-        <option value="🇿🇦 South Africa">🇿🇦 South Africa</option>
-        <option value="🇳🇿 New Zealand">🇳🇿 New Zealand</option>
-        <option value="🏝️ West Indies">🏝️ West Indies</option>
-        <option value="🇱🇰 Sri Lanka">🇱🇰 Sri Lanka</option>
-        <option value="🔵 MI">🔵 Mumbai Indians</option>
-        <option value="🟡 CSK">🟡 Chennai Super Kings</option>
-        <option value="🔴 RCB">🔴 Royal Challengers</option>
-        <option value="🟣 KKR">🟣 Kolkata Knight Riders</option>
-        <option value="🔷 GT">🔷 Gujarat Titans</option>
-      </select>
-    </div>
-
-    <!-- Match Notification Toggle -->
-    <div class="notif-bar" id="notifBar">
-      <div>
-        <div class="notif-text">🔔 Match Alerts</div>
-        <div class="notif-sub">Get notified when your team plays</div>
-      </div>
-      <label class="toggle-sw">
-        <input type="checkbox" id="notifToggle" onchange="toggleNotifications(this.checked)">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>
-
-    <!-- WhatsApp Alert CTA -->
-    <div class="wa-cta" onclick="openWAGroup()">
-      <div class="wa-icon">💬</div>
-      <div class="wa-text">
-        <div class="wa-head">Join CricPulse WhatsApp Channel</div>
-        <div class="wa-sub">Live score alerts · Match results · IPL updates — instant delivery</div>
-      </div>
-      <div class="wa-arrow">›</div>
-    </div>
-
-    <!-- 🔥 Daily Streak Tracker -->
-    <div class="streak-tracker">
-      <div class="streak-tracker-title">🔥 Daily Visit Streak</div>
-      <div class="streak-flames" id="streakFlame">🔥</div>
-      <div class="streak-count" id="streakCount">0</div>
-      <div class="streak-label" id="streakLabel">Start your streak today!</div>
-      <div class="streak-days" id="streakDays"></div>
-      <button class="streak-cta" onclick="claimStreakBonus()">⚡ Claim Today's Cricket Trivia Bonus</button>
-    </div>
-
-    <!-- 🎡 Spin the Wheel — Cricket Trivia -->
-    <div class="spin-section" id="spinSection">
-      <div class="spin-title">🎡 Spin for Cricket Trivia</div>
-      <div class="spin-wheel-wrap">
-        <div class="spin-pointer">▼</div>
-        <canvas class="spin-wheel" id="spinCanvas" width="180" height="180"></canvas>
-      </div>
-      <br>
-      <button class="spin-btn" id="spinBtn" onclick="spinWheel()">🎰 Spin the Wheel!</button>
-      <div class="spin-result" id="spinResult"></div>
-    </div>
-
-    <!-- 🔥 Hot Takes — Fan Reactions -->
-    <div class="hot-takes">
-      <div class="hot-takes-title">🔥 Hot Takes</div>
-      <div id="hotTakesContainer"></div>
-    </div>
-
-    <!-- Live Fan Poll -->
-    <div class="poll-card" id="livePoll">
-      <div class="poll-title">🗳️ Fan Poll · Live Now</div>
-      <div class="poll-q" id="pollQuestion">Who will win IPL 2026?</div>
-      <div class="poll-opts" id="pollOpts"></div>
-      <div class="poll-total" id="pollTotal"></div>
-    </div>
-
     <div class="score-cards" id="scoreCardsContainer"></div>
 
     <!-- News -->
@@ -738,27 +463,6 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
       <div class="news-card"><div class="news-tag">Women's</div><div class="news-title">Mandhana's century leads India Women to dominant win</div><div class="news-meta">Divya Nair · 7h</div></div>
     </div>
 
-    <!-- Score Predictor Game -->
-    <div class="predictor-game" id="scorePredictorGame">
-      <div class="predictor-game-title">🎮 Score Predictor — Guess & Win</div>
-      <div class="predictor-game-q" id="predGameQ">What will India's final score be vs Australia today?</div>
-      <div class="predictor-guess" id="predGuessDisplay">287</div>
-      <input type="range" class="predictor-slider" id="predSlider" min="100" max="400" value="287" oninput="updatePredGuess(this.value)">
-      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:8px"><span>100</span><span>250</span><span>400</span></div>
-      <button class="predictor-submit" id="predSubmitBtn" onclick="submitPrediction()">⚡ Lock In My Prediction</button>
-      <div class="predictor-result" id="predResult"></div>
-    </div>
-
-    <!-- Quiz Leaderboard (today's top scorers) -->
-    <div class="streak-board">
-      <div class="streak-board-title">🏅 Today's Quiz Leaderboard</div>
-      <div class="streak-row"><span class="medal">🥇</span><span class="streak-name">CricketKing_07</span><span class="streak-val">80 pts</span></div>
-      <div class="streak-row"><span class="medal">🥈</span><span class="streak-name">SachinFan99</span><span class="streak-val">70 pts</span></div>
-      <div class="streak-row"><span class="medal">🥉</span><span class="streak-name">IPL_Master</span><span class="streak-val">60 pts</span></div>
-      <div class="streak-row"><span class="medal">4</span><span class="streak-name">YoungCricker</span><span class="streak-val">50 pts</span></div>
-      <div class="streak-row" id="myLeaderRow" style="display:none"><span class="medal">—</span><span class="streak-name" style="color:var(--green-light)">You</span><span class="streak-val" id="myLeaderScore">0 pts</span></div>
-    </div>
-
     <div class="sub-banner">
       <div><h3>Get cricket news before anyone else</h3><p>Daily email digest · Match alerts · Free forever</p></div>
       <div class="sub-form">
@@ -768,200 +472,6 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
     </div>
 
   </div><!-- /section-home -->
-
-  <!-- ════ FANTASY BATTLE SECTION ════ -->
-  <div id="section-fantasy-battle" style="display:none">
-
-    <!-- PREMIUM LOCK GATE -->
-    <div id="fbPremiumLock" style="display:none">
-      <div style="background:linear-gradient(135deg,rgba(212,160,23,.12),rgba(249,115,22,.1));border:1px solid rgba(212,160,23,.3);border-radius:16px;padding:32px 24px;text-align:center;margin-bottom:16px">
-        <div style="font-size:48px;margin-bottom:12px">🔒</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--gold);margin-bottom:8px">PREMIUM FEATURE</div>
-        <div style="font-size:14px;color:var(--text);font-weight:600;margin-bottom:6px">⚔️ Fantasy Battle — Premium Exclusive</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:20px">Only players from the actual match squad · Dream11-style rules · 100 credits budget · Create your own custom match · Tied rank system</div>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:300px;margin:0 auto 20px">
-          <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:10px 8px;font-size:11px;color:var(--muted)">🏏<br><b style="color:var(--text)">Match Squad Only</b><br>Real playing XI</div>
-          <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:10px 8px;font-size:11px;color:var(--muted)">✏️<br><b style="color:var(--text)">Custom Match</b><br>Build your own</div>
-          <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:10px 8px;font-size:11px;color:var(--muted)">💰<br><b style="color:var(--text)">100 Credits</b><br>Dream11 rules</div>
-          <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:10px 8px;font-size:11px;color:var(--muted)">🏅<br><b style="color:var(--text)">Tie Rankings</b><br>1,2=2,2=2,4</div>
-        </div>
-        <button class="fb-btn-primary" style="max-width:280px;margin:0 auto;display:block" onclick="openSubModal()">⭐ Subscribe ₹49/month — Unlock Now</button>
-        <div style="font-size:10px;color:var(--muted);margin-top:10px">No real money · Cancel anytime · Fun-only</div>
-      </div>
-    </div>
-
-    <!-- MAIN CONTENT (premium only) -->
-    <div id="fbMainContent" style="display:none">
-
-      <div style="background:linear-gradient(135deg,rgba(249,115,22,.15),rgba(168,85,247,.12));border:1px solid rgba(249,115,22,.3);border-radius:14px;padding:16px 18px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--ipl-orange)">⚔️ FANTASY BATTLE</div>
-          <div style="font-size:11px;color:var(--muted)">Dream11 rules · Match squad players only · 100 credits · ⭐ Premium</div>
-        </div>
-        <div style="background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);border-radius:8px;padding:8px 14px;text-align:center">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--ipl-orange)" id="fbRoomCount">0</div>
-          <div style="font-size:9px;color:var(--muted)">ACTIVE ROOMS</div>
-        </div>
-      </div>
-      <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--muted)">
-        🏏 <b style="color:var(--green-light)">Fun Only — Zero Real Money.</b> Virtual points only. No cash prizes.
-      </div>
-
-      <div class="tabs" id="fbTabs">
-        <div class="tab active" onclick="fbTab('create',this)">🆕 Create Room</div>
-        <div class="tab" onclick="fbTab('join',this)">🔗 Join Room</div>
-        <div class="tab" onclick="fbTab('custom',this)">✏️ Custom Match</div>
-        <div class="tab" onclick="fbTab('my',this)">🏆 My Battles</div>
-        <div class="tab" onclick="fbTab('leaderboard',this)">📊 Leaderboard</div>
-      </div>
-
-      <!-- CREATE ROOM -->
-      <div id="fb-panel-create">
-        <div class="fb-card">
-          <div class="fb-card-title">🎮 Create a Battle Room</div>
-          <div class="fb-field-group"><label class="fb-label">Your Nickname</label><input class="fb-input" id="fbNickname" placeholder="e.g. CricketKing_07" maxlength="20"></div>
-          <div class="fb-field-group"><label class="fb-label">Room Name</label><input class="fb-input" id="fbRoomName" placeholder="e.g. IPL Final Showdown" maxlength="30"></div>
-          <div class="fb-field-group">
-            <label class="fb-label">Select Match</label>
-            <select class="fb-select" id="fbMatchSelect" onchange="fbUpdateMatchPreview()">
-              <option value="IND_AUS_ODI">🇮🇳 India vs Australia 🇦🇺 · ODI Series</option>
-              <option value="CSK_MI_IPL34">CSK 🟡 vs Mumbai Indians 🔵 · IPL 2026 #34</option>
-              <option value="RCB_KKR_IPL35">RCB 🔴 vs KKR 🟣 · IPL 2026 #35</option>
-              <option value="ENG_NZ_T20">England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs New Zealand 🇳🇿 · T20I</option>
-              <option value="SA_PAK_TEST">South Africa 🇿🇦 vs Pakistan 🇵🇰 · Test</option>
-            </select>
-            <div id="fbMatchPreview" style="margin-top:8px"></div>
-          </div>
-          <div class="fb-field-group">
-            <label class="fb-label">Max Players <span style="color:var(--muted)">(2–10)</span></label>
-            <div style="display:flex;align-items:center;gap:10px">
-              <input type="range" class="predictor-slider" id="fbMaxPlayers" min="2" max="10" value="4" oninput="document.getElementById('fbMaxPlayersVal').textContent=this.value">
-              <span id="fbMaxPlayersVal" style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--ipl-orange)">4</span>
-            </div>
-          </div>
-          <button class="fb-btn-primary" onclick="fbCreateRoom()">⚔️ Create Room & Pick My Team</button>
-        </div>
-      </div>
-
-      <!-- JOIN ROOM -->
-      <div id="fb-panel-join" style="display:none">
-        <div class="fb-card">
-          <div class="fb-card-title">🔗 Join a Battle Room</div>
-          <div class="fb-field-group"><label class="fb-label">Your Nickname</label><input class="fb-input" id="fbJoinNick" placeholder="e.g. SachinFan_99" maxlength="20"></div>
-          <div class="fb-field-group"><label class="fb-label">Room Code</label><input class="fb-input" id="fbRoomCode" placeholder="6-digit code" maxlength="6" style="letter-spacing:4px;font-size:16px;font-family:monospace"></div>
-          <button class="fb-btn-primary" onclick="fbJoinRoom()">🏏 Join & Pick My Team</button>
-          <div style="margin-top:14px"><div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">🔓 Open Rooms</div><div id="fbOpenRooms"></div></div>
-        </div>
-      </div>
-
-      <!-- CUSTOM MATCH -->
-      <div id="fb-panel-custom" style="display:none">
-        <div class="fb-card">
-          <div class="fb-card-title">✏️ Create Your Custom Match</div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.6">Add your own two teams and players. Your custom match will appear in the match dropdown so friends can use it too.</div>
-          <div style="background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:12px;margin-bottom:10px">
-            <div style="font-size:11px;font-weight:700;color:#60a5fa;letter-spacing:1px;margin-bottom:8px">🔵 TEAM A</div>
-            <div class="fb-field-group" style="margin-bottom:8px"><label class="fb-label">Team Name</label><input class="fb-input" id="cmTeamA" placeholder="e.g. My Tigers" maxlength="20"></div>
-            <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Players (name + role)</div>
-            <div id="cmPlayersA" style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"></div>
-            <button onclick="cmAddPlayer('A')" style="width:100%;background:rgba(59,130,246,.1);border:1px dashed rgba(59,130,246,.35);color:#60a5fa;border-radius:7px;padding:8px;font-size:12px;cursor:pointer;font-family:inherit">+ Add Player</button>
-          </div>
-          <div style="background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:10px;padding:12px;margin-bottom:12px">
-            <div style="font-size:11px;font-weight:700;color:var(--ipl-orange);letter-spacing:1px;margin-bottom:8px">🟠 TEAM B</div>
-            <div class="fb-field-group" style="margin-bottom:8px"><label class="fb-label">Team Name</label><input class="fb-input" id="cmTeamB" placeholder="e.g. My Lions" maxlength="20"></div>
-            <div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Players (name + role)</div>
-            <div id="cmPlayersB" style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"></div>
-            <button onclick="cmAddPlayer('B')" style="width:100%;background:rgba(249,115,22,.08);border:1px dashed rgba(249,115,22,.35);color:var(--ipl-orange);border-radius:7px;padding:8px;font-size:12px;cursor:pointer;font-family:inherit">+ Add Player</button>
-          </div>
-          <div style="font-size:11px;color:var(--muted);margin-bottom:10px;background:var(--mid);border-radius:7px;padding:9px">💡 Roles: <b style="color:var(--text)">BAT</b> (batter) · <b style="color:var(--text)">BOWL</b> (bowler) · <b style="color:var(--text)">AR</b> (all-rounder) · <b style="color:var(--text)">WK</b> (wicketkeeper). Min 5 players per team.</div>
-          <button class="fb-btn-primary" onclick="cmSaveMatch()">💾 Save Custom Match</button>
-        </div>
-        <div id="cmSavedList" style="margin-top:10px"></div>
-      </div>
-
-      <!-- MY BATTLES -->
-      <div id="fb-panel-my" style="display:none"><div id="fbMyBattles"><div style="text-align:center;padding:30px;color:var(--muted);font-size:13px">No battles yet. Create or join a room! ⚔️</div></div></div>
-
-      <!-- LEADERBOARD -->
-      <div id="fb-panel-leaderboard" style="display:none">
-        <div class="fb-card"><div class="fb-card-title">🏅 All-Time Fantasy Battle Rankings</div><div id="fbLeaderboard"></div></div>
-      </div>
-
-      <!-- TEAM PICKER (Dream11 style) -->
-      <div id="fbPickerOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:700;overflow-y:auto;backdrop-filter:blur(6px)">
-        <div style="max-width:580px;margin:0 auto;padding:10px 10px 80px">
-          <div class="fb-card" style="margin-bottom:0">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-              <div><div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--ipl-orange)">🏏 Pick Your Team</div><div style="font-size:10px;color:var(--muted)" id="fbPickerMatch"></div></div>
-              <button onclick="fbClosePicker()" style="background:var(--mid2);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;flex-shrink:0">✕</button>
-            </div>
-            <div id="fbTeamBanner" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;flex-wrap:wrap"></div>
-            <div style="background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.18);border-radius:7px;padding:7px 10px;margin-bottom:8px;font-size:10px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px">
-              <span>👥 Max 7 from one team</span><span>·</span><span>💰 100 credits</span><span>·</span><span>11 players total</span><span>·</span><span>⭐ C=2× VC=1.5×</span>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><span style="font-size:10px;color:var(--muted)">Credits Used</span><span id="fbCreditUsed" style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold)">0 / 100</span></div>
-            <div style="background:var(--mid2);border-radius:4px;height:5px;margin-bottom:8px;overflow:hidden"><div id="fbCreditBar" style="background:linear-gradient(90deg,var(--green-light),var(--gold));height:100%;width:0%;transition:width .3s;border-radius:4px"></div></div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px">
-              <div class="fb-xi-slot" id="fb-slot-wk" style="font-size:10px;padding:5px 3px;text-align:center">🧤<br><span id="fb-cnt-wk">0</span><br><span style="font-size:8px;color:var(--muted)">WK</span></div>
-              <div class="fb-xi-slot" id="fb-slot-bat" style="font-size:10px;padding:5px 3px;text-align:center">🏏<br><span id="fb-cnt-bat">0</span><br><span style="font-size:8px;color:var(--muted)">BAT</span></div>
-              <div class="fb-xi-slot" id="fb-slot-ar" style="font-size:10px;padding:5px 3px;text-align:center">🔄<br><span id="fb-cnt-ar">0</span><br><span style="font-size:8px;color:var(--muted)">AR</span></div>
-              <div class="fb-xi-slot" id="fb-slot-bowl" style="font-size:10px;padding:5px 3px;text-align:center">🎯<br><span id="fb-cnt-bowl">0</span><br><span style="font-size:8px;color:var(--muted)">BOWL</span></div>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><span style="font-size:11px;color:var(--muted)">Selected</span><span id="fbTotalPicked" style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text)">0 / 11</span></div>
-            <div style="display:flex;gap:5px;margin-bottom:8px;overflow-x:auto;scrollbar-width:none">
-              <button id="rTab-wk" onclick="fbSwitchRoleTab('wk',this)" style="flex-shrink:0;padding:5px 12px;border-radius:16px;border:1px solid var(--ipl-orange);background:rgba(249,115,22,.15);color:var(--ipl-orange);font-size:11px;cursor:pointer;font-family:inherit">🧤 WK</button>
-              <button id="rTab-bat" onclick="fbSwitchRoleTab('bat',this)" style="flex-shrink:0;padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--mid);color:var(--muted);font-size:11px;cursor:pointer;font-family:inherit">🏏 BAT</button>
-              <button id="rTab-ar" onclick="fbSwitchRoleTab('ar',this)" style="flex-shrink:0;padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--mid);color:var(--muted);font-size:11px;cursor:pointer;font-family:inherit">🔄 AR</button>
-              <button id="rTab-bowl" onclick="fbSwitchRoleTab('bowl',this)" style="flex-shrink:0;padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--mid);color:var(--muted);font-size:11px;cursor:pointer;font-family:inherit">🎯 BOWL</button>
-            </div>
-            <div id="fbPanelWK"><div style="font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:7px;text-transform:uppercase">Wicketkeepers — Select 1 to 4</div><div class="fb-player-grid" id="fbWKList"></div></div>
-            <div id="fbPanelBat" style="display:none"><div style="font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:7px;text-transform:uppercase">Batters — Select 1 to 6</div><div class="fb-player-grid" id="fbBATList"></div></div>
-            <div id="fbPanelAR" style="display:none"><div style="font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:7px;text-transform:uppercase">All-Rounders — Select 1 to 4</div><div class="fb-player-grid" id="fbARList"></div></div>
-            <div id="fbPanelBowl" style="display:none"><div style="font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:7px;text-transform:uppercase">Bowlers — Select 1 to 6</div><div class="fb-player-grid" id="fbBOWLList"></div></div>
-            <div id="fbTeamStrip" style="display:none;margin-top:8px;background:rgba(249,115,22,.05);border:1px solid rgba(249,115,22,.15);border-radius:7px;padding:9px">
-              <div style="font-size:9px;color:var(--gold);letter-spacing:1px;margin-bottom:5px;font-weight:700;text-transform:uppercase">Your Team</div>
-              <div id="fbTeamStripList" style="display:flex;flex-wrap:wrap;gap:4px;font-size:10px"></div>
-              <div id="fbTeamWarn" style="display:none;margin-top:5px;font-size:10px;color:#f87171">⚠️ <span id="fbTeamWarnMsg"></span></div>
-            </div>
-            <div id="fbCaptainPanel" style="display:none;margin-top:10px">
-              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin-bottom:5px">⭐ Captain & Vice-Captain</div>
-              <div style="font-size:10px;color:var(--muted);margin-bottom:7px">C = 2× points · VC = 1.5× points</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-                <div><label class="fb-label">Captain (C)</label><select class="fb-select" id="fbCaptainSelect"></select></div>
-                <div><label class="fb-label">Vice-Captain (VC)</label><select class="fb-select" id="fbVcSelect"></select></div>
-              </div>
-            </div>
-            <div style="margin-top:10px">
-              <button class="fb-btn-primary" id="fbConfirmBtn" onclick="fbConfirmTeam()" style="opacity:.35;pointer-events:none">✅ Confirm Team</button>
-              <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:5px" id="fbPickStatus">Select 11 players within 100 credits</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LOBBY -->
-      <div id="fbLobbyOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:700;overflow-y:auto;backdrop-filter:blur(6px)">
-        <div style="max-width:520px;margin:0 auto;padding:14px 12px 50px">
-          <div class="fb-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-              <div class="fb-card-title">🏟️ Battle Lobby</div>
-              <button onclick="fbCloseLobby()" style="background:var(--mid2);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:14px">✕</button>
-            </div>
-            <div class="fb-room-info" id="fbLobbyRoomInfo"></div>
-            <div class="fb-code-box" id="fbLobbyCodeBox"></div>
-            <div class="fb-role-label">👥 PLAYERS IN ROOM</div>
-            <div id="fbLobbyPlayers"></div>
-            <div id="fbScoreboardWrap" style="display:none">
-              <div class="fb-role-label" style="color:var(--gold);margin-top:14px">🏆 FINAL SCOREBOARD</div>
-              <div id="fbScoreboard"></div>
-            </div>
-            <div id="fbLobbyActions" style="margin-top:12px;display:flex;flex-direction:column;gap:8px"></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /fbMainContent -->
-  </div><!-- /section-fantasy-battle -->
 
   <!-- ════ IPL SECTION ════ -->
   <div id="section-ipl" style="display:none">
@@ -1106,10 +616,7 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
     <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     <span>Records</span>
   </button>
-  <button class="bn-item" onclick="showSection('fantasy-battle',this,'bn')" id="bn-fantasy">
-    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-    <span>Battle</span>
-  </button>
+  <button class="bn-item" onclick="showSection('county',this,'bn')" id="bn-county">
     <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
     <span>County</span>
   </button>
@@ -1137,56 +644,20 @@ body.light-mode{--dark:#f4f7f5;--dark2:#ffffff;--mid:#e8f0eb;--mid2:#dce8df;--te
     <div id="subModalInner">
       <div class="sub-modal-logo">Cric<span>Pulse</span></div>
       <h2>Go Premium 🏆</h2>
-      <div class="sub-badge">🔥 Most Popular — Only ₹49/month</div>
-      <div class="sub-price">₹49</div>
-      <div class="sub-price-label">per month · Auto-renews · Cancel anytime</div>
-      <div class="sub-timer">⏰ Auto-Pay via UPI — <span>Set once, never pay manually again!</span></div>
-      <div class="sub-features-grid">
-        <div class="sub-feat-card">
-          <div class="feat-icon">⚡</div>
-          <div class="feat-title">Ball-by-Ball</div>
-          <div class="feat-desc">Real-time live scores updated every ball</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">🚫</div>
-          <div class="feat-title">Ad-Free</div>
-          <div class="feat-desc">Zero ads, pure cricket experience</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">🧠</div>
-          <div class="feat-title">Win Predictor</div>
-          <div class="feat-desc">AI predicts match winner live</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">🏆</div>
-          <div class="feat-title">Fantasy Tips</div>
-          <div class="feat-desc">Expert picks for Dream11 & more</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">🎯</div>
-          <div class="feat-title">Cricket IQ Quiz</div>
-          <div class="feat-desc">Daily quiz with leaderboard & prizes</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">📢</div>
-          <div class="feat-title">Live Commentary</div>
-          <div class="feat-desc">Text commentary for every match</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">📊</div>
-          <div class="feat-title">Deep Stats</div>
-          <div class="feat-desc">Player analytics & match history</div>
-        </div>
-        <div class="sub-feat-card">
-          <div class="feat-icon">🔔</div>
-          <div class="feat-title">Smart Alerts</div>
-          <div class="feat-desc">Wicket & six alerts instantly</div>
-        </div>
-      </div>
+      <div class="sub-price">₹20</div>
+      <div class="sub-price-label">per month · Cancel anytime</div>
+      <ul class="sub-features">
+        <li><span class="chk">✔</span> Real-time ball-by-ball live scores</li>
+        <li><span class="chk">✔</span> Ad-free experience across all pages</li>
+        <li><span class="chk">✔</span> Match alerts & push notifications</li>
+        <li><span class="chk">✔</span> Full player stats & analytics</li>
+        <li><span class="chk">✔</span> IPL fantasy insights & predictions</li>
+        <li><span class="chk">✔</span> Priority access to breaking news</li>
+      </ul>
       <button class="sub-pay-btn" id="subPayBtn" onclick="startRazorpay()">
-        🔄 Subscribe ₹49/month — Auto-Pay
+        Pay ₹20 / month with Razorpay
       </button>
-      <div class="sub-secure">🔒 UPI Autopay · Cards · Net Banking · Auto-debited monthly</div>
+      <div class="sub-secure">🔒 Secured by Razorpay · UPI, Cards, Net Banking accepted</div>
     </div>
   </div>
 </div>
@@ -1250,12 +721,6 @@ const DEMO_MATCHES = [
 ];
 
 const IPL_MATCHES = [
-  { id:'dom1', isLive:true, isIPL:false, isDomestic:true, series:'Ranji Trophy · Quarter Final',
-    teams:[{name:'Mumbai',flag:'🔵',score:'287/6',overs:'48.2',winner:false},{name:'Karnataka',flag:'🔴',score:'241',overs:'44.1',winner:false}],
-    status:'Mumbai need 2 more wickets', crr:'CRR: 5.94', batsmen:'Shreyas 87*', players:[]},
-  { id:'dom2', isLive:false, isIPL:false, isDomestic:true, isUpcoming:true, series:'Vijay Hazare Trophy · SF', upcomingTime:'TOMORROW 9:00 AM',
-    teams:[{name:'Delhi',flag:'🟡',score:'TBD',overs:'',winner:false},{name:'Punjab',flag:'🔴',score:'TBD',overs:'',winner:false}],
-    status:'Match starts tomorrow', crr:'', batsmen:'', players:[]},
   { id:'ipl1', isLive:true, isIPL:true, series:'IPL 2026 · Match 33',
     teams:[{name:'RCB',flag:'🔴',score:'198/4',overs:'18.4'},{name:'KKR',flag:'🟣',score:'187/7',overs:'20'}],
     status:'RCB need 11 runs in 8 balls', crr:'CRR: 10.61 · RRR: 8.25', batsmen:'Kohli 76* Maxwell 22*',
@@ -1380,9 +845,8 @@ function renderScoreCard(m) {
     : `<span class="completed-badge">COMPLETED</span>`;
 
   const borderCls = m.isLive ? 'live' : m.isIPL ? 'ipl-card' : '';
-  const matchType = m.isIPL ? 'ipl' : m.isDomestic ? 'domestic' : 'international';
 
-  return `<div class="score-card ${borderCls}" data-match-type="${matchType}" onclick="showPlayers('${m.id}')">
+  return `<div class="score-card ${borderCls}" onclick="showPlayers('${m.id}')">
     <div class="match-meta">
       <span class="match-type">${m.series}</span>
       ${badge}
@@ -1397,10 +861,7 @@ function renderScoreCard(m) {
     ${m.crr?`<div class="crr">${m.crr}</div>`:''}
     <div class="card-footer">
       <span style="font-size:9px;color:var(--muted)">Tap for Top 8 Players</span>
-      <div style="display:flex;gap:6px">
-        <button class="share-btn" onclick="event.stopPropagation();shareMatch('${m.id}')">📤 Share</button>
-        <button class="view-players-btn" onclick="event.stopPropagation();showPlayers('${m.id}')">👥 Top 8</button>
-      </div>
+      <button class="view-players-btn" onclick="event.stopPropagation();showPlayers('${m.id}')">👥 Top 8</button>
     </div>
   </div>`;
 }
@@ -1531,8 +992,8 @@ async function fetchLiveScores(){
   isLoading=true;
   const btn=document.getElementById('refreshBtn');
   if(btn) btn.classList.add('spinning');
-  setBadge('📡 Loading…','connected');
-  // demoNotice hidden
+  setBadge('📡 Loading…','demo');
+  document.getElementById('demoNotice').style.display='block';
   document.getElementById('errorNotice').style.display='none';
 
   try {
@@ -1622,10 +1083,10 @@ function closeModal(e){ if(e.target===document.getElementById('playersModal')) c
 function closeModalDirect(){ document.getElementById('playersModal').classList.remove('open'); document.body.style.overflow=''; }
 
 // ══════════════════════════════════════════
-// CONFIG
+// CONFIG — swap these values once approved
 // ══════════════════════════════════════════
-const RAZORPAY_KEY     = 'rzp_live_SYZQrxsEmyY1wK';  // ✅ Live key
-const RAZORPAY_PLAN_ID = 'plan_SYZxrQ8ZZ84hJV';
+const RAZORPAY_KEY        = 'YOUR_RAZORPAY_KEY_ID';       // e.g. rzp_live_XXXXXXXX
+const RAZORPAY_PLAN_ID    = 'YOUR_RAZORPAY_PLAN_ID';      // create in Razorpay Dashboard → Subscriptions → Plans (₹20/month)
 const EMAILJS_SERVICE_ID  = 'YOUR_EMAILJS_SERVICE_ID';    // emailjs.com → Email Services
 const EMAILJS_TEMPLATE_WELCOME = 'YOUR_WELCOME_TEMPLATE'; // emailjs.com → Email Templates (welcome)
 const EMAILJS_TEMPLATE_DIGEST  = 'YOUR_DIGEST_TEMPLATE';  // emailjs.com → Email Templates (daily digest)
@@ -1651,7 +1112,7 @@ function sendWelcomeEmail(toEmail, toName){
       from_name:'CricPulse',
       reply_to: 'no-reply@cricpulse.in',
       subject:  '🏏 Welcome to CricPulse Premium!',
-      message:  `Hi ${toName||'there'},\n\nYour CricPulse Premium subscription (₹49/month) is now active!\n\nWhat you get:\n✔ Real-time ball-by-ball live scores\n✔ Ad-free experience\n✔ Match alerts & notifications\n✔ Full player stats & IPL insights\n\nYour subscription auto-renews every month. You can cancel anytime.\n\nEnjoy the cricket! 🏆\n\n— CricPulse Team`
+      message:  `Hi ${toName||'there'},\n\nYour CricPulse Premium subscription (₹20/month) is now active!\n\nWhat you get:\n✔ Real-time ball-by-ball live scores\n✔ Ad-free experience\n✔ Match alerts & notifications\n✔ Full player stats & IPL insights\n\nYour subscription auto-renews every month. You can cancel anytime.\n\nEnjoy the cricket! 🏆\n\n— CricPulse Team`
     };
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_WELCOME, params)
       .catch(e=>console.warn('Welcome email error:',e));
@@ -1755,8 +1216,8 @@ function renderSubModalStep1(){
   document.getElementById('subModalInner').innerHTML=`
     <div class="sub-modal-logo">Cric<span>Pulse</span></div>
     <h2>Go Premium 🏆</h2>
-    <div class="sub-price">₹49</div>
-    <div class="sub-price-label">per month · Cancel anytime</div>
+    <div class="sub-price">₹20</div>
+    <div class="sub-price-label">per month · Auto-renews · Cancel anytime</div>
     <ul class="sub-features">
       <li><span class="chk">✔</span> Real-time ball-by-ball live scores</li>
       <li><span class="chk">✔</span> Ad-free experience across all pages</li>
@@ -1765,16 +1226,15 @@ function renderSubModalStep1(){
       <li><span class="chk">✔</span> IPL fantasy insights & predictions</li>
       <li><span class="chk">✔</span> Priority access to breaking news</li>
     </ul>
-    <div style="margin-bottom:16px">
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:5px">📧 Your email <span style="color:var(--red)">*</span></label>
-      <input id="subEmail" type="email" class="api-input" placeholder="you@example.com" style="width:100%;font-size:13px;padding:10px 12px;margin-bottom:7px" />
-      <input id="subName"  type="text"  class="api-input" placeholder="Your name (optional)" style="width:100%;font-size:13px;padding:10px 12px" />
+    <div style="margin-bottom:14px">
+      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:5px">Your email (for receipt & cricket digest)</label>
+      <input id="subEmail" type="email" class="api-input" placeholder="you@example.com" style="width:100%;font-size:13px;padding:9px 12px" />
+      <input id="subName"  type="text"  class="api-input" placeholder="Your name (optional)" style="width:100%;font-size:13px;padding:9px 12px;margin-top:7px" />
     </div>
-    <button class="sub-pay-btn" id="subPayBtn" onclick="startRazorpay()" style="font-size:16px;padding:15px">
-      💳 Pay ₹49 — Open Razorpay
+    <button class="sub-pay-btn" id="subPayBtn" onclick="startRazorpay()">
+      🔄 Subscribe ₹20/month — Auto-Pay
     </button>
-    <div class="sub-secure" style="margin-top:10px">🔒 UPI · Cards · Net Banking · Wallets — Powered by Razorpay</div>
-    `;
+    <div class="sub-secure">🔒 Secured by Razorpay · UPI, Cards, Net Banking · Auto-debited monthly</div>`;
 }
 
 function closeSubModal(e){
@@ -1786,33 +1246,14 @@ function closeSubModalDirect(){
 }
 
 function startRazorpay(){
-  const emailEl = document.getElementById('subEmail');
-  const email   = (emailEl && emailEl.value.trim()) || '';
-  if(!email || !email.includes('@')){
-    if(emailEl){ emailEl.style.border='2px solid var(--red)'; emailEl.focus(); }
-    showToast('⚠️ Please enter a valid email first');
-    return;
-  }
-  if(emailEl) emailEl.style.border='';
-
-  const btn = document.getElementById('subPayBtn');
-  if(btn){ btn.disabled=true; btn.textContent='⏳ Opening payment…'; }
-
-  // Close modal so it doesn't sit over Razorpay iframe
-  const overlay = document.getElementById('subModalOverlay');
-  if(overlay) overlay.classList.remove('open');
-  document.body.style.overflow='';
-
+  const emailEl=document.getElementById('subEmail');
+  const email=(emailEl&&emailEl.value.trim())||'';
+  if(!email||!email.includes('@')){ alert('Please enter your email to continue.'); emailEl&&emailEl.focus(); return; }
   if(!window.Razorpay){
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.onload  = () => launchRazorpay(email);
-    script.onerror = () => {
-      if(overlay) overlay.classList.add('open');
-      document.body.style.overflow='hidden';
-      if(btn){ btn.disabled=false; btn.textContent='💳 Pay ₹49 — Open Razorpay'; }
-      showToast('❌ Could not reach Razorpay — check your internet.');
-    };
+    const script=document.createElement('script');
+    script.src='https://checkout.razorpay.com/v1/checkout.js';
+    script.onload=()=>launchRazorpay(email);
+    script.onerror=()=>alert('Failed to load Razorpay. Please check your connection.');
     document.head.appendChild(script);
   } else {
     launchRazorpay(email);
@@ -1820,37 +1261,43 @@ function startRazorpay(){
 }
 
 function launchRazorpay(email){
-  const name = (document.getElementById('subName')?.value || '').trim();
-  const options = {
-    key:         RAZORPAY_KEY,
-    amount:      4900,
-    currency:    'INR',
-    name:        'CricPulse Premium',
-    description: '₹49/month — Premium Subscription',
-    image:       'https://i.imgur.com/n5tjHFD.png',
-    prefill:     { name: name, email: email, contact: '' },
-    notes:       { plan: 'monthly_49' },
-    theme:       { color: '#1a6b3c' },
+  const btn=document.getElementById('subPayBtn');
+  const name=(document.getElementById('subName')?.value.trim())||'';
+  if(btn){ btn.disabled=true; btn.textContent='Opening payment…'; }
+
+  // ── AUTO-RECURRING via Razorpay Subscription ──
+  // Razorpay Subscriptions auto-charge ₹20 every month with UPI Autopay / E-mandate
+  // You must first create a Plan in your Razorpay Dashboard and paste the plan_id above.
+  const options={
+    key:           RAZORPAY_KEY,
+    subscription_id: RAZORPAY_PLAN_ID,  // ← Razorpay auto-charges monthly from here
+    name:          'CricPulse',
+    description:   'Premium · ₹20/month — Auto-renewing',
+    image:         '',
     handler: function(response){
       onPaymentSuccess(response, email, name);
     },
+    prefill:{ name, email, contact:'' },
+    notes:{ plan:'monthly_20_autopay' },
+    theme:{ color:'#1a6b3c' },
     modal:{
-      backdropclose: false,
-      ondismiss: function(){ showToast('Payment cancelled. Try again anytime!'); }
+      ondismiss: function(){
+        if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+      }
     }
   };
-  try {
-    const rzp = new window.Razorpay(options);
-    rzp.on('payment.failed', function(resp){
-      showToast('❌ Payment failed: '+(resp.error?.description||'Please try again.'));
+
+  try{
+    const rzp=new window.Razorpay(options);
+    rzp.on('payment.failed',function(resp){
+      if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+      alert('Payment failed: '+resp.error.description);
     });
     rzp.open();
-  } catch(err){
-    const overlay = document.getElementById('subModalOverlay');
-    if(overlay) overlay.classList.add('open');
-    document.body.style.overflow='hidden';
-    showToast('⚠️ Could not open Razorpay. Please try again.');
-    console.error('[Razorpay]', err);
+  }catch(err){
+    if(btn){ btn.disabled=false; btn.textContent='🔄 Subscribe ₹20/month — Auto-Pay'; }
+    alert('Could not open Razorpay. Make sure your Key ID and Plan ID are set.');
+    console.error(err);
   }
 }
 
@@ -1874,23 +1321,10 @@ function onPaymentSuccess(response, email, name){
     <div class="sub-success">
       <div class="tick">🎉</div>
       <h3>Welcome to CricPulse Premium!</h3>
-      <p style="margin-bottom:8px">Your ₹49/month subscription is <b style="color:var(--green-light)">active & auto-renews monthly</b> via Razorpay UPI Autopay — you will never need to pay manually again!</p>
-      <p style="margin-bottom:12px;font-size:12px;color:var(--muted)">A welcome email has been sent to <b style="color:var(--text)">${email}</b></p>
-      <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:12px;margin-bottom:12px;text-align:left">
-        <div style="font-size:11px;color:var(--gold);font-weight:700;margin-bottom:8px;letter-spacing:1px">🔓 UNLOCKED FOR YOU:</div>
-        <div style="font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:5px">
-          <span>⚡ Ball-by-ball live scores</span>
-          <span>🧠 AI Win Predictor</span>
-          <span>🏆 Fantasy Dream11 Tips</span>
-          <span>🎯 Daily Cricket IQ Quiz</span>
-          <span>📢 Live Text Commentary</span>
-          <span>🚫 Ad-free experience</span>
-          <span>🔔 Smart match alerts</span>
-          <span>📊 Deep player analytics</span>
-        </div>
-      </div>
+      <p style="margin-bottom:8px">Your ₹20/month subscription is active and will <b style="color:var(--green-light)">auto-renew monthly</b> via Razorpay.</p>
+      <p style="margin-bottom:12px;font-size:12px;color:var(--muted)">A welcome email + daily cricket digest has been sent to <b style="color:var(--text)">${email}</b></p>
       <p style="font-size:10px;color:rgba(138,171,144,.4)">Payment ID: ${response.razorpay_payment_id||'—'}</p>
-      <button class="sub-pay-btn" style="margin-top:14px" onclick="closeSubModalDirect()">🏏 Start Premium Experience!</button>
+      <button class="sub-pay-btn" style="margin-top:18px" onclick="closeSubModalDirect()">Start Watching Live 🏏</button>
     </div>`;
 
   const dn=document.getElementById('demoNotice');
@@ -1901,29 +1335,6 @@ function onPaymentSuccess(response, email, name){
 function updateNavForPremium(){
   const btn=document.querySelector('.btn-sub');
   if(btn){ btn.textContent='⭐ Premium'; btn.style.background='var(--gold)'; btn.style.color='var(--dark)'; }
-  // Show premium badge
-  let badge=document.getElementById('premiumBadge');
-  if(!badge){
-    badge=document.createElement('div');
-    badge.id='premiumBadge';
-    badge.className='premium-badge';
-    badge.innerHTML='⭐ PREMIUM';
-    document.body.appendChild(badge);
-  }
-  badge.style.display='block';
-  // Unlock all premium sections
-  document.querySelectorAll('.premium-section').forEach(s=>s.classList.add('unlocked'));
-  // Hide all ads
-  document.querySelectorAll('.adsbygoogle,.ad-slot').forEach(a=>a.style.display='none');
-  // Unlock Fantasy Battle
-  const fbLock = document.getElementById('fbPremiumLock');
-  const fbContent = document.getElementById('fbMainContent');
-  if(fbLock) fbLock.style.display='none';
-  if(fbContent){ fbContent.style.display='block'; fbRefreshRoomCount(); fbRenderOpenRooms(); fbRenderMyBattles(); fbRenderLeaderboard(); }
-  // Start premium features
-  startWinPredictor();
-  startCommentaryFeed();
-  startQuiz();
 }
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeSubModalDirect(); closeModalDirect(); } });
@@ -1941,7 +1352,7 @@ function handleBannerSubscribe(){
 // ══════════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════════
-const SECTIONS = ['home','ipl','history','county','news','fantasy-battle'];
+const SECTIONS = ['home','ipl','history','county','news'];
 
 function showSection(name, el, type) {
   // 'live' shows the home section but highlights the Live nav item
@@ -1957,7 +1368,7 @@ function showSection(name, el, type) {
   }
   // bottom nav
   document.querySelectorAll('.bn-item').forEach(b=>b.classList.remove('active'));
-  const bnMap = {home:'bn-home',live:'bn-live',ipl:'bn-ipl',history:'bn-history',county:'bn-county',news:'bn-home','fantasy-battle':'bn-fantasy'};
+  const bnMap = {home:'bn-home',live:'bn-live',ipl:'bn-ipl',history:'bn-history',county:'bn-county',news:'bn-home'};
   const bnTarget = document.getElementById(bnMap[name]||'bn-home');
   if(bnTarget) bnTarget.classList.add('active');
   if(el && type==='bn') el.classList.add('active');
@@ -1966,36 +1377,12 @@ function showSection(name, el, type) {
   if(name==='history'){ renderHistGrid(currentHistFormat); renderRecords(currentHistFormat); }
   if(name==='county') renderCounty();
   if(name==='ipl'){ renderIPLPoints(); document.getElementById('iplScoreCards').innerHTML=IPL_MATCHES.map(renderScoreCard).join(''); }
-  if(name==='fantasy-battle'){
-    var isPremium = localStorage.getItem('cricpulse_premium')==='1';
-    var lockEl = document.getElementById('fbPremiumLock');
-    var contentEl = document.getElementById('fbMainContent');
-    if(lockEl) lockEl.style.display = isPremium ? 'none' : 'block';
-    if(contentEl) contentEl.style.display = isPremium ? 'block' : 'none';
-    if(isPremium){ fbRefreshRoomCount(); fbRenderOpenRooms(); fbRenderMyBattles(); fbRenderLeaderboard(); }
-  }
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function switchMatchTab(tab, el){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  if(el) el.classList.add('active');
-  var allCards=document.querySelectorAll('#scoreCardsContainer .score-card');
-  allCards.forEach(function(card){
-    if(tab==='all'){
-      card.style.display='';
-    } else if(tab==='international'){
-      // show only international (not IPL, not domestic)
-      var matchType=card.getAttribute('data-match-type')||'';
-      card.style.display=(matchType==='international')?'':'none';
-    } else if(tab==='ipl-live'){
-      var matchType=card.getAttribute('data-match-type')||'';
-      card.style.display=(matchType==='ipl')?'':'none';
-    } else if(tab==='domestic'){
-      var matchType=card.getAttribute('data-match-type')||'';
-      card.style.display=(matchType==='domestic')?'':'none';
-    }
-  });
+  el.classList.add('active');
 }
 function switchHistFormat(fmt, el){
   currentHistFormat=fmt;
@@ -2045,12 +1432,6 @@ function closeDrawer(){
 window.addEventListener('DOMContentLoaded',()=>{
   // Restore premium state
   if(localStorage.getItem('cricpulse_premium')==='1') updateNavForPremium();
-  // Init premium lock on fantasy battle
-  var isPremium = localStorage.getItem('cricpulse_premium')==='1';
-  var fbLock = document.getElementById('fbPremiumLock');
-  var fbContent = document.getElementById('fbMainContent');
-  if(fbLock) fbLock.style.display = isPremium ? 'none' : 'block';
-  if(fbContent) fbContent.style.display = isPremium ? 'block' : 'none';
   // init all sections hidden except home
   SECTIONS.forEach(s=>{ const el=document.getElementById('section-'+s); if(el&&s!=='home') el.style.display='none'; });
   fetchLiveScores();
@@ -2058,1512 +1439,6 @@ window.addEventListener('DOMContentLoaded',()=>{
   setInterval(fetchLiveScores, 90*1000);
   // Check if any subscribers are due a daily digest email
   setTimeout(checkAndSendDigests, 3000);
-});
-</script>
-<!-- ══ PREMIUM SECTIONS ══ -->
-<div id="premiumFeaturesWrap" style="max-width:480px;margin:0 auto;padding:0 12px 80px;">
-
-  <!-- Win Predictor -->
-  <div class="premium-section" id="winPredictorSection">
-    <div class="premium-section-title">🧠 AI Win Predictor <span style="font-size:9px;background:var(--green);color:#000;padding:2px 6px;border-radius:6px;margin-left:4px">LIVE</span></div>
-    <div class="predictor-teams">
-      <div class="predictor-team" id="pred-team1">IND</div>
-      <div style="font-size:11px;color:var(--muted)">vs</div>
-      <div class="predictor-team" id="pred-team2">AUS</div>
-    </div>
-    <div class="predictor-bar"><div class="predictor-fill" id="pred-fill" style="width:60%"></div></div>
-    <div class="predictor-pct" id="pred-pct">IND 60% · AUS 40%</div>
-    <div style="font-size:10px;color:var(--muted);text-align:center;margin-top:6px" id="pred-reason">Based on current run rate, wickets & D/L method</div>
-  </div>
-
-  <!-- Fantasy Tips -->
-  <div class="premium-section" id="fantasySection">
-    <div class="premium-section-title">🏆 Fantasy Dream11 Tips</div>
-    <div class="fantasy-card">
-      <div class="fantasy-card-title">⭐ Captain Picks</div>
-      <div class="fantasy-player"><span>V. Kohli</span><span class="fantasy-points">+145 pts predicted</span></div>
-      <div class="fantasy-player"><span>R. Jadeja</span><span class="fantasy-points">+132 pts predicted</span></div>
-      <div class="fantasy-player"><span>J. Bumrah</span><span class="fantasy-points">+128 pts predicted</span></div>
-    </div>
-    <div class="fantasy-card">
-      <div class="fantasy-card-title">💎 Value Picks (Low ownership)</div>
-      <div class="fantasy-player"><span>S. Gill</span><span class="fantasy-points">+118 pts predicted</span></div>
-      <div class="fantasy-player"><span>A. Patel</span><span class="fantasy-points">+105 pts predicted</span></div>
-    </div>
-  </div>
-
-  <!-- Cricket IQ Quiz -->
-  <div class="premium-section" id="quizSection">
-    <div class="premium-section-title">🎯 Daily Cricket IQ Quiz</div>
-    <div class="quiz-card">
-      <div class="quiz-streak" id="quizStreak">🔥 Streak: 0 | Score: 0</div>
-      <div class="quiz-question" id="quizQ">Loading question...</div>
-      <div class="quiz-options" id="quizOpts"></div>
-      <div id="quizResult" style="font-size:12px;margin-top:10px;display:none"></div>
-    </div>
-  </div>
-
-  <!-- Live Commentary -->
-  <div class="premium-section" id="commentarySection">
-    <div class="premium-section-title">📢 Live Text Commentary</div>
-    <div class="commentary-feed" id="commentaryFeed">
-      <div class="commentary-item">Loading live commentary...</div>
-    </div>
-  </div>
-
-</div>
-
-<script>
-// ══ THEME TOGGLE ══
-function toggleTheme(){
-  document.body.classList.toggle('light-mode');
-  const isLight=document.body.classList.contains('light-mode');
-  document.getElementById('themeBtn').textContent=isLight?'🌙 Dark':'☀️ Light';
-  localStorage.setItem('cricpulse_theme',isLight?'light':'dark');
-}
-(function initTheme(){
-  if(localStorage.getItem('cricpulse_theme')==='light'){
-    document.body.classList.add('light-mode');
-    window.addEventListener('DOMContentLoaded',()=>{
-      const b=document.getElementById('themeBtn');
-      if(b) b.textContent='🌙 Dark';
-    });
-  }
-})();
-
-// ══ FAVOURITE TEAM ══
-function saveFavTeam(val){
-  if(!val) return;
-  localStorage.setItem('cricpulse_favteam',val);
-  const badge=document.getElementById('favBadge');
-  if(badge){ badge.style.display='inline'; badge.textContent='❤️ '+val; }
-  showToast('❤️ Following '+val+'! We\'ll highlight their matches.');
-}
-(function initFavTeam(){
-  window.addEventListener('DOMContentLoaded',()=>{
-    const saved=localStorage.getItem('cricpulse_favteam');
-    if(saved){
-      const sel=document.getElementById('favTeamSelect');
-      if(sel) sel.value=saved;
-      const badge=document.getElementById('favBadge');
-      if(badge){ badge.style.display='inline'; badge.textContent='❤️ '+saved; }
-    }
-  });
-})();
-
-// ══ MATCH NOTIFICATIONS ══
-function toggleNotifications(on){
-  if(on){
-    if('Notification' in window && Notification.permission!=='granted'){
-      Notification.requestPermission().then(p=>{
-        if(p==='granted'){
-          localStorage.setItem('cricpulse_notif','1');
-          showToast('🔔 Notifications enabled! You\'ll get match alerts.');
-          new Notification('CricPulse Alerts On!',{body:'You\'ll get live match updates.',icon:'🏏'});
-        } else {
-          document.getElementById('notifToggle').checked=false;
-          showToast('⚠️ Please allow notifications in browser settings.');
-        }
-      });
-    } else {
-      localStorage.setItem('cricpulse_notif','1');
-      showToast('🔔 Match alerts enabled!');
-    }
-  } else {
-    localStorage.removeItem('cricpulse_notif');
-    showToast('🔕 Match alerts disabled.');
-  }
-}
-window.addEventListener('DOMContentLoaded',()=>{
-  if(localStorage.getItem('cricpulse_notif')==='1'){
-    const t=document.getElementById('notifToggle');
-    if(t) t.checked=true;
-  }
-});
-
-// ══ WHATSAPP CTA ══
-function openWAGroup(){
-  // Replace with your actual WhatsApp channel link
-  const waLink='https://whatsapp.com/channel/0029Va4tTjO60eBf5sJ5iJ1C';
-  window.open(waLink,'_blank','noopener,noreferrer');
-  showToast('📱 Opening WhatsApp channel…');
-}
-
-// ══ LIVE FAN POLL ══
-var POLLS=[
-  {q:'Who will win IPL 2026?',opts:['MI 🔵','CSK 🟡','RCB 🔴','GT 🔷'],votes:[342,298,215,187]},
-  {q:'Best T20 batter of all time?',opts:['Virat Kohli','AB de Villiers','Chris Gayle','Rohit Sharma'],votes:[445,312,198,221]},
-  {q:'Who will be IPL 2026 Orange Cap winner?',opts:['V. Kohli','S. Gill','R. Sharma','K. Pietersen'],votes:[388,256,312,98]},
-];
-var pollIdx=0,pollVoted=false;
-function initPoll(){
-  var poll=POLLS[pollIdx];
-  var saved=localStorage.getItem('cricpulse_poll_'+pollIdx);
-  pollVoted=!!saved;
-  document.getElementById('pollQuestion').textContent=poll.q;
-  renderPoll(poll,pollVoted,saved?parseInt(saved):-1);
-}
-function renderPoll(poll,voted,chosenIdx){
-  var total=poll.votes.reduce((a,b)=>a+b,0);
-  var html='';
-  poll.opts.forEach(function(opt,i){
-    var pct=Math.round(poll.votes[i]/total*100);
-    if(voted){
-      var chosen=i===chosenIdx;
-      html+='<div class="poll-opt voted" style="'+(chosen?'border-color:var(--green-light);background:rgba(34,197,94,0.1)':'')+'">'+
-        '<div style="flex:1"><span style="'+(chosen?'color:var(--green-light)':'')+'">'+opt+'</span>'+
-        '<div class="poll-bar-wrap"><div class="poll-bar" style="width:'+pct+'%"></div></div></div>'+
-        '<span class="poll-pct">'+pct+'%</span></div>';
-    } else {
-      html+='<div class="poll-opt" onclick="votePoll('+i+')"><span>'+opt+'</span><span style="font-size:10px;color:var(--muted)">Vote</span></div>';
-    }
-  });
-  document.getElementById('pollOpts').innerHTML=html;
-  document.getElementById('pollTotal').textContent=voted?(total.toLocaleString()+' votes cast'):'';
-}
-function votePoll(idx){
-  if(pollVoted) return;
-  var poll=POLLS[pollIdx];
-  poll.votes[idx]+=1;
-  pollVoted=true;
-  localStorage.setItem('cricpulse_poll_'+pollIdx,idx);
-  renderPoll(poll,true,idx);
-  showToast('✅ Vote counted! Thanks for participating.');
-}
-window.addEventListener('DOMContentLoaded',initPoll);
-
-// ══ MATCH SHARE ══
-function shareMatch(id){
-  var all=[...DEMO_MATCHES,...IPL_MATCHES];
-  var m=all.find(function(x){return x.id===id;});
-  if(!m) return;
-  var text='🏏 '+m.teams.map(function(t){return t.name+' '+t.score;}).join(' vs ')+'\n'+m.status+'\n\n📱 Live on CricPulse — cricpulse.in';
-  if(navigator.share){
-    navigator.share({title:'CricPulse Score Update',text:text,url:'https://cricpulse.in'}).catch(function(){});
-  } else {
-    navigator.clipboard.writeText(text).then(function(){ showToast('📋 Score copied to clipboard!'); }).catch(function(){
-      showToast('📤 Share: '+m.teams[0].name+' vs '+m.teams[1].name);
-    });
-  }
-}
-
-// ══ SCORE PREDICTOR GAME ══
-var predActualScore=287;
-var predQuestions=[
-  {q:'What will India\'s final score be vs Australia today?',min:100,max:400,actual:287},
-  {q:'How many wickets will Bumrah take in the next match?',min:0,max:10,actual:3},
-  {q:'Predict CSK total vs MI tonight (overs: 20)',min:120,max:250,actual:175},
-];
-var predQIdx=0;
-function updatePredGuess(val){
-  document.getElementById('predGuessDisplay').textContent=val;
-}
-function submitPrediction(){
-  var guess=parseInt(document.getElementById('predSlider').value);
-  var q=predQuestions[predQIdx];
-  var diff=Math.abs(guess-q.actual);
-  var pts=diff===0?100:diff<=5?80:diff<=15?60:diff<=30?40:diff<=50?20:5;
-  var resultEl=document.getElementById('predResult');
-  var msg=diff===0?'🎯 PERFECT! +100 pts!':diff<=5?'🔥 So close! +80 pts':diff<=15?'👍 Great guess! +60 pts':diff<=30?'✅ Not bad! +40 pts':'📊 Actual: '+q.actual+' | +'+pts+' pts';
-  resultEl.textContent=msg;
-  resultEl.style.display='block';
-  document.getElementById('predSubmitBtn').disabled=true;
-  document.getElementById('predSubmitBtn').textContent='✅ Prediction Locked';
-  // Update quiz score display if quiz is active
-  quizScore+=pts;
-  if(document.getElementById('quizStreak')) document.getElementById('quizStreak').textContent='🔥 Streak: '+quizStreak+' | Score: '+quizScore;
-  // Update leaderboard row
-  var myRow=document.getElementById('myLeaderRow');
-  var myScore=document.getElementById('myLeaderScore');
-  if(myRow){ myRow.style.display='flex'; }
-  if(myScore){ myScore.textContent=quizScore+' pts'; }
-  // Next question after 3s
-  setTimeout(function(){
-    predQIdx=(predQIdx+1)%predQuestions.length;
-    var next=predQuestions[predQIdx];
-    document.getElementById('predGameQ').textContent=next.q;
-    document.getElementById('predSlider').min=next.min;
-    document.getElementById('predSlider').max=next.max;
-    document.getElementById('predSlider').value=Math.floor((next.min+next.max)/2);
-    document.getElementById('predGuessDisplay').textContent=document.getElementById('predSlider').value;
-    resultEl.style.display='none';
-    document.getElementById('predSubmitBtn').disabled=false;
-    document.getElementById('predSubmitBtn').textContent='⚡ Lock In My Prediction';
-  },3500);
-}
-
-function startWinPredictor(){
-  var teams=[['IND','AUS'],['MI','CSK'],['IND','ENG'],['RCB','KKR'],['PAK','SA']];
-  var t=teams[Math.floor(Math.random()*teams.length)];
-  document.getElementById('pred-team1').textContent=t[0];
-  document.getElementById('pred-team2').textContent=t[1];
-  updatePredictor();
-  setInterval(updatePredictor,8000);
-}
-function updatePredictor(){
-  var pct=Math.floor(Math.random()*30)+40; // 40-70%
-  var reasons=['Based on current run rate & wickets','DLS method applied','Momentum shift detected','Pitch conditions favor batsmen','Bowling attack dominating'];
-  document.getElementById('pred-fill').style.width=pct+'%';
-  var t1=document.getElementById('pred-team1').textContent;
-  var t2=document.getElementById('pred-team2').textContent;
-  document.getElementById('pred-pct').textContent=t1+' '+pct+'% · '+t2+' '+(100-pct)+'%';
-  document.getElementById('pred-reason').textContent=reasons[Math.floor(Math.random()*reasons.length)];
-}
-
-// ══ LIVE COMMENTARY ══
-var commentaryLines=[
-  {text:'SIX! Kohli launches it over long-on! What a shot!',type:'six'},
-  {text:'FOUR! Through the covers, perfectly timed.',type:'four'},
-  {text:'WICKET! Bumrah gets him! Edge behind to the keeper.',type:'wicket'},
-  {text:'Dot ball. Good length delivery, defended well.',type:''},
-  {text:'Wide! Down the leg side, keeper cant reach it.',type:''},
-  {text:'SIX! Into the stands! Crowd goes wild!',type:'six'},
-  {text:'WICKET! Caught at mid-wicket! Big wicket this one.',type:'wicket'},
-  {text:'FOUR! Pulled away to fine leg boundary.',type:'four'},
-  {text:'Appeal for LBW... Not out says the umpire.',type:''},
-  {text:'Single taken. Good running between the wickets.',type:''},
-  {text:'FOUR! Edged but through the gap between slips.',type:'four'},
-  {text:'WICKET! Bowled him! Middle stump cartwheels!',type:'wicket'},
-];
-var commIdx=0;
-function startCommentaryFeed(){
-  var feed=document.getElementById('commentaryFeed');
-  feed.innerHTML='';
-  setInterval(function(){
-    var line=commentaryLines[commIdx%commentaryLines.length];
-    commIdx++;
-    var div=document.createElement('div');
-    div.className='commentary-item'+(line.type?' '+line.type:'');
-    div.textContent=line.text;
-    feed.insertBefore(div,feed.firstChild);
-    if(feed.children.length>8) feed.removeChild(feed.lastChild);
-  },4000);
-}
-
-// ══ CRICKET IQ QUIZ ══
-var quizData=[
-  {q:'Who holds the record for most Test centuries?',opts:['Sachin Tendulkar','Ricky Ponting','Kumar Sangakkara','Jacques Kallis'],ans:0},
-  {q:'Which country won the first Cricket World Cup in 1975?',opts:['Australia','India','West Indies','England'],ans:2},
-  {q:'What is the maximum score off a single delivery?',opts:['4 runs','6 runs','8 runs','7 runs'],ans:1},
-  {q:'Who was the first bowler to take 800 Test wickets?',opts:['Glenn McGrath','Anil Kumble','Shane Warne','Muttiah Muralitharan'],ans:3},
-  {q:'Which team has won the most IPL titles?',opts:['CSK','MI','KKR','RCB'],ans:1},
-  {q:'What does "LBW" stand for in cricket?',opts:['Left Before Wicket','Leg Before Wicket','Low Ball Wide','Leg Behind Wicket'],ans:1},
-  {q:'Who hit the famous "helicopter shot" in cricket?',opts:['Virat Kohli','MS Dhoni','Rohit Sharma','Yuvraj Singh'],ans:1},
-  {q:'How many balls are in a standard cricket over?',opts:['4','5','6','8'],ans:2},
-];
-var quizScore=0,quizStreak=0,quizCurrent=0;
-function startQuiz(){
-  loadQuestion();
-}
-function loadQuestion(){
-  var q=quizData[quizCurrent%quizData.length];
-  document.getElementById('quizQ').textContent=q.q;
-  document.getElementById('quizResult').style.display='none';
-  var opts=document.getElementById('quizOpts');
-  opts.innerHTML='';
-  q.opts.forEach(function(o,i){
-    var btn=document.createElement('button');
-    btn.className='quiz-opt';
-    btn.textContent=o;
-    btn.onclick=function(){ answerQuiz(i,q.ans,btn); };
-    opts.appendChild(btn);
-  });
-}
-function answerQuiz(selected,correct,btn){
-  var opts=document.getElementById('quizOpts').querySelectorAll('.quiz-opt');
-  opts.forEach(function(b){ b.onclick=null; });
-  if(selected===correct){
-    btn.classList.add('correct');
-    quizScore+=10; quizStreak++;
-    document.getElementById('quizResult').style.display='block';
-    document.getElementById('quizResult').innerHTML='<span style="color:var(--green-light)">✅ Correct! +10 points</span>';
-  } else {
-    btn.classList.add('wrong');
-    opts[correct].classList.add('correct');
-    quizStreak=0;
-    document.getElementById('quizResult').style.display='block';
-    document.getElementById('quizResult').innerHTML='<span style="color:#f87171">❌ Wrong! Better luck next time.</span>';
-  }
-  document.getElementById('quizStreak').textContent='🔥 Streak: '+quizStreak+' | Score: '+quizScore;
-  quizCurrent++;
-  setTimeout(loadQuestion,2000);
-}
-
-// ══════════════════════════════════════════════════════
-// ⚔️  FANTASY BATTLE ENGINE
-// No real money · Skill-based · Local storage rooms
-// Up to 10 players per room · Pick 5 bat + 4 bowl + 1 wk
-// ══════════════════════════════════════════════════════
-
-// ══════════════════════════════════════════════════════════
-// ⚔️  FANTASY BATTLE ENGINE v4 — Dream11-Style
-// Match squads only · 100 credits · 11 players
-// Max 7 from one team · WK/BAT/AR/BOWL roles
-// Custom match builder · Tied rank scoring
-// ══════════════════════════════════════════════════════════
-
-// ── DREAM11-STYLE POINTS SYSTEM ──
-var FB_POINTS = {
-  bat: { run:1, boundary:1, six:2, halfCentury:8, century:16, duck:-2, strikeRateBonus:6, strikeRatePenalty:-2 },
-  bowl: { wicket:25, lbwBowled:8, fourWickets:8, fiveWickets:16, maiden:12, economy4:6, economy5:4, economy7:-2, economy8:-4 },
-  field: { catch:8, stumping:12, runOut:6 },
-  playing: 4  // 4 pts just for being in the XI
-};
-
-// ── MATCH ROSTER DATABASE ──
-// RULE: Each match has EXACTLY the playing XI announced for each team.
-// Players belong to ONE team only. No player appears in both teams.
-var FB_ROSTERS = {
-  'IND_AUS_ODI': {
-    label: '🇮🇳 India vs Australia 🇦🇺 · ODI Series',
-    teamA: 'India 🇮🇳', teamB: 'Australia 🇦🇺',
-    format: 'ODI', date: 'Apr 2, 2026', venue: 'MCG, Melbourne',
-    players: [
-      // INDIA (team:'A')
-      {id:'vk', name:'V. Kohli',      team:'A', teamName:'India 🇮🇳', role:'BAT', credits:10.5, form:92, lastStat:'78*(64b)', lastDate:'Mar 31'},
-      {id:'rs', name:'R. Sharma',     team:'A', teamName:'India 🇮🇳', role:'BAT', credits:10,   form:84, lastStat:'54(38b)',  lastDate:'Mar 29'},
-      {id:'sg', name:'S. Gill',       team:'A', teamName:'India 🇮🇳', role:'BAT', credits:9.5,  form:89, lastStat:'89(58b)',  lastDate:'Mar 27'},
-      {id:'yj', name:'Y. Jaiswal',    team:'A', teamName:'India 🇮🇳', role:'BAT', credits:9,    form:86, lastStat:'56(39b)',  lastDate:'Mar 25'},
-      {id:'kl', name:'KL Rahul',      team:'A', teamName:'India 🇮🇳', role:'WK',  credits:9,    form:78, lastStat:'34*(38b)', lastDate:'Mar 22'},
-      {id:'ra', name:'R. Jadeja',     team:'A', teamName:'India 🇮🇳', role:'AR',  credits:9,    form:85, lastStat:'42*(30b)/1wkt', lastDate:'Mar 31'},
-      {id:'ax', name:'A. Patel',      team:'A', teamName:'India 🇮🇳', role:'AR',  credits:8,    form:76, lastStat:'2/28(9ov)', lastDate:'Mar 27'},
-      {id:'jb', name:'J. Bumrah',     team:'A', teamName:'India 🇮🇳', role:'BOWL', credits:10,  form:96, lastStat:'3/42(9ov)', lastDate:'Mar 31'},
-      {id:'ms', name:'M. Siraj',      team:'A', teamName:'India 🇮🇳', role:'BOWL', credits:8.5, form:78, lastStat:'2/44(9ov)', lastDate:'Mar 29'},
-      {id:'ku', name:'K. Yadav',      team:'A', teamName:'India 🇮🇳', role:'BOWL', credits:8,   form:74, lastStat:'2/38(9ov)', lastDate:'Mar 25'},
-      {id:'sm', name:'S. Shami',      team:'A', teamName:'India 🇮🇳', role:'BOWL', credits:8.5, form:80, lastStat:'2/35(9ov)', lastDate:'Mar 22'},
-      // AUSTRALIA (team:'B')
-      {id:'th', name:'T. Head',       team:'B', teamName:'Australia 🇦🇺', role:'BAT', credits:10,  form:88, lastStat:'99(67b)',  lastDate:'Apr 1'},
-      {id:'ssd',name:'S. Smith',      team:'B', teamName:'Australia 🇦🇺', role:'BAT', credits:9.5, form:80, lastStat:'89(97b)',  lastDate:'Mar 30'},
-      {id:'mma',name:'M. Marsh',      team:'B', teamName:'Australia 🇦🇺', role:'AR',  credits:9,   form:83, lastStat:'72*(61b)/1wkt',lastDate:'Mar 28'},
-      {id:'mi', name:'A. Inglis',     team:'B', teamName:'Australia 🇦🇺', role:'WK',  credits:7.5, form:67, lastStat:'28(32b)',  lastDate:'Mar 26'},
-      {id:'gc', name:'G. Maxwell',    team:'B', teamName:'Australia 🇦🇺', role:'AR',  credits:9,   form:84, lastStat:'55*(30b)/1wkt',lastDate:'Mar 24'},
-      {id:'lr', name:'M. Labuschagne',team:'B', teamName:'Australia 🇦🇺', role:'BAT', credits:9,   form:82, lastStat:'61(72b)',  lastDate:'Mar 22'},
-      {id:'mst',name:'M. Starc',      team:'B', teamName:'Australia 🇦🇺', role:'BOWL', credits:9.5,form:87, lastStat:'2/51(9ov)', lastDate:'Mar 30'},
-      {id:'pc', name:'P. Cummins',    team:'B', teamName:'Australia 🇦🇺', role:'BOWL', credits:9,  form:84, lastStat:'2/38(8ov)', lastDate:'Mar 28'},
-      {id:'az', name:'A. Zampa',      team:'B', teamName:'Australia 🇦🇺', role:'BOWL', credits:8,  form:77, lastStat:'2/44(9ov)', lastDate:'Mar 26'},
-      {id:'nh', name:'N. Lyon',       team:'B', teamName:'Australia 🇦🇺', role:'BOWL', credits:8,  form:76, lastStat:'2/62(10ov)',lastDate:'Mar 24'},
-    ]
-  },
-
-  'CSK_MI_IPL34': {
-    label: 'CSK 🟡 vs Mumbai Indians 🔵 · IPL 2026 #34',
-    teamA: 'Chennai Super Kings 🟡', teamB: 'Mumbai Indians 🔵',
-    format: 'T20', date: 'Apr 2, 2026', venue: 'Wankhede, Mumbai',
-    players: [
-      // CSK (team:'A')
-      {id:'rd',  name:'R. du Plessis', team:'A', teamName:'CSK 🟡',  role:'BAT',  credits:10,  form:88, lastStat:'81(52b)',   lastDate:'Mar 28'},
-      {id:'dc2', name:'D. Conway',     team:'A', teamName:'CSK 🟡',  role:'WK',   credits:9,   form:76, lastStat:'54(41b)',   lastDate:'Mar 25'},
-      {id:'msd', name:'MS Dhoni',      team:'A', teamName:'CSK 🟡',  role:'WK',   credits:9,   form:88, lastStat:'32*(12b)', lastDate:'Mar 28'},
-      {id:'aj',  name:'A. Jadeja',     team:'A', teamName:'CSK 🟡',  role:'BAT',  credits:7.5, form:72, lastStat:'42(34b)',  lastDate:'Mar 22'},
-      {id:'rj2', name:'R. Jadeja',     team:'A', teamName:'CSK 🟡',  role:'AR',   credits:9.5, form:85, lastStat:'38*(22b)/2wkt', lastDate:'Mar 28'},
-      {id:'ms3', name:'M. Santner',    team:'A', teamName:'CSK 🟡',  role:'AR',   credits:7.5, form:74, lastStat:'22(18b)/1wkt', lastDate:'Mar 22'},
-      {id:'dc3', name:'D. Chahar',     team:'A', teamName:'CSK 🟡',  role:'BOWL', credits:8,   form:69, lastStat:'2/34(4ov)', lastDate:'Mar 25'},
-      {id:'mp2', name:'M. Pathirana',  team:'A', teamName:'CSK 🟡',  role:'BOWL', credits:8.5, form:83, lastStat:'2/19(3ov)', lastDate:'Mar 28'},
-      {id:'st2', name:'T. Stubbs',     team:'A', teamName:'CSK 🟡',  role:'BAT',  credits:7,   form:69, lastStat:'37(25b)',  lastDate:'Mar 20'},
-      {id:'sk',  name:'S. Kaul',       team:'A', teamName:'CSK 🟡',  role:'BOWL', credits:7,   form:65, lastStat:'1/28(4ov)', lastDate:'Mar 18'},
-      {id:'dm2', name:'D. du Plessis', team:'A', teamName:'CSK 🟡',  role:'BAT',  credits:7.5, form:70, lastStat:'29(20b)',  lastDate:'Mar 15'},
-      // MUMBAI (team:'B')
-      {id:'ts2', name:'T. SuryaKumar', team:'B', teamName:'MI 🔵',   role:'BAT',  credits:10.5,form:91, lastStat:'82*(46b)', lastDate:'Mar 30'},
-      {id:'rsm', name:'R. Sharma',     team:'B', teamName:'MI 🔵',   role:'BAT',  credits:9.5, form:84, lastStat:'54(38b)',  lastDate:'Mar 29'},
-      {id:'ik2', name:'I. Kishan',     team:'B', teamName:'MI 🔵',   role:'WK',   credits:9,   form:86, lastStat:'72(44b)',  lastDate:'Mar 27'},
-      {id:'nt2', name:'N. Tilak',      team:'B', teamName:'MI 🔵',   role:'BAT',  credits:8.5, form:87, lastStat:'68(38b)',  lastDate:'Mar 29'},
-      {id:'hp2', name:'H. Pandya',     team:'B', teamName:'MI 🔵',   role:'AR',   credits:9,   form:80, lastStat:'47*(28b)/1wkt', lastDate:'Mar 25'},
-      {id:'jb2', name:'J. Bumrah',     team:'B', teamName:'MI 🔵',   role:'BOWL', credits:10,  form:96, lastStat:'3/28(4ov)', lastDate:'Mar 29'},
-      {id:'jb4', name:'J. Behrendorff',team:'B', teamName:'MI 🔵',   role:'BOWL', credits:7.5, form:76, lastStat:'2/31(4ov)', lastDate:'Mar 25'},
-      {id:'pp2', name:'P. Patel',      team:'B', teamName:'MI 🔵',   role:'BOWL', credits:7,   form:67, lastStat:'1/33(3ov)', lastDate:'Mar 22'},
-      {id:'kr',  name:'K. Rashid',     team:'B', teamName:'MI 🔵',   role:'AR',   credits:8,   form:78, lastStat:'28(16b)/1wkt', lastDate:'Mar 20'},
-      {id:'rv',  name:'R. Vaz',        team:'B', teamName:'MI 🔵',   role:'BOWL', credits:7,   form:66, lastStat:'1/29(3ov)', lastDate:'Mar 18'},
-      {id:'ts3', name:'T. Stubbs',     team:'B', teamName:'MI 🔵',   role:'BAT',  credits:7.5, form:72, lastStat:'33(20b)',  lastDate:'Mar 15'},
-    ]
-  },
-
-  'RCB_KKR_IPL35': {
-    label: 'RCB 🔴 vs KKR 🟣 · IPL 2026 #35',
-    teamA: 'Royal Challengers Bengaluru 🔴', teamB: 'Kolkata Knight Riders 🟣',
-    format: 'T20', date: 'Apr 3, 2026', venue: 'Chinnaswamy, Bengaluru',
-    players: [
-      // RCB (team:'A')
-      {id:'vk2', name:'V. Kohli',      team:'A', teamName:'RCB 🔴', role:'BAT',  credits:10.5, form:92, lastStat:'76*(48b)',  lastDate:'Mar 31'},
-      {id:'fp',  name:'F. du Plessis', team:'A', teamName:'RCB 🔴', role:'BAT',  credits:9,    form:79, lastStat:'58(44b)',   lastDate:'Mar 28'},
-      {id:'gm3', name:'G. Maxwell',    team:'A', teamName:'RCB 🔴', role:'AR',   credits:9.5,  form:87, lastStat:'67*(34b)/1wkt', lastDate:'Mar 25'},
-      {id:'dk4', name:'D. Karthik',    team:'A', teamName:'RCB 🔴', role:'WK',   credits:8,    form:72, lastStat:'28*(10b)', lastDate:'Mar 31'},
-      {id:'cr2', name:'C. Russel',     team:'A', teamName:'RCB 🔴', role:'AR',   credits:8.5,  form:80, lastStat:'44*(22b)/1wkt', lastDate:'Mar 22'},
-      {id:'ke2', name:'K. Ahmed',      team:'A', teamName:'RCB 🔴', role:'BOWL', credits:8,    form:76, lastStat:'2/28(4ov)', lastDate:'Mar 25'},
-      {id:'ms4', name:'M. Siraj',      team:'A', teamName:'RCB 🔴', role:'BOWL', credits:8.5,  form:82, lastStat:'3/31(4ov)', lastDate:'Mar 31'},
-      {id:'hf2', name:'H. Ferguson',   team:'A', teamName:'RCB 🔴', role:'BOWL', credits:7,    form:68, lastStat:'1/36(4ov)', lastDate:'Mar 22'},
-      {id:'wa',  name:'W. Abraham',    team:'A', teamName:'RCB 🔴', role:'BAT',  credits:7,    form:65, lastStat:'28(20b)',   lastDate:'Mar 19'},
-      {id:'sv',  name:'S. Vijaykumar',team:'A',  teamName:'RCB 🔴', role:'BOWL', credits:7,    form:68, lastStat:'1/24(3ov)', lastDate:'Mar 16'},
-      {id:'pa',  name:'P. Agarwal',   team:'A',  teamName:'RCB 🔴', role:'BAT',  credits:8,    form:75, lastStat:'45(32b)',   lastDate:'Mar 13'},
-      // KKR (team:'B')
-      {id:'an2', name:'A. Narine',     team:'B', teamName:'KKR 🟣', role:'AR',   credits:9.5,  form:88, lastStat:'67(38b)/2wkt', lastDate:'Apr 1'},
-      {id:'si2', name:'S. Iyer',       team:'B', teamName:'KKR 🟣', role:'BAT',  credits:9,    form:76, lastStat:'54(35b)',   lastDate:'Mar 30'},
-      {id:'qd2', name:'Q. de Kock',    team:'B', teamName:'KKR 🟣', role:'WK',   credits:9,    form:77, lastStat:'44(30b)',   lastDate:'Apr 1'},
-      {id:'vy2', name:'V. Yadav',      team:'B', teamName:'KKR 🟣', role:'BAT',  credits:8,    form:78, lastStat:'48(32b)',   lastDate:'Mar 24'},
-      {id:'ms5', name:'M. Starc',      team:'B', teamName:'KKR 🟣', role:'BOWL', credits:9.5,  form:87, lastStat:'2/28(4ov)', lastDate:'Apr 1'},
-      {id:'vc2', name:'V. Chakravarthy',team:'B',teamName:'KKR 🟣', role:'BOWL', credits:9,    form:88, lastStat:'3/22(4ov)', lastDate:'Mar 30'},
-      {id:'san',name:'S. Narine',      team:'B', teamName:'KKR 🟣', role:'AR',   credits:8.5,  form:85, lastStat:'24(14b)/2wkt', lastDate:'Mar 27'},
-      {id:'pb',  name:'P. Bhandari',   team:'B', teamName:'KKR 🟣', role:'BAT',  credits:7,    form:65, lastStat:'36(28b)',   lastDate:'Mar 27'},
-      {id:'hn',  name:'H. Narine',     team:'B', teamName:'KKR 🟣', role:'BOWL', credits:7,    form:67, lastStat:'1/32(3ov)', lastDate:'Mar 24'},
-      {id:'rn2', name:'R. Nawaz',      team:'B', teamName:'KKR 🟣', role:'AR',   credits:7.5,  form:66, lastStat:'22(16b)/1wkt', lastDate:'Mar 21'},
-      {id:'as',  name:'A. Singh',      team:'B', teamName:'KKR 🟣', role:'BAT',  credits:6.5,  form:60, lastStat:'18(14b)',   lastDate:'Mar 18'},
-    ]
-  },
-
-  'ENG_NZ_T20': {
-    label: 'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿 vs New Zealand 🇳🇿 · T20I',
-    teamA: 'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', teamB: 'New Zealand 🇳🇿',
-    format: 'T20I', date: 'Apr 4, 2026', venue: 'Lords, London',
-    players: [
-      // ENGLAND (team:'A')
-      {id:'jbu', name:'J. Buttler',    team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'WK',   credits:10,  form:80, lastStat:'65(48b)',   lastDate:'Mar 30'},
-      {id:'hb3', name:'H. Brook',      team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BAT',  credits:10,  form:88, lastStat:'72(42b)',   lastDate:'Mar 26'},
-      {id:'bd3', name:'B. Duckett',    team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BAT',  credits:9,   form:79, lastStat:'55(34b)',   lastDate:'Mar 23'},
-      {id:'jl',  name:'J. Lees',       team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BAT',  credits:7,   form:68, lastStat:'38(30b)',   lastDate:'Mar 20'},
-      {id:'mg',  name:'M. Malan',      team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BAT',  credits:8,   form:76, lastStat:'44(31b)',   lastDate:'Mar 17'},
-      {id:'bs3', name:'B. Stokes',     team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'AR',   credits:9.5, form:82, lastStat:'42(28b)/2wkt', lastDate:'Mar 30'},
-      {id:'lc',  name:'L. Curran',     team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'AR',   credits:8,   form:74, lastStat:'28(18b)/1wkt', lastDate:'Mar 26'},
-      {id:'ar2', name:'A. Rashid',     team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BOWL', credits:9,   form:84, lastStat:'3/19(4ov)', lastDate:'Mar 23'},
-      {id:'ma2', name:'M. Atkinson',   team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BOWL', credits:7.5, form:75, lastStat:'2/28(4ov)', lastDate:'Mar 20'},
-      {id:'jc2', name:'J. Curran',     team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BOWL', credits:8,   form:82, lastStat:'2/22(4ov)', lastDate:'Mar 17'},
-      {id:'sw2', name:'S. Wood',       team:'A', teamName:'England 🏴󠁧󠁢󠁥󠁮󠁧󠁿', role:'BOWL', credits:7.5, form:77, lastStat:'1/24(4ov)', lastDate:'Mar 14'},
-      // NEW ZEALAND (team:'B')
-      {id:'kw',  name:'K. Williamson', team:'B', teamName:'New Zealand 🇳🇿', role:'BAT',  credits:10,  form:87, lastStat:'76(58b)',   lastDate:'Mar 31'},
-      {id:'fa',  name:'F. Allen',      team:'B', teamName:'New Zealand 🇳🇿', role:'BAT',  credits:9,   form:84, lastStat:'68(40b)',   lastDate:'Mar 31'},
-      {id:'wy2', name:'W. Young',      team:'B', teamName:'New Zealand 🇳🇿', role:'BAT',  credits:8,   form:76, lastStat:'52(42b)',   lastDate:'Mar 28'},
-      {id:'gc3', name:'G. Conway',     team:'B', teamName:'New Zealand 🇳🇿', role:'WK',   credits:8.5, form:80, lastStat:'58(44b)',   lastDate:'Mar 25'},
-      {id:'ml',  name:'M. Latham',     team:'B', teamName:'New Zealand 🇳🇿', role:'BAT',  credits:7.5, form:74, lastStat:'41(33b)',   lastDate:'Mar 22'},
-      {id:'da2', name:'D. Conway',     team:'B', teamName:'New Zealand 🇳🇿', role:'AR',   credits:8,   form:77, lastStat:'36(24b)/1wkt', lastDate:'Mar 19'},
-      {id:'tl3', name:'T. Lockie',     team:'B', teamName:'New Zealand 🇳🇿', role:'BOWL', credits:9,   form:88, lastStat:'3/24(4ov)', lastDate:'Mar 31'},
-      {id:'is3', name:'I. Sodhi',      team:'B', teamName:'New Zealand 🇳🇿', role:'BOWL', credits:8.5, form:83, lastStat:'2/18(4ov)', lastDate:'Mar 28'},
-      {id:'mh2', name:'M. Henry',      team:'B', teamName:'New Zealand 🇳🇿', role:'BOWL', credits:8,   form:79, lastStat:'2/31(4ov)', lastDate:'Mar 25'},
-      {id:'tb2', name:'T. Blundell',   team:'B', teamName:'New Zealand 🇳🇿', role:'AR',   credits:7,   form:70, lastStat:'18(12b)/1wkt', lastDate:'Mar 22'},
-      {id:'bs4', name:'B. Sears',      team:'B', teamName:'New Zealand 🇳🇿', role:'BOWL', credits:7,   form:66, lastStat:'1/38(4ov)', lastDate:'Mar 19'},
-    ]
-  },
-
-  'SA_PAK_TEST': {
-    label: 'South Africa 🇿🇦 vs Pakistan 🇵🇰 · Test',
-    teamA: 'South Africa 🇿🇦', teamB: 'Pakistan 🇵🇰',
-    format: 'Test', date: 'Apr 3, 2026', venue: 'Newlands, Cape Town',
-    players: [
-      // SA (team:'A')
-      {id:'re2', name:'R. Rickelton',  team:'A', teamName:'South Africa 🇿🇦', role:'BAT',  credits:9,   form:85, lastStat:'103(138b)', lastDate:'Mar 30'},
-      {id:'tm2', name:'T. Bavuma',     team:'A', teamName:'South Africa 🇿🇦', role:'BAT',  credits:9,   form:82, lastStat:'88(122b)', lastDate:'Mar 28'},
-      {id:'ade', name:'A. de Bruyn',   team:'A', teamName:'South Africa 🇿🇦', role:'BAT',  credits:8,   form:75, lastStat:'61(94b)',  lastDate:'Mar 26'},
-      {id:'dm3', name:'D. Elgar',      team:'A', teamName:'South Africa 🇿🇦', role:'BAT',  credits:8,   form:74, lastStat:'55(88b)',  lastDate:'Mar 24'},
-      {id:'kv2', name:'K. Verreynne', team:'A',  teamName:'South Africa 🇿🇦', role:'WK',   credits:8,   form:74, lastStat:'44(62b)',  lastDate:'Mar 22'},
-      {id:'wm',  name:'W. Mulder',     team:'A', teamName:'South Africa 🇿🇦', role:'AR',   credits:8,   form:76, lastStat:'38(52b)/2wkt', lastDate:'Mar 20'},
-      {id:'sr3', name:'S. Rabada',     team:'A', teamName:'South Africa 🇿🇦', role:'BOWL', credits:10,  form:90, lastStat:'5/56(18ov)', lastDate:'Mar 30'},
-      {id:'km4', name:'K. Maharaj',    team:'A', teamName:'South Africa 🇿🇦', role:'BOWL', credits:9,   form:79, lastStat:'4/62(22ov)', lastDate:'Mar 28'},
-      {id:'na2', name:'N. Burger',     team:'A', teamName:'South Africa 🇿🇦', role:'BOWL', credits:7.5, form:76, lastStat:'2/44(14ov)', lastDate:'Mar 26'},
-      {id:'wn',  name:'W. Norris',     team:'A', teamName:'South Africa 🇿🇦', role:'BOWL', credits:7,   form:68, lastStat:'1/42(12ov)', lastDate:'Mar 24'},
-      {id:'rd2', name:'R. Dassanayake',team:'A',teamName:'South Africa 🇿🇦', role:'BAT',  credits:7,   form:66, lastStat:'30(48b)',  lastDate:'Mar 22'},
-      // PAK (team:'B')
-      {id:'ba3', name:'B. Azam',       team:'B', teamName:'Pakistan 🇵🇰', role:'BAT',  credits:10.5, form:91, lastStat:'72(55b)',  lastDate:'Mar 31'},
-      {id:'mr3', name:'M. Rizwan',     team:'B', teamName:'Pakistan 🇵🇰', role:'WK',   credits:9.5,  form:83, lastStat:'55(38b)',  lastDate:'Mar 31'},
-      {id:'sm2', name:'S. Masood',     team:'B', teamName:'Pakistan 🇵🇰', role:'BAT',  credits:8,    form:76, lastStat:'44(68b)',  lastDate:'Mar 28'},
-      {id:'sa3', name:'S. Afridi',     team:'B', teamName:'Pakistan 🇵🇰', role:'BOWL', credits:10,   form:88, lastStat:'4/54(18ov)', lastDate:'Mar 31'},
-      {id:'zy2', name:'Z. Yasir',      team:'B', teamName:'Pakistan 🇵🇰', role:'BOWL', credits:8.5,  form:80, lastStat:'3/74(22ov)', lastDate:'Mar 28'},
-      {id:'nj2', name:'N. Javed',      team:'B', teamName:'Pakistan 🇵🇰', role:'BOWL', credits:7.5,  form:77, lastStat:'2/58(16ov)', lastDate:'Mar 26'},
-      {id:'ab2', name:'A. Ali',        team:'B', teamName:'Pakistan 🇵🇰', role:'AR',   credits:8,    form:74, lastStat:'38(56b)/2wkt', lastDate:'Mar 24'},
-      {id:'im2', name:'I. Butt',       team:'B', teamName:'Pakistan 🇵🇰', role:'BAT',  credits:7,    form:64, lastStat:'28(44b)',  lastDate:'Mar 22'},
-      {id:'fz',  name:'F. Zaman',      team:'B', teamName:'Pakistan 🇵🇰', role:'BAT',  credits:7.5,  form:70, lastStat:'34(52b)',  lastDate:'Mar 20'},
-      {id:'ss3', name:'S. Shah',       team:'B', teamName:'Pakistan 🇵🇰', role:'BOWL', credits:7,    form:68, lastStat:'1/48(12ov)', lastDate:'Mar 18'},
-      {id:'ms6', name:'M. Shami',      team:'B', teamName:'Pakistan 🇵🇰', role:'BOWL', credits:7,    form:66, lastStat:'1/55(14ov)', lastDate:'Mar 16'},
-    ]
-  }
-};
-
-// Custom matches storage
-var fbCustomMatches = JSON.parse(localStorage.getItem('cricpulse_cm') || '[]');
-
-// Get roster — built-in or custom
-function fbGetRoster(key){
-  if(FB_ROSTERS[key]) return FB_ROSTERS[key];
-  var cm = fbCustomMatches.find(function(m){ return m.key === key; });
-  return cm || FB_ROSTERS['IND_AUS_ODI'];
-}
-
-// ── STATE ──
-var fbRooms      = JSON.parse(localStorage.getItem('cricpulse_fb_rooms') || '[]');
-var fbNick       = '';
-var fbActiveRoom = null;
-var fbPickerPendingRoom = null;
-var fbPickedIds  = [];   // array of player IDs selected (11 total)
-var fbCurrentRoster = null; // the loaded roster for the current picker session
-
-function fbSaveRooms(){ localStorage.setItem('cricpulse_fb_rooms', JSON.stringify(fbRooms)); }
-
-function fbGenCode(){
-  var chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  var code='';
-  for(var i=0;i<6;i++) code+=chars[Math.floor(Math.random()*chars.length)];
-  return code;
-}
-
-// ── MATCH PREVIEW ──
-function fbUpdateMatchPreview(){
-  var key = document.getElementById('fbMatchSelect').value;
-  var el = document.getElementById('fbMatchPreview');
-  if(!el) return;
-  if(key === 'CUSTOM'){
-    el.innerHTML = '<div style="font-size:11px;color:var(--muted)">Go to ✏️ Custom Match tab to create your match</div>';
-    return;
-  }
-  var r = fbGetRoster(key);
-  if(!r){ el.innerHTML=''; return; }
-  var aCount = r.players.filter(function(p){return p.team==='A';}).length;
-  var bCount = r.players.filter(function(p){return p.team==='B';}).length;
-  el.innerHTML = '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">'
-    +'<div><div style="font-size:11px;font-weight:600;color:var(--text)">'+r.teamA+'</div><div style="font-size:9px;color:var(--muted)">'+aCount+' players</div></div>'
-    +'<div style="font-size:10px;color:var(--muted)">vs</div>'
-    +'<div><div style="font-size:11px;font-weight:600;color:var(--text)">'+r.teamB+'</div><div style="font-size:9px;color:var(--muted)">'+bCount+' players</div></div>'
-    +'<div style="margin-left:auto;text-align:right"><div style="font-size:9px;color:var(--gold)">'+r.format+'</div><div style="font-size:9px;color:var(--muted)">'+r.date+'</div></div>'
-    +'</div>';
-}
-
-// ── TAB SWITCH ──
-function fbTab(tab, el){
-  document.querySelectorAll('#fbTabs .tab').forEach(function(t){ t.classList.remove('active'); });
-  if(el) el.classList.add('active');
-  ['create','join','custom','my','leaderboard'].forEach(function(p){
-    var panel = document.getElementById('fb-panel-'+p);
-    if(panel) panel.style.display = p===tab ? '' : 'none';
-  });
-  if(tab==='join') fbRenderOpenRooms();
-  if(tab==='my') fbRenderMyBattles();
-  if(tab==='leaderboard') fbRenderLeaderboard();
-  if(tab==='custom') cmRenderSaved();
-  if(tab==='create'){ fbUpdateMatchPreview(); }
-}
-
-function fbRefreshRoomCount(){
-  var el = document.getElementById('fbRoomCount');
-  if(el) el.textContent = fbRooms.filter(function(r){ return r.status !== 'done'; }).length;
-}
-
-// ── CREATE ROOM ──
-function fbCreateRoom(){
-  var nick = (document.getElementById('fbNickname').value||'').trim();
-  var roomName = (document.getElementById('fbRoomName').value||'').trim();
-  var matchKey = document.getElementById('fbMatchSelect').value;
-  var maxPlayers = parseInt(document.getElementById('fbMaxPlayers').value)||4;
-  if(!nick){ showToast('⚠️ Enter your nickname'); return; }
-  if(!roomName){ showToast('⚠️ Enter a room name'); return; }
-  if(matchKey === 'CUSTOM'){ showToast('⚠️ Create a custom match first in the Custom Match tab'); return; }
-  var roster = fbGetRoster(matchKey);
-  if(!roster){ showToast('⚠️ Match not found'); return; }
-  fbNick = nick;
-  localStorage.setItem('cricpulse_fb_nick', nick);
-  var code = fbGenCode();
-  var room = { id:code, name:roomName, matchKey:matchKey, matchLabel:roster.label, maxPlayers:maxPlayers,
-    status:'waiting', createdAt:Date.now(), creator:nick, players:[{nick:nick,team:null,pts:0,joined:Date.now()}] };
-  fbRooms.push(room);
-  fbSaveRooms();
-  fbPickerPendingRoom = room;
-  fbRefreshRoomCount();
-  fbOpenPicker(matchKey);
-}
-
-// ── JOIN ROOM ──
-function fbJoinRoom(){
-  var nick = (document.getElementById('fbJoinNick').value||'').trim();
-  var code = (document.getElementById('fbRoomCode').value||'').trim().toUpperCase();
-  if(!nick){ showToast('⚠️ Enter your nickname'); return; }
-  if(code.length<6){ showToast('⚠️ Enter valid 6-digit code'); return; }
-  fbJoinByCode(nick, code);
-}
-
-function fbJoinByCode(nick, code){
-  var room = fbRooms.find(function(r){ return r.id===code; });
-  if(!room){ showToast('❌ Room not found'); return; }
-  if(room.status==='done'){ showToast('⚠️ Battle is over'); return; }
-  if(room.players.length>=room.maxPlayers){ showToast('⚠️ Room full'); return; }
-  if(room.players.find(function(p){ return p.nick===nick; })){ fbOpenLobby(room,nick); return; }
-  fbNick = nick;
-  localStorage.setItem('cricpulse_fb_nick', nick);
-  room.players.push({nick:nick,team:null,pts:0,joined:Date.now()});
-  fbSaveRooms();
-  fbPickerPendingRoom = room;
-  fbOpenPicker(room.matchKey);
-}
-
-function fbRenderOpenRooms(){
-  var wrap = document.getElementById('fbOpenRooms');
-  if(!wrap) return;
-  var open = fbRooms.filter(function(r){ return r.status==='waiting' && r.players.length<r.maxPlayers; });
-  if(!open.length){ wrap.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px">No open rooms yet. Create one!</div>'; return; }
-  wrap.innerHTML = open.map(function(r){
-    return '<div class="fb-open-room" onclick="fbQuickJoin(\''+r.id+'\')">'
-      +'<div><div style="font-size:13px;font-weight:600">'+r.name+'</div>'
-      +'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+r.matchLabel+' · <b style="color:var(--ipl-orange);letter-spacing:2px">'+r.id+'</b></div></div>'
-      +'<div style="text-align:right"><div style="font-size:11px;color:var(--green-light)">'+r.players.length+'/'+r.maxPlayers+'</div>'
-      +'<div style="font-size:9px;color:var(--muted)">by '+r.creator+'</div></div></div>';
-  }).join('');
-}
-
-function fbQuickJoin(code){
-  var nick = (document.getElementById('fbJoinNick').value||'').trim();
-  if(!nick){ showToast('⚠️ Enter your nickname above first'); document.getElementById('fbJoinNick').focus(); return; }
-  fbJoinByCode(nick, code);
-}
-
-// ── MY BATTLES ──
-function fbRenderMyBattles(){
-  var wrap = document.getElementById('fbMyBattles');
-  if(!wrap) return;
-  var nick = fbNick || localStorage.getItem('cricpulse_fb_nick') || '';
-  var mine = fbRooms.filter(function(r){ return r.players.some(function(p){ return p.nick===nick; }); });
-  if(!mine.length){ wrap.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted);font-size:13px">No battles yet. Create or join a room! ⚔️</div>'; return; }
-  wrap.innerHTML = mine.map(function(r){
-    var myEntry = r.players.find(function(p){ return p.nick===nick; }) || r.players[0];
-    var sc={'done':'fb-status-done','live':'fb-status-live','waiting':'fb-status-waiting'}[r.status]||'fb-status-waiting';
-    var st={'done':'✅ Ended','live':'🔴 Live','waiting':'⏳ Waiting'}[r.status]||'⏳';
-    return '<div class="fb-my-battle" onclick="fbOpenLobbyById(\''+r.id+'\',\''+nick+'\')">'
-      +'<div class="fb-my-battle-top"><div><div style="font-size:14px;font-weight:600">'+r.name+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px">'+r.matchLabel+'</div></div>'
-      +'<span class="fb-my-battle-status '+sc+'">'+st+'</span></div>'
-      +'<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)">'
-      +'<span>👥 '+r.players.length+'/'+r.maxPlayers+'</span>'
-      +'<span>🏅 <b style="color:var(--ipl-orange)">'+(myEntry&&myEntry.pts||'—')+' pts</b></span>'
-      +'<span style="color:var(--ipl-orange);letter-spacing:2px;font-family:monospace">'+r.id+'</span></div></div>';
-  }).join('');
-}
-
-function fbOpenLobbyById(id, nick){
-  var room = fbRooms.find(function(r){ return r.id===id; });
-  if(room) fbOpenLobby(room, nick);
-}
-
-// ── LEADERBOARD (tied ranking) ──
-function fbRenderLeaderboard(){
-  var wrap = document.getElementById('fbLeaderboard');
-  if(!wrap) return;
-  var scores = {};
-  fbRooms.forEach(function(r){
-    r.players.forEach(function(p){
-      if(!scores[p.nick]) scores[p.nick]={pts:0,battles:0};
-      scores[p.nick].pts += p.pts||0;
-      scores[p.nick].battles++;
-    });
-  });
-  var sorted = Object.entries(scores).sort(function(a,b){ return b[1].pts-a[1].pts; });
-  if(!sorted.length){ wrap.innerHTML='<div style="font-size:12px;color:var(--muted);text-align:center;padding:20px">No battles played yet. Be the first!</div>'; return; }
-  var rankArr=[]; var rank=1;
-  for(var i=0;i<sorted.length;i++){
-    rankArr.push(i>0&&sorted[i][1].pts===sorted[i-1][1].pts ? rankArr[i-1] : rank);
-    rank=i+2;
-  }
-  var medals=['🥇','🥈','🥉']; var posCls=['g','s','b'];
-  var meNick = fbNick||localStorage.getItem('cricpulse_fb_nick')||'';
-  wrap.innerHTML = sorted.slice(0,10).map(function(entry,i){
-    var r=rankArr[i]; var isMe=entry[0]===meNick;
-    var tied=sorted.filter(function(x,j){return rankArr[j]===r;}).length>1;
-    return '<div class="fb-score-row" style="'+(isMe?'background:rgba(249,115,22,.05);border-radius:8px;padding:6px;margin:-2px;':'')+'">'
-      +'<div class="fb-score-pos '+(r<=3?posCls[r-1]:'')+'>'+(r<=3?medals[r-1]:r)+'</div>'
-      +'<div style="flex:1"><div style="font-size:13px;font-weight:600;color:'+(isMe?'var(--ipl-orange)':'var(--text)')+'">'+entry[0]+(isMe?' ⭐':'')+' '+(tied?'<span style="font-size:9px;color:var(--gold)">=TIE</span>':'')+'</div>'
-      +'<div style="font-size:10px;color:var(--muted)">'+entry[1].battles+' battle'+(entry[1].battles>1?'s':'')+'</div></div>'
-      +'<div class="fb-score-pts">'+entry[1].pts+'</div></div>';
-  }).join('');
-}
-
-// ════════════════════════════════════════════
-// DREAM11-STYLE TEAM PICKER
-// ════════════════════════════════════════════
-function fbOpenPicker(matchKey){
-  fbPickedIds = [];
-  fbCurrentRoster = fbGetRoster(matchKey);
-  if(!fbCurrentRoster){ showToast('❌ Match roster not found'); return; }
-
-  document.getElementById('fbPickerMatch').textContent = fbCurrentRoster.label;
-
-  // Team banner
-  var banner = document.getElementById('fbTeamBanner');
-  if(banner) banner.innerHTML =
-    '<span style="background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:#60a5fa">'+fbCurrentRoster.teamA+'</span>'
-    +'<span style="color:var(--muted);font-size:10px">vs</span>'
-    +'<span style="background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--ipl-orange)">'+fbCurrentRoster.teamB+'</span>';
-
-  // Reset captain panel
-  document.getElementById('fbCaptainPanel').style.display='none';
-  document.getElementById('fbTeamStrip').style.display='none';
-
-  fbSwitchRoleTab('wk', document.getElementById('rTab-wk'));
-  fbRenderPickerRole('wk');
-  fbRenderPickerRole('bat');
-  fbRenderPickerRole('ar');
-  fbRenderPickerRole('bowl');
-  fbUpdatePickerUI();
-
-  document.getElementById('fbPickerOverlay').style.display='block';
-  document.body.style.overflow='hidden';
-}
-
-function fbClosePicker(){
-  document.getElementById('fbPickerOverlay').style.display='none';
-  document.body.style.overflow='';
-}
-
-// Map role tab to role string and element IDs
-var FB_ROLE_MAP = {
-  wk:   {label:'WK',   listId:'fbWKList',   panelId:'fbPanelWK',   cntId:'fb-cnt-wk',   slotId:'fb-slot-wk'},
-  bat:  {label:'BAT',  listId:'fbBATList',  panelId:'fbPanelBat',  cntId:'fb-cnt-bat',  slotId:'fb-slot-bat'},
-  ar:   {label:'AR',   listId:'fbARList',   panelId:'fbPanelAR',   cntId:'fb-cnt-ar',   slotId:'fb-slot-ar'},
-  bowl: {label:'BOWL', listId:'fbBOWLList', panelId:'fbPanelBowl', cntId:'fb-cnt-bowl', slotId:'fb-slot-bowl'}
-};
-var FB_ROLE_LIMITS = { wk:{min:1,max:4}, bat:{min:1,max:6}, ar:{min:1,max:4}, bowl:{min:1,max:6} };
-
-function fbSwitchRoleTab(role, el){
-  Object.keys(FB_ROLE_MAP).forEach(function(r){
-    var btn=document.getElementById('rTab-'+r);
-    var panel=document.getElementById(FB_ROLE_MAP[r].panelId);
-    if(btn){
-      if(r===role){ btn.style.borderColor='var(--ipl-orange)'; btn.style.background='rgba(249,115,22,.15)'; btn.style.color='var(--ipl-orange)'; }
-      else{ btn.style.borderColor='var(--border)'; btn.style.background='var(--mid)'; btn.style.color='var(--muted)'; }
-    }
-    if(panel) panel.style.display = r===role ? '' : 'none';
-  });
-}
-
-function fbRenderPickerRole(role){
-  if(!fbCurrentRoster) return;
-  var rm = FB_ROLE_MAP[role];
-  var el = document.getElementById(rm.listId);
-  if(!el) return;
-  // Players of this role from the current roster (ONLY from this match's squads)
-  var pool = fbCurrentRoster.players.filter(function(p){ return p.role===role.toUpperCase(); });
-  // Sort: selected first, then by credits desc
-  pool.sort(function(a,b){
-    var aS=fbPickedIds.includes(a.id)?1:0, bS=fbPickedIds.includes(b.id)?1:0;
-    if(aS!==bS) return bS-aS;
-    return b.credits-a.credits;
-  });
-
-  var teamCount = fbTeamCount();
-  el.innerHTML = pool.map(function(p){
-    var isSel = fbPickedIds.includes(p.id);
-    var teamPicked = isSel ? 0 : (teamCount[p.team]||0);
-    var wouldExceedTeam = !isSel && teamPicked>=7;
-    var totalPicked = fbPickedIds.length;
-    var isDisabled = !isSel && (totalPicked>=11 || wouldExceedTeam);
-    var rCol = p.credits>=10?'var(--ipl-orange)':p.credits>=9?'var(--green-light)':p.credits>=8?'var(--gold)':'var(--muted)';
-    var roleIcon = {WK:'🧤',BAT:'🏏',AR:'🔄',BOWL:'🎯'}[p.role]||'🏏';
-    var teamColor = p.team==='A' ? '#60a5fa' : 'var(--ipl-orange)';
-    return '<button class="fb-player-btn'+(isSel?' selected':'')+(isDisabled?' disabled':'')+'" '
-      +'onclick="fbTogglePlayer(\''+p.id+'\')" '
-      +'style="'+(isDisabled&&!isSel?'opacity:.3;cursor:not-allowed':'')+(isSel?';border-color:var(--ipl-orange);background:rgba(249,115,22,.1)':'');
-    +';">'
-      +'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
-        +'<div style="font-size:12px;font-weight:600;color:var(--text)">'+(isSel?'<span style="color:var(--ipl-orange)">✓ </span>':'')+p.name+'</div>'
-        +'<span style="font-size:10px;font-family:\'Bebas Neue\',sans-serif;color:'+rCol+'">'+p.credits+' CR</span>'
-      +'</div>'
-      +'<div style="font-size:9px;color:'+teamColor+';margin:2px 0">'+p.teamName+'</div>'
-      +'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:3px">'
-        +'<span style="font-size:8px;background:rgba(255,255,255,.06);border-radius:4px;padding:1px 5px;color:var(--muted)">'+roleIcon+' '+p.role+'</span>'
-        +'<span style="font-size:9px;color:var(--gold);font-weight:600">'+p.lastStat+'</span>'
-        +'<span style="font-size:8px;color:rgba(138,171,144,.5)">'+p.lastDate+'</span>'
-      +'</div>'
-      +'</button>';
-  }).join('');
-}
-
-function fbTeamCount(){
-  var count={};
-  fbPickedIds.forEach(function(id){
-    var p=fbCurrentRoster.players.find(function(x){return x.id===id;});
-    if(p){ count[p.team]=(count[p.team]||0)+1; }
-  });
-  return count;
-}
-
-function fbGetPickedByRole(role){
-  if(!fbCurrentRoster) return 0;
-  return fbPickedIds.filter(function(id){
-    var p=fbCurrentRoster.players.find(function(x){return x.id===id;});
-    return p && p.role===role.toUpperCase();
-  }).length;
-}
-
-function fbTotalCredits(){
-  var total=0;
-  fbPickedIds.forEach(function(id){
-    var p=fbCurrentRoster.players.find(function(x){return x.id===id;});
-    if(p) total+=p.credits;
-  });
-  return Math.round(total*10)/10;
-}
-
-function fbTogglePlayer(id){
-  var idx=fbPickedIds.indexOf(id);
-  if(idx>=0){
-    fbPickedIds.splice(idx,1);
-  } else {
-    if(fbPickedIds.length>=11){ showToast('⚠️ Team full — 11 players max!'); return; }
-    // Check 100 credits
-    var p=fbCurrentRoster.players.find(function(x){return x.id===id;});
-    if(!p) return;
-    var newTotal=fbTotalCredits()+p.credits;
-    if(newTotal>100){ showToast('⚠️ Not enough credits! Used: '+fbTotalCredits()+'/100'); return; }
-    // Check max 7 from one team
-    var tc=fbTeamCount();
-    if((tc[p.team]||0)>=7){ showToast('⚠️ Max 7 players from one team!'); return; }
-    fbPickedIds.push(id);
-  }
-  fbUpdatePickerUI();
-  // Re-render all roles to update disabled states
-  Object.keys(FB_ROLE_MAP).forEach(function(r){ fbRenderPickerRole(r); });
-}
-
-function fbUpdatePickerUI(){
-  var total=fbPickedIds.length;
-  var credits=fbTotalCredits();
-  var wkC=fbGetPickedByRole('wk'), batC=fbGetPickedByRole('bat'), arC=fbGetPickedByRole('ar'), bowlC=fbGetPickedByRole('bowl');
-
-  // Update counts
-  var e=document.getElementById;
-  if(e('fb-cnt-wk')) document.getElementById('fb-cnt-wk').textContent=wkC;
-  if(e('fb-cnt-bat')) document.getElementById('fb-cnt-bat').textContent=batC;
-  if(e('fb-cnt-ar')) document.getElementById('fb-cnt-ar').textContent=arC;
-  if(e('fb-cnt-bowl')) document.getElementById('fb-cnt-bowl').textContent=bowlC;
-  if(e('fbTotalPicked')) document.getElementById('fbTotalPicked').textContent=total+' / 11';
-
-  // Credit bar
-  var pct=Math.min(credits/100*100,100);
-  if(e('fbCreditBar')) document.getElementById('fbCreditBar').style.width=pct+'%';
-  if(e('fbCreditUsed')) document.getElementById('fbCreditUsed').textContent=credits+' / 100';
-
-  // Slot highlights
-  function slotState(slotId, cur, max){
-    var s=document.getElementById(slotId);
-    if(!s) return;
-    s.classList.remove('done','over');
-    if(cur>0) s.classList.add('done');
-    if(cur>max) s.classList.add('over');
-  }
-  slotState('fb-slot-wk',wkC,4); slotState('fb-slot-bat',batC,6); slotState('fb-slot-ar',arC,4); slotState('fb-slot-bowl',bowlC,6);
-
-  // Team strip
-  var stripWrap=document.getElementById('fbTeamStrip');
-  var stripList=document.getElementById('fbTeamStripList');
-  if(total>0 && stripWrap){ stripWrap.style.display='block'; }
-  if(stripList && fbCurrentRoster){
-    var roleOrder={WK:0,BAT:1,AR:2,BOWL:3};
-    var picked=fbPickedIds.map(function(id){ return fbCurrentRoster.players.find(function(x){return x.id===id;}); }).filter(Boolean);
-    picked.sort(function(a,b){return roleOrder[a.role]-roleOrder[b.role];});
-    var teamCount=fbTeamCount();
-    stripList.innerHTML=picked.map(function(p){
-      var roleIcon={WK:'🧤',BAT:'🏏',AR:'🔄',BOWL:'🎯'}[p.role]||'🏏';
-      var tc=p.team==='A'?'#60a5fa':'var(--ipl-orange)';
-      return '<span style="background:rgba(255,255,255,.06);border-radius:16px;padding:2px 8px;color:var(--text)">'+roleIcon+' <span style="color:'+tc+'">'+p.name+'</span></span>';
-    }).join('');
-    // Team balance warning
-    var warnEl=document.getElementById('fbTeamWarn');
-    var warnMsg=document.getElementById('fbTeamWarnMsg');
-    var warn='';
-    Object.entries(teamCount).forEach(function(e){ if(e[1]>7) warn='Too many from '+(e[0]==='A'?fbCurrentRoster.teamA:fbCurrentRoster.teamB)+' (max 7)'; });
-    if(credits>100) warn='Over budget! '+credits+'/100 credits used';
-    if(warnEl){ warnEl.style.display=warn?'block':'none'; }
-    if(warnMsg) warnMsg.textContent=warn;
-  }
-
-  // Validate: 11 players, within budget, within role minimums, max 7 per team
-  var valid = total===11 && credits<=100
-    && wkC>=1 && wkC<=4
-    && batC>=1 && batC<=6
-    && arC>=1 && arC<=4
-    && bowlC>=1 && bowlC<=6;
-  var tc=fbTeamCount();
-  if(Object.values(tc).some(function(x){return x>7;})) valid=false;
-
-  var btn=document.getElementById('fbConfirmBtn');
-  var status=document.getElementById('fbPickStatus');
-  if(btn){ btn.style.opacity=valid?'1':'0.35'; btn.style.pointerEvents=valid?'auto':'none'; }
-
-  var missing=[];
-  if(total<11) missing.push((11-total)+' more player'+(11-total>1?'s':''));
-  if(wkC<1) missing.push('at least 1 WK');
-  if(batC<1) missing.push('at least 1 BAT');
-  if(arC<1) missing.push('at least 1 AR');
-  if(bowlC<1) missing.push('at least 1 BOWL');
-  if(credits>100) missing.push('reduce credits ('+credits+'/100)');
-  if(status) status.textContent = valid ? '🎉 Team complete! Choose your Captain.' : 'Need: '+missing.join(' · ');
-}
-
-function fbConfirmTeam(){
-  // Show captain/vc
-  if(!fbCurrentRoster) return;
-  var opts=fbPickedIds.map(function(id){
-    var p=fbCurrentRoster.players.find(function(x){return x.id===id;});
-    return p ? '<option value="'+id+'">'+p.name+' ('+p.teamName+')</option>' : '';
-  }).join('');
-  var capSel=document.getElementById('fbCaptainSelect');
-  var vcSel=document.getElementById('fbVcSelect');
-  if(capSel) capSel.innerHTML=opts;
-  if(vcSel){ vcSel.innerHTML=opts; if(vcSel.options.length>1) vcSel.selectedIndex=1; }
-  document.getElementById('fbCaptainPanel').style.display='block';
-  var btn=document.getElementById('fbConfirmBtn');
-  if(btn){ btn.textContent='🚀 Lock In Team & Enter Lobby'; btn.onclick=fbLockTeam; }
-}
-
-function fbLockTeam(){
-  var cap=document.getElementById('fbCaptainSelect').value;
-  var vc=document.getElementById('fbVcSelect').value;
-  if(cap===vc){ showToast('⚠️ Captain and VC must be different!'); return; }
-  if(!fbCurrentRoster) return;
-
-  var myTeam={
-    playerIds: fbPickedIds.slice(),
-    captain: cap,
-    vc: vc,
-    credits: fbTotalCredits()
-  };
-
-  var room=fbPickerPendingRoom;
-  if(room){
-    var r=fbRooms.find(function(x){return x.id===room.id;});
-    if(r){
-      var player=r.players.find(function(p){return p.nick===fbNick;});
-      if(player) player.team=myTeam;
-      fbSaveRooms();
-    }
-    fbClosePicker();
-    fbOpenLobby(r||room, fbNick);
-  }
-}
-
-// ── SIMULATE POINTS (Dream11 scoring) ──
-function fbSimulatePoints(team){
-  if(!team||!team.playerIds||!fbPickerPendingRoom) return {total:0,breakdown:[]};
-  // We need the roster from the room's match
-  var room=fbPickerPendingRoom;
-  var r=fbRooms.find(function(x){return x.id===room.id;});
-  var roster=r?fbGetRoster(r.matchKey):null;
-  var total=0; var breakdown=[];
-
-  team.playerIds.forEach(function(pid){
-    var p=roster?roster.players.find(function(x){return x.id===pid;}):null;
-    if(!p) return;
-    var base=FB_POINTS.playing; // 4 pts for playing
-    var label='';
-    if(p.role==='WK'||p.role==='BAT'){
-      var runs=Math.floor(Math.random()*80)+5;
-      base+=runs; // 1pt/run
-      if(runs>=100){base+=FB_POINTS.bat.century;label=runs+' runs (100)';}
-      else if(runs>=50){base+=FB_POINTS.bat.halfCentury;label=runs+' runs (50)';}
-      else if(runs===0){base+=FB_POINTS.bat.duck;label='Duck';}
-      else{label=runs+' runs';}
-      var boundaries=Math.floor(runs/12);
-      base+=boundaries*FB_POINTS.bat.boundary+Math.floor(boundaries/3)*FB_POINTS.bat.six;
-    } else if(p.role==='BOWL'){
-      var wkts=Math.floor(Math.random()*4);
-      base+=wkts*FB_POINTS.bowl.wicket;
-      if(wkts>=5){base+=FB_POINTS.bowl.fiveWickets;label=wkts+'/wkts (5W)';}
-      else if(wkts>=4){base+=FB_POINTS.bowl.fourWickets;label=wkts+' wkts (4W)';}
-      else{label=wkts+' wkts';}
-      if(Math.random()>0.7){base+=FB_POINTS.bowl.maiden;label+=' + maiden';}
-    } else { // AR
-      var arRuns=Math.floor(Math.random()*50)+5;
-      var arWkts=Math.floor(Math.random()*3);
-      base+=arRuns+arWkts*FB_POINTS.bowl.wicket;
-      if(arRuns>=50){base+=FB_POINTS.bat.halfCentury;}
-      label=arRuns+'r / '+arWkts+'w';
-    }
-    // C and VC multipliers
-    if(pid===team.captain) base=Math.round(base*2);
-    if(pid===team.vc) base=Math.round(base*1.5);
-    total+=base;
-    breakdown.push({name:p.name,pts:base,label:label});
-  });
-  return {total:total, breakdown:breakdown};
-}
-
-// ── LOBBY ──
-function fbOpenLobby(room,nick){
-  if(!room) return;
-  fbActiveRoom=room; fbNick=nick||fbNick;
-  var infoEl=document.getElementById('fbLobbyRoomInfo');
-  if(infoEl) infoEl.innerHTML=[
-    ['Room',room.name],['Match',room.matchLabel||''],
-    ['Players',room.players.length+'/'+room.maxPlayers],['Status',room.status==='done'?'✅ Ended':room.status==='live'?'🔴 Live':'⏳ Waiting']
-  ].map(function(r){ return '<div class="fb-room-info-row"><span style="color:var(--muted)">'+r[0]+'</span><span>'+r[1]+'</span></div>'; }).join('');
-  var codeEl=document.getElementById('fbLobbyCodeBox');
-  if(codeEl) codeEl.innerHTML='<div class="code-label">ROOM CODE — TAP TO COPY</div><div class="code-val">'+room.id+'</div><div class="code-copy">Share with friends to join this battle</div>';
-  if(codeEl) codeEl.onclick=function(){ navigator.clipboard.writeText(room.id).then(function(){ showToast('📋 Code copied!'); }).catch(function(){}); };
-  fbRenderLobbyPlayers(room,nick);
-  fbRenderLobbyActions(room,nick);
-  if(room.status==='done'){
-    document.getElementById('fbScoreboardWrap').style.display='block';
-    fbRenderScoreboard(room);
-  } else {
-    document.getElementById('fbScoreboardWrap').style.display='none';
-  }
-  document.getElementById('fbLobbyOverlay').style.display='block';
-  document.body.style.overflow='hidden';
-}
-
-function fbCloseLobby(){
-  document.getElementById('fbLobbyOverlay').style.display='none';
-  document.body.style.overflow='';
-  fbRenderMyBattles(); fbRenderLeaderboard();
-}
-
-function fbRenderLobbyPlayers(room,nick){
-  var el=document.getElementById('fbLobbyPlayers');
-  if(!el) return;
-  el.innerHTML=room.players.map(function(p){
-    var isMe=p.nick===nick;
-    var teamLocked=!!p.team;
-    return '<div class="fb-player-lobby" style="'+(isMe?'border-color:rgba(249,115,22,.4)':'')+'"><div>'
-      +'<div class="plname" style="color:'+(isMe?'var(--ipl-orange)':'var(--text)')+'">'+p.nick+(isMe?' (you)':'')+'</div>'
-      +'<div class="plstatus" style="color:'+(teamLocked?'var(--green-light)':'var(--muted)')+'">'+
-        (teamLocked?'✅ Team locked · '+(p.team.credits||'?')+' cr used':'⏳ Picking team...')+'</div></div>'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:20px;color:var(--ipl-orange)">'+(p.pts||'—')+'</div></div>';
-  }).join('');
-}
-
-function fbRenderLobbyActions(room,nick){
-  var el=document.getElementById('fbLobbyActions');
-  if(!el) return;
-  var isCreator=room.creator===nick;
-  var allLocked=room.players.every(function(p){return !!p.team;});
-  var canStart=isCreator&&allLocked&&room.players.length>=2;
-  var html='';
-  if(room.status==='waiting'){
-    if(canStart) html='<button class="fb-btn-primary" onclick="fbStartBattle()">🚀 Start Battle!</button>';
-    else if(isCreator) html='<div style="background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.2);border-radius:8px;padding:10px;font-size:12px;color:var(--gold);text-align:center">⏳ '+(room.players.length<2?'Need at least 2 players':'Waiting for all players to lock teams...')+'</div>';
-    else html='<div style="background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:8px;padding:10px;font-size:12px;color:var(--blue);text-align:center">⏳ Waiting for room creator to start...</div>';
-    html+='<button class="fb-btn-secondary" onclick="fbRefreshLobby()">🔄 Refresh</button>';
-    html+='<button class="fb-btn-secondary" onclick="fbShareRoom(\''+room.id+'\',\''+room.name+'\')">📤 Share Room Code</button>';
-  } else if(room.status==='done'){
-    html='<button class="fb-btn-primary" onclick="fbCloseLobby()">🏏 Back to Battles</button>';
-  } else {
-    html='<button class="fb-btn-secondary" onclick="fbRefreshLobby()">🔄 Refresh Scores</button>';
-  }
-  el.innerHTML=html;
-}
-
-function fbRefreshLobby(){
-  fbRooms=JSON.parse(localStorage.getItem('cricpulse_fb_rooms')||'[]');
-  var room=fbRooms.find(function(r){return r.id===fbActiveRoom.id;});
-  if(!room){fbCloseLobby();return;}
-  fbActiveRoom=room;
-  fbRenderLobbyPlayers(room,fbNick);
-  fbRenderLobbyActions(room,fbNick);
-  showToast('🔄 Refreshed!');
-}
-
-function fbShareRoom(code,name){
-  var text='⚔️ Join my CricPulse Fantasy Battle!\nRoom: '+name+'\nCode: '+code+'\nOpen CricPulse → Fantasy Battle → Join Room';
-  if(navigator.share){ navigator.share({title:'CricPulse Fantasy Battle',text:text}).catch(function(){}); }
-  else { navigator.clipboard.writeText(text).then(function(){showToast('📋 Room invite copied!');}).catch(function(){showToast('Code: '+code);}); }
-}
-
-function fbStartBattle(){
-  var room=fbRooms.find(function(r){return r.id===fbActiveRoom.id;});
-  if(!room) return;
-  room.status='live'; fbSaveRooms();
-  fbPickerPendingRoom=room; // needed for simulate
-  var btn=document.querySelector('#fbLobbyActions .fb-btn-primary');
-  if(btn){btn.disabled=true;btn.textContent='⚡ Simulating...';}
-  showToast('🏏 Calculating scores!');
-  var delay=0;
-  room.players.forEach(function(player,i){
-    delay+=700;
-    setTimeout(function(){
-      if(player.team){
-        var result=fbSimulatePoints(player.team);
-        player.pts=result.total;
-        player.breakdown=result.breakdown;
-      } else {
-        player.pts=Math.floor(Math.random()*200)+50;
-      }
-      fbSaveRooms();
-      fbRenderLobbyPlayers(room,fbNick);
-      if(i===room.players.length-1){
-        setTimeout(function(){
-          room.status='done'; fbSaveRooms();
-          fbRenderScoreboard(room);
-          document.getElementById('fbScoreboardWrap').style.display='block';
-          fbRenderLobbyActions(room,fbNick);
-          fbRenderLeaderboard();
-          showToast('🏆 Battle complete!');
-        },600);
-      }
-    },delay);
-  });
-}
-
-// ── SCOREBOARD (tied ranking) ──
-function fbRenderScoreboard(room){
-  var el=document.getElementById('fbScoreboard');
-  if(!el) return;
-  var sorted=room.players.slice().sort(function(a,b){return (b.pts||0)-(a.pts||0);});
-  var rankArr=[]; var rank=1;
-  for(var i=0;i<sorted.length;i++){
-    rankArr.push(i>0&&sorted[i].pts===sorted[i-1].pts?rankArr[i-1]:rank);
-    rank=i+2;
-  }
-  var medals=['🥇','🥈','🥉']; var posCls=['g','s','b'];
-  el.innerHTML=sorted.map(function(p,i){
-    var isMe=p.nick===fbNick; var r=rankArr[i];
-    var tied=sorted.filter(function(x){return x.pts===p.pts;}).length>1;
-    var rankDisp=r<=3?medals[r-1]:r; var posClass=r<=3?posCls[r-1]:'';
-    return '<div class="fb-score-row" style="'+(isMe?'background:rgba(249,115,22,.07);border-radius:8px;padding:7px;margin:-3px;':'')+'">'
-      +'<div class="fb-score-pos '+posClass+'">'+rankDisp+'</div>'
-      +'<div style="flex:1">'
-        +'<div style="font-size:13px;font-weight:600;color:'+(isMe?'var(--ipl-orange)':'var(--text)')+'">'+p.nick+(isMe?' ⭐':'')+(r===1&&!tied?' 👑 WINNER!':r===1&&tied?' 👑 JOINT WINNER!':'')+'</div>'
-        +'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+(p.breakdown?p.breakdown.slice(0,3).map(function(b){return b.name+' '+b.pts+'pts';}).join(' · '):'')+'</div>'
-        +(tied?'<div style="font-size:9px;color:var(--gold)">🤝 Tied</div>':'')
-      +'</div>'
-      +'<div class="fb-score-pts">'+(p.pts||0)+'</div></div>';
-  }).join('');
-}
-
-// ════════════════════════════════════════════
-// CUSTOM MATCH BUILDER
-// ════════════════════════════════════════════
-var cmPlayerRows = {A:[],B:[]};
-
-function cmAddPlayer(team){
-  var container=document.getElementById('cmPlayers'+team);
-  if(!container) return;
-  var id='cmp_'+team+'_'+Date.now();
-  cmPlayerRows[team].push(id);
-  var div=document.createElement('div');
-  div.id=id;
-  div.style.cssText='display:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center';
-  div.innerHTML='<input class="fb-input" style="padding:7px 10px;font-size:12px" placeholder="Player name" maxlength="20">'
-    +'<select class="fb-select" style="padding:7px 8px;font-size:11px;width:80px"><option value="BAT">BAT</option><option value="BOWL">BOWL</option><option value="AR">AR</option><option value="WK">WK</option></select>'
-    +'<button onclick="document.getElementById(\''+id+'\').remove()" style="background:rgba(229,62,62,.15);border:1px solid rgba(229,62,62,.3);color:#f87171;border-radius:6px;padding:6px 9px;cursor:pointer;font-size:12px">✕</button>';
-  container.appendChild(div);
-}
-
-function cmSaveMatch(){
-  var teamA=(document.getElementById('cmTeamA').value||'').trim();
-  var teamB=(document.getElementById('cmTeamB').value||'').trim();
-  if(!teamA||!teamB){showToast('⚠️ Enter both team names');return;}
-  var playersA=cmCollectPlayers('A',teamA);
-  var playersB=cmCollectPlayers('B',teamB);
-  if(playersA.length<5||playersB.length<5){showToast('⚠️ Add at least 5 players per team');return;}
-  var key='CUSTOM_'+Date.now();
-  var match={
-    key:key,
-    label:teamA+' vs '+teamB+' · Custom Match',
-    teamA:teamA, teamB:teamB,
-    format:'Custom', date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}),
-    venue:'Custom Venue',
-    players:playersA.concat(playersB)
-  };
-  fbCustomMatches.push(match);
-  localStorage.setItem('cricpulse_cm',JSON.stringify(fbCustomMatches));
-  // Add to match select dropdown
-  var sel=document.getElementById('fbMatchSelect');
-  if(sel){
-    var opt=document.createElement('option');
-    opt.value=key; opt.textContent='✏️ '+teamA+' vs '+teamB+' · Custom';
-    sel.appendChild(opt);
-  }
-  showToast('✅ Custom match saved!');
-  cmRenderSaved();
-  // Clear form
-  document.getElementById('cmTeamA').value='';
-  document.getElementById('cmTeamB').value='';
-  document.getElementById('cmPlayersA').innerHTML='';
-  document.getElementById('cmPlayersB').innerHTML='';
-}
-
-function cmCollectPlayers(team,teamName){
-  var container=document.getElementById('cmPlayers'+team);
-  if(!container) return [];
-  var rows=container.querySelectorAll('div[id^="cmp_"]');
-  var result=[];
-  var idCounter=1;
-  rows.forEach(function(row){
-    var nameInput=row.querySelector('input');
-    var roleSelect=row.querySelector('select');
-    var name=(nameInput?nameInput.value:'').trim();
-    var role=roleSelect?roleSelect.value:'BAT';
-    if(!name) return;
-    result.push({
-      id:'cm_'+team+'_'+idCounter++,
-      name:name, team:team, teamName:teamName,
-      role:role, credits:8, form:75,
-      lastStat:'—', lastDate:'—'
-    });
-  });
-  return result;
-}
-
-function cmRenderSaved(){
-  var el=document.getElementById('cmSavedList');
-  if(!el) return;
-  if(!fbCustomMatches.length){el.innerHTML='';return;}
-  el.innerHTML='<div style="font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Saved Custom Matches</div>'
-    +fbCustomMatches.map(function(m){
-      return '<div style="background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-        +'<div><div style="font-size:13px;font-weight:600">'+m.teamA+' vs '+m.teamB+'</div>'
-        +'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+m.players.length+' players · '+m.date+'</div></div>'
-        +'<button onclick="cmDelete(\''+m.key+'\')" style="background:rgba(229,62,62,.12);border:1px solid rgba(229,62,62,.25);color:#f87171;border-radius:6px;padding:5px 10px;cursor:pointer;font-size:11px">Delete</button>'
-        +'</div>';
-    }).join('');
-}
-
-function cmDelete(key){
-  fbCustomMatches=fbCustomMatches.filter(function(m){return m.key!==key;});
-  localStorage.setItem('cricpulse_cm',JSON.stringify(fbCustomMatches));
-  // Remove from dropdown
-  var sel=document.getElementById('fbMatchSelect');
-  if(sel){ var opt=sel.querySelector('option[value="'+key+'"]'); if(opt) opt.remove(); }
-  cmRenderSaved();
-  showToast('🗑️ Custom match deleted');
-}
-
-// ════════════════════════════════════════════
-// 🔥 DAILY STREAK TRACKER
-// ════════════════════════════════════════════
-function initStreak(){
-  var key='cricpulse_streak';
-  var lastKey='cricpulse_streak_last';
-  var today=new Date().toDateString();
-  var last=localStorage.getItem(lastKey)||'';
-  var streak=parseInt(localStorage.getItem(key)||'0');
-  var yesterday=new Date(Date.now()-86400000).toDateString();
-  if(last===today){
-    // already visited today, streak stands
-  } else if(last===yesterday){
-    streak+=1;
-  } else if(last===''){
-    streak=1;
-  } else {
-    streak=1; // broken
-  }
-  localStorage.setItem(key,streak);
-  localStorage.setItem(lastKey,today);
-
-  var el=document.getElementById('streakCount');
-  var lbl=document.getElementById('streakLabel');
-  var flame=document.getElementById('streakFlame');
-  if(el) el.textContent=streak;
-  if(lbl){
-    if(streak===1) lbl.textContent='Day 1 streak started 🏏';
-    else if(streak<5) lbl.textContent='Day '+streak+' streak — keep it up!';
-    else if(streak<10) lbl.textContent='🔥 '+streak+' days strong! You\'re on fire!';
-    else lbl.textContent='🏆 LEGEND — '+streak+' day streak!';
-  }
-  if(flame){
-    if(streak>=10) flame.textContent='🔥🔥🔥';
-    else if(streak>=5) flame.textContent='🔥🔥';
-    else flame.textContent='🔥';
-  }
-  // render last 7 days
-  var days=document.getElementById('streakDays');
-  if(days){
-    var labels=['M','T','W','T','F','S','S'];
-    var todayIdx=new Date().getDay(); // 0=Sun
-    days.innerHTML=labels.map(function(l,i){
-      var diff=((i+1)-todayIdx+7)%7;
-      var isDone=diff>0?false:true; // simplified: mark last `streak` days as done
-      var isToday=(diff===0);
-      var cls=isToday?'streak-day today':(isDone&&streak>0?'streak-day done':'streak-day');
-      return '<div class="'+cls+'">'+l+'</div>';
-    }).join('');
-  }
-}
-
-function claimStreakBonus(){
-  var streak=parseInt(localStorage.getItem('cricpulse_streak')||'1');
-  showToast('🔥 '+streak+'-day streak! Bonus trivia unlocked below 👇');
-  document.getElementById('spinSection').scrollIntoView({behavior:'smooth',block:'center'});
-  setTimeout(function(){ spinWheel(); },600);
-}
-
-// ════════════════════════════════════════════
-// 🎡 SPIN THE WHEEL — CRICKET TRIVIA
-// ════════════════════════════════════════════
-var SPIN_SEGMENTS = [
-  {label:'🏏 Trivia',color:'#1a6b3c',q:'Who holds the record for the most Test wickets?',a:'Muttiah Muralitharan — 800 wickets!'},
-  {label:'🔥 Fact',color:'#f97316',q:'Which team won the first T20 World Cup (2007)?',a:'India won the inaugural T20 WC in 2007, defeating Pakistan!'},
-  {label:'🏆 Quiz',color:'#a855f7',q:'Sachin Tendulkar\'s highest ODI score?',a:'200* — vs South Africa in 2010. First-ever ODI double century!'},
-  {label:'⚡ Rapid',color:'#d4a017',q:'Who hit 6 sixes in an over in a WC match?',a:'Yuvraj Singh off Stuart Broad — T20 WC 2007 vs England!'},
-  {label:'🎯 Bowl',color:'#3b82f6',q:'Fastest ever Test hundred?',a:'Jim Laker — no wait, fastest century is by Misbah-ul-Haq in 56 balls (Test 2014)!'},
-  {label:'🌟 Star',color:'#e53e3e',q:'Most IPL centuries?',a:'Virat Kohli — 8 IPL centuries and counting!'},
-];
-var isSpinning=false;
-var spinRotation=0;
-
-function drawSpinWheel(){
-  var canvas=document.getElementById('spinCanvas');
-  if(!canvas||!canvas.getContext) return;
-  var ctx=canvas.getContext('2d');
-  var cx=90,cy=90,r=86;
-  var total=SPIN_SEGMENTS.length;
-  SPIN_SEGMENTS.forEach(function(seg,i){
-    var start=(i/total)*2*Math.PI - Math.PI/2;
-    var end=((i+1)/total)*2*Math.PI - Math.PI/2;
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.arc(cx,cy,r,start,end);
-    ctx.closePath();
-    ctx.fillStyle=seg.color;
-    ctx.fill();
-    ctx.strokeStyle='rgba(255,255,255,.15)';
-    ctx.lineWidth=2;
-    ctx.stroke();
-    // label
-    ctx.save();
-    ctx.translate(cx,cy);
-    ctx.rotate((start+end)/2);
-    ctx.textAlign='right';
-    ctx.fillStyle='#fff';
-    ctx.font='bold 10px DM Sans,sans-serif';
-    ctx.fillText(seg.label,r-6,4);
-    ctx.restore();
-  });
-  // center
-  ctx.beginPath();
-  ctx.arc(cx,cy,14,0,2*Math.PI);
-  ctx.fillStyle='#0e1a12';
-  ctx.fill();
-  ctx.strokeStyle='rgba(255,255,255,.2)';
-  ctx.lineWidth=2;
-  ctx.stroke();
-}
-
-function spinWheel(){
-  if(isSpinning) return;
-  var btn=document.getElementById('spinBtn');
-  var resultEl=document.getElementById('spinResult');
-  var canvas=document.getElementById('spinCanvas');
-  if(!canvas) return;
-  isSpinning=true;
-  if(btn){ btn.disabled=true; btn.textContent='🌀 Spinning…'; }
-  if(resultEl) resultEl.style.display='none';
-  var spins=5+Math.floor(Math.random()*5);
-  var extra=Math.floor(Math.random()*360);
-  var totalDeg=spins*360+extra;
-  spinRotation+=totalDeg;
-  canvas.style.transition='transform 3s cubic-bezier(.17,.67,.12,.99)';
-  canvas.style.transform='rotate('+spinRotation+'deg)';
-  setTimeout(function(){
-    isSpinning=false;
-    if(btn){ btn.disabled=false; btn.textContent='🎰 Spin Again!'; }
-    // Determine winner segment from final angle
-    var finalAngle=((spinRotation%360)+360)%360;
-    var segAngle=360/SPIN_SEGMENTS.length;
-    var idx=SPIN_SEGMENTS.length-1-Math.floor(finalAngle/segAngle);
-    var seg=SPIN_SEGMENTS[idx%SPIN_SEGMENTS.length];
-    if(resultEl){
-      resultEl.style.display='block';
-      resultEl.innerHTML='<div style="font-size:10px;color:var(--muted);margin-bottom:4px">'+seg.label+'</div>'
-        +'<div style="font-size:13px;color:var(--text);font-weight:600;margin-bottom:6px">'+seg.q+'</div>'
-        +'<div style="font-size:12px;color:var(--green-light)">✅ '+seg.a+'</div>';
-    }
-    showToast('🎡 '+seg.label+' — check your answer!');
-  },3100);
-}
-
-// ════════════════════════════════════════════
-// 🔥 HOT TAKES — FAN REACTIONS
-// ════════════════════════════════════════════
-var HOT_TAKES = [
-  {id:'ht1',q:'Kohli is still the best batter in the world right now.',fire:'🔥 Agree',ice:'❄️ Disagree'},
-  {id:'ht2',q:'IPL has made Indian cricket stronger overall.',fire:'🔥 True',ice:'❄️ Overrated'},
-  {id:'ht3',q:'Test cricket is dying and nobody can save it.',fire:'🔥 Sadly true',ice:'❄️ Tests forever!'},
-];
-
-function initHotTakes(){
-  var container=document.getElementById('hotTakesContainer');
-  if(!container) return;
-  container.innerHTML=HOT_TAKES.map(function(ht){
-    var votes=JSON.parse(localStorage.getItem('cricpulse_ht_'+ht.id)||'{"fire":0,"ice":0}');
-    var myVote=localStorage.getItem('cricpulse_htv_'+ht.id)||'';
-    return renderHotTake(ht,votes,myVote);
-  }).join('');
-}
-
-function renderHotTake(ht,votes,myVote){
-  var total=votes.fire+votes.ice;
-  var firePct=total?Math.round(votes.fire/total*100):50;
-  var barStyle=myVote?'display:block':'display:none';
-  var resultStyle=myVote?'display:flex':'display:none';
-  return '<div class="hot-take-card" id="htCard_'+ht.id+'">'
-    +'<div class="hot-take-q">'+ht.q+'</div>'
-    +'<div class="hot-take-btns">'
-    +'<button class="hot-take-btn'+(myVote==='fire'?' voted-fire':'')+'" onclick="voteHotTake(\''+ht.id+'\',\'fire\')">'+ht.fire+'</button>'
-    +'<button class="hot-take-btn'+(myVote==='ice'?' voted-ice':'')+'" onclick="voteHotTake(\''+ht.id+'\',\'ice\')">'+ht.ice+'</button>'
-    +'</div>'
-    +'<div class="hot-take-bar" style="'+barStyle+'"><div class="hot-take-bar-fill" style="width:'+firePct+'%"></div></div>'
-    +'<div class="hot-take-result" style="'+resultStyle+';justify-content:space-between"><span>🔥 '+votes.fire+'</span><span style="font-size:9px;color:var(--muted)">'+firePct+'% fire</span><span>❄️ '+votes.ice+'</span></div>'
-    +'</div>';
-}
-
-function voteHotTake(id,side){
-  var prevVote=localStorage.getItem('cricpulse_htv_'+id)||'';
-  var votes=JSON.parse(localStorage.getItem('cricpulse_ht_'+id)||'{"fire":0,"ice":0}');
-  if(prevVote===side){ showToast('You already voted this!'); return; }
-  if(prevVote) votes[prevVote]=Math.max(0,votes[prevVote]-1); // undo old
-  votes[side]+=1;
-  localStorage.setItem('cricpulse_ht_'+id,JSON.stringify(votes));
-  localStorage.setItem('cricpulse_htv_'+id,side);
-  var ht=HOT_TAKES.find(function(h){return h.id===id;});
-  if(!ht) return;
-  var card=document.getElementById('htCard_'+id);
-  if(card) card.outerHTML=renderHotTake(ht,votes,side);
-  showToast(side==='fire'?'🔥 Hot take registered!':'❄️ Cold take noted!');
-}
-
-// ════════════════════════════════════════════
-// 📤 SHARE SCORE (WhatsApp / native share)
-// ════════════════════════════════════════════
-function shareMatch(id){
-  var all=[].concat(DEMO_MATCHES,IPL_MATCHES);
-  var m=all.find(function(x){return x.id===id;});
-  if(!m){ showToast('Nothing to share'); return; }
-  var teams=m.teams.map(function(t){return t.flag+' '+t.name+' '+t.score;}).join(' | ');
-  var status=m.status||'';
-  var text='🏏 '+m.series+'\n'+teams+'\n'+status+'\n\nvia CricPulse — India\'s fastest cricket app';
-  if(navigator.share){
-    navigator.share({title:'CricPulse Score Update',text:text}).catch(function(){});
-  } else {
-    var wa='https://wa.me/?text='+encodeURIComponent(text);
-    window.open(wa,'_blank');
-  }
-  showToast('📤 Sharing score!');
-}
-
-// ── INIT ALL NEW FEATURES ──
-window.addEventListener('DOMContentLoaded', function(){
-  // Security: only honour premium if backed by a real Razorpay payment ID
-  var subs = JSON.parse(localStorage.getItem('cricpulse_subscribers')||'[]');
-  var hasRealPayment = subs.some(function(s){
-    return s.type==='premium' && s.paymentId && s.paymentId.startsWith('pay_');
-  });
-  if(!hasRealPayment){
-    localStorage.removeItem('cricpulse_premium');
-  }
-  // existing inits
-  fbRooms=JSON.parse(localStorage.getItem('cricpulse_fb_rooms')||'[]');
-  fbCustomMatches=JSON.parse(localStorage.getItem('cricpulse_cm')||'[]');
-  var cutoff=Date.now()-48*60*60*1000;
-  fbRooms=fbRooms.filter(function(r){return r.createdAt>cutoff||r.status!=='done';});
-  fbSaveRooms();
-  fbNick=localStorage.getItem('cricpulse_fb_nick')||'';
-  ['fbNickname','fbJoinNick'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el&&fbNick) el.value=fbNick;
-  });
-  var sel=document.getElementById('fbMatchSelect');
-  if(sel) fbCustomMatches.forEach(function(m){
-    var opt=document.createElement('option');
-    opt.value=m.key; opt.textContent='✏️ '+m.teamA+' vs '+m.teamB+' · Custom';
-    sel.appendChild(opt);
-  });
-  fbRefreshRoomCount();
-  fbRenderOpenRooms();
-  fbUpdateMatchPreview();
-  // new feature inits
-  initStreak();
-  drawSpinWheel();
-  initHotTakes();
 });
 </script>
 </body>
